@@ -1,4 +1,4 @@
-package moblima;
+package model;
 import java.io.*;
 import java.util.*;
 

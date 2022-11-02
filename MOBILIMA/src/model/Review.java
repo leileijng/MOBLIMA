@@ -1,4 +1,4 @@
-package MOBLIMA;
+package model;
 
 public class Review {
     private final int userID;

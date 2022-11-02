@@ -1,4 +1,4 @@
-package moblima;
+package model;
 import java.io.*;
 import java.util.*;
 
@@ -27,5 +27,9 @@ class Cinema {
         System.out.println("cinema code  : " + this.cinemaCode);
         System.out.println("cinema class : " + this.classOfCinema);
         this.layout.viewLayout();
+    }
+
+    public Layout getLayout() {
+        return layout;
     }
 }

@@ -1,5 +1,6 @@
-package moblima;
+package model;
 import java.io.*;
+import java.security.Timestamp;
 import java.util.*;
 
 class Session {
@@ -16,7 +17,7 @@ class Session {
         this.cinema = cinema;
         this.startTime = startTime;
         this.endTime = endTime;
-        for (int i = 0; i < cinema.layout.row; i ++) {
+        for (int i = 0; i < cinema.getLayout().row; i ++) {
             char rowIndex = (char)('A' + i);
             for (int j = 0; j < cinema.layout.col; j ++) {
                 if(cinema.layout.seats[i][j] == 1){

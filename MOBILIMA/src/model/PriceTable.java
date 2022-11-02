@@ -1,17 +1,20 @@
-package moblima;
+package model;
+
 import java.io.*;
 import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
 class PriceTable {
-    HashMap<String, double> movieType = new HashMap<String, double>();
-    HashMap<String, double> cinemaClass = new HashMap<String, double>();
-    HashMap<String, double> peopleGroup = new HashMap<String, double>();
-    HashMap<String, double> specialDay = new HashMap<String, double>();
+    HashMap<String,Double> movieType = new HashMap<String, Double>();
+    HashMap<String,Double> cinemaClass = new HashMap<String, Double>();
+    HashMap<String,Double> peopleGroup = new HashMap<String, Double>();
+    HashMap<String,Double> specialDay = new HashMap<String, Double>();
 
-    public PriceTable(HashMap<String, double> movieType,
-                      HashMap<String, double> cinemaClass,
-                      HashMap<String, double> peopleGroup,
-                      HashMap<String, double> specialDay) {
+    public PriceTable(HashMap<String, Double> movieType,
+                      HashMap<String, Double> cinemaClass,
+                      HashMap<String, Double> peopleGroup,
+                      HashMap<String, Double> specialDay) {
         this.movieType = movieType;
         this.cinemaClass = cinemaClass;
         this.peopleGroup = peopleGroup;

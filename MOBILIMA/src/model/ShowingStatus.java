@@ -1,4 +1,4 @@
-package MOBLIMA;
+package model;
 
 public enum ShowingStatus {
     COMMINGSOON,

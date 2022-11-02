@@ -1,4 +1,4 @@
-package MOBLIMA;
+package model;
 
 
 import java.util.ArrayList;
