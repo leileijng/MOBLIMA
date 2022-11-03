@@ -22,4 +22,22 @@ class Ticket {
         this.booked = true;
         this.price = price;
     }
+
+    public String getSeatIndex() {
+        return seatIndex;
+    }
+
+    public void setSeatIndex(String seatIndex) {
+        this.seatIndex = seatIndex;
+    }
+
+    public Boolean getBooked() {
+        return booked;
+    }
+
+    public void setBooked(Boolean booked) {
+        this.booked = booked;
+    }
+    
+    
 }

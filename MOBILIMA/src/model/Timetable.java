@@ -15,23 +15,23 @@ class Timetable {
         int num = this.sessions.size();
         System.out.println("total number of sessions : " + num);
         for (int i = 0; i < num; i ++) {
-            this.sessions[i].viewDetails();
+            this.sessions.get(i).viewDetails();
         }
     }
 
     public void showSessionsAtCinema(String cinemaCode) {
         int num = this.sessions.size();
         for (int i = 0; i < num; i ++) {
-            if (this.sessions[i].cinemaCode == cinemaCode) {
-                this.sessions[i].viewDetails();
+            if (this.sessions.get(i).getCinema().getCinemaCode().equals(cinemaCode)) {//Compare string using == or !=
+                this.sessions.get(i).viewDetails();
             }
         }
     }
 
-    public String removeSession(int sessionIndex) {
+    public String removeSession(String sessionIndex) {
         int num = this.sessions.size();
         for (int i = 0; i < num; i ++) {
-            if (this.sessions[i].sessionIndex == sessionIndex) {
+            if (this.sessions.get(i).getSessionIndex() == sessionIndex) {//incompatable type, string and int
                 this.sessions.remove(i);
                 return "Successfully Removing the Session.";
             }

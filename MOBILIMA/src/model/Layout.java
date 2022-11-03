@@ -32,4 +32,29 @@ class Layout {
             System.out.print("\n");
         }
     }
+    
+    
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
+    }
+
+    public int[][] getSeats() {
+        return seats;
+    }
+
+    public void setSeats(int[][] seats) {
+        this.seats = seats;
+    }
 }
