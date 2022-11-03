@@ -2,7 +2,7 @@ package model;
 import java.io.*;
 import java.util.*;
 
-class User {
+public class User {
     private String username;
     private String phone;
     private String email;

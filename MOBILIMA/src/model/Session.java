@@ -3,7 +3,7 @@ import java.io.*;
 import java.security.Timestamp;
 import java.util.*;
 
-class Session {
+public class Session {
     private String sessionIndex;
     private Movie movie;
     private Cinema cinema;

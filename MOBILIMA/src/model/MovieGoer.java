@@ -2,7 +2,7 @@ package model;
 import java.io.*;
 import java.util.*;
 
-class MovieGoer extends User {
+public class MovieGoer extends User {
     private String ageGroup;
     private ArrayList<Payment> payments;
     private ArrayList<Review> reviews;

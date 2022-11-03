@@ -2,7 +2,7 @@ package model;
 import java.io.*;
 import java.util.*;
 
-class AdminStaff extends User {
+public class AdminStaff extends User {
     private String accessCode;
     private User user;
 

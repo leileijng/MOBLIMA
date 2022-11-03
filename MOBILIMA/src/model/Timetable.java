@@ -2,7 +2,7 @@ package model;
 import java.io.*;
 import java.util.*;
 
-class Timetable {
+public class Timetable {
     private Vector<Session> sessions = new Vector<>();
 
     public Timetable(int numOfSession, Session[] sessions) {

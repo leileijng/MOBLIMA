@@ -2,19 +2,15 @@ package model;
 import java.io.*;
 import java.util.*;
 
-class Cinplex {
+public class Cinplex {
     private String cineplexName;
     private String location;
-    private Cinema[] cinemas;
-    private int numOfCinema;
+    private ArrayList<Cinema> cinemas;
 
-    public Cinplex(String cineplexName, String location, int numOfCinema, Cinema[] cinemas) {
+
+    public Cinplex(String cineplexName, String location){
         this.cineplexName = cineplexName;
         this.location = location;
-        cinemas = new Cinema[numOfCinema];
-		for (int i = 0; i < numOfCinema; i ++){
-			this.cinemas[i] = cinemas[i];
-		}
     }
 
     public String getCineplexName() {
@@ -26,9 +22,13 @@ class Cinplex {
     }
 
     public void viewCinemas() {
-        System.out.println("count of the cineplex " + this.cineplexName + " : " + this.numOfCinema);
-        for (int i = 0; i < numOfCinema; i ++) {
-            this.cinemas[i].viewDetails();
+        System.out.println("count of the cineplex " + this.cineplexName + " : " + this.cinemas.size());
+        for (int i = 0; i < cinemas.size(); i ++) {
+            this.cinemas.get(i).viewDetails();
         }
+    }
+
+    public void addCinema(Cinema cinema){
+        this.cinemas.add(cinema);
     }
 }

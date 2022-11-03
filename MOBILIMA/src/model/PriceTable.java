@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
-class PriceTable {
+public class PriceTable {
     HashMap<String,Double> movieType = new HashMap<String, Double>();
     HashMap<String,Double> cinemaClass = new HashMap<String, Double>();
     HashMap<String,Double> peopleGroup = new HashMap<String, Double>();

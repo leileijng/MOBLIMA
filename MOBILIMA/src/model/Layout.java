@@ -2,7 +2,7 @@ package model;
 import java.io.*;
 import java.util.*;
 
-class Layout {
+public class Layout {
     private int row;
     private int col;
     private int[][] seats;

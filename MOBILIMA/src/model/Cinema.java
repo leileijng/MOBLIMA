@@ -1,13 +1,18 @@
 package model;
+import sun.security.x509.CertificateIssuerName;
+
 import java.io.*;
 import java.util.*;
 
-class Cinema {
+public class Cinema {
     public enum ClassOfCinema { GOLD, MAX, NORMAL }
 	private ClassOfCinema classOfCinema;
     private String cinemaCode;
     private Layout layout;
 
+    public Cinema(String cinemaCode, ClassOfCinema classOfCinema){
+
+    }
     public Cinema(String cinemaCode, ClassOfCinema classOfCinema, Layout layout) {
         this.cinemaCode = cinemaCode;
         this.classOfCinema = classOfCinema;
@@ -32,4 +37,5 @@ class Cinema {
     public Layout getLayout() {
         return layout;
     }
+
 }

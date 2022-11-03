@@ -2,7 +2,7 @@ package model;
 import java.io.*;
 import java.util.*;
 
-class Ticket {
+public class Ticket {
     private String seatIndex;
     private double price;
     private Boolean booked;
