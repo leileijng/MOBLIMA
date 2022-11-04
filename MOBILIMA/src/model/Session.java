@@ -1,6 +1,6 @@
 package model;
 import java.io.*;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.*;
 
 public class Session {
@@ -81,5 +81,13 @@ public class Session {
 
     public void setCinema(Cinema cinema) {
         this.cinema = cinema;
+    }
+
+    public void setStartTime(Timestamp startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(Timestamp endTime) {
+        this.endTime = endTime;
     }
 }
