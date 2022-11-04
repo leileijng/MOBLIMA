@@ -14,7 +14,7 @@ import java.util.List;
 public class MovieCtr {
     List<Movie> movieList;
     public MovieCtr() { movieList = new ArrayList<>(); }
-    public void addMovie(Movie movie) { movieList.add(movie); }
+    public static void addMovie(Movie movie) { movieList.add(movie); }
     public void printTop5MovieByRevenue() {
         movieList.sort(Comparator.comparingDouble(Movie::getTotalRevenue).reversed());
         System.out.println("Top 5 Movie By Revenue:");

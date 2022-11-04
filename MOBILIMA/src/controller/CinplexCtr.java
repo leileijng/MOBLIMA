@@ -4,7 +4,13 @@ import model.Cinema;
 import model.Cinplex;
 
 public class CinplexCtr {
-    public static void addCinema(Cinplex cinplex){
-        cinplex.addCinema(new Cinema("T1", Cinema.ClassOfCinema.MAX));
+    private Cinplex cinplex;
+
+    public static Cinema getCinema(String cinemaCode){
+        return cinplex.getCinema(cinemaCode);
+    }
+
+    public staic void addCinema(Cinema cinema) {
+        cinplex.addCinema(cinema);
     }
 }
