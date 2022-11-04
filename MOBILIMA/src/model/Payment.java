@@ -36,5 +36,7 @@ public class Payment {
         this.movieGoer = movieGoer;
     }
 
-
+    public double getPrice() {
+        return amount;
+    }
 }

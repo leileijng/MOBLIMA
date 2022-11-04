@@ -152,6 +152,9 @@ public class MovieCtr {
         return null;
     }
 
+    public static List<Movie> getShowingMovieList() {
+        return showingMovieList;
+    }
     private static void refresh() {
         date.setTime(System.currentTimeMillis());
         for (Movie movie : showingMovieList) {
