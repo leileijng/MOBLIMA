@@ -20,7 +20,7 @@ public class Session {
         for (int i = 0; i < cinema.getLayout().getRow(); i ++) {
             char rowIndex = (char)('A' + i);
             for (int j = 0; j < cinema.getLayout().getCol(); j ++) {
-                if(cinema.getLayout().getSeats()[i][j] == 1){
+                if(cinema.getLayout().getSeats()[i][j] == 1 || cinema.getLayout().getSeats()[i][j] == 2){
                     tickets.add(new Ticket(Character.toString(rowIndex) + "" + j, cinema.getCinemaCode()));//Cannot convert int to string with (String)
                 }
             }

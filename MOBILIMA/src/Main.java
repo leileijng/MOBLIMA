@@ -1,7 +1,10 @@
 import controller.*;
 import model.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -17,10 +20,14 @@ public class Main {
     }
 
     public static void initialiseData() {
-        CinplexCtr.cinplex = new Cinplex("Golden Village", "Jurong Point");
-        CinplexCtr.cinplex.addCinema(new Cinema("T1", Cinema.ClassOfCinema.MAX));
-        CinplexCtr.cinplex.addCinema(new Cinema("T2", Cinema.ClassOfCinema.GOLD));
-        CinplexCtr.cinplex.viewCinemas();
+        CinplexCtr.addCinplex();
+        LayoutCtr.importLayout();
+
+        Layout layout1 = LayoutCtr.layouts.get(0);
+
+        CinplexCtr.getCinplexById("G01").addCinema(new Cinema("G1_T1", Cinema.ClassOfCinema.MAX, layout1));
+        CinplexCtr.getCinplexById("G01").addCinema(new Cinema("G1_T2", Cinema.ClassOfCinema.GOLD, layout1));
+        CinplexCtr.getCinplexById("G01").viewCinemas();
 
         MovieCtr.addMovieToDB(new Movie("Her"));
         MovieCtr.addMovieToDB(new Movie("Spider Man"));
@@ -29,7 +36,7 @@ public class Main {
         SessionCtr.addSessionToDB(
                 new Session( "Her_s1",
                         MovieCtr.getMovieByName("Her"),
-                        CinplexCtr.cinplex.getCinema("T1"),
+                        CinplexCtr.getCinplexById("G01").getCinema("G1_T1"),
                         SessionCtr.convertStr2Time("2022-11-19 15:00:00"),
                         SessionCtr.convertStr2Time("2022-11-19 17:00:00")
                 ));
@@ -37,7 +44,7 @@ public class Main {
         SessionCtr.addSessionToDB(
                 new Session( "Her_s2",
                         MovieCtr.getMovieByName("Spider Man"),
-                        CinplexCtr.cinplex.getCinema("T1"),
+                        CinplexCtr.getCinplexById("G01").getCinema("G1_T2"),
                         SessionCtr.convertStr2Time("2022-11-20 15:00:00"),
                         SessionCtr.convertStr2Time("2022-11-20 17:00:00")
                 ));

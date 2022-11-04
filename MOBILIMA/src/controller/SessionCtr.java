@@ -47,7 +47,7 @@ public class SessionCtr {
 
         Session session = new Session(sessionIndex,
                                     MovieCtr.getMovieByName(movieTitle),
-                                    CinplexCtr.cinplex.getCinema(cinemaCode),
+                                    CinplexCtr.getCinplexById("G01").getCinema(cinemaCode),
                                     convertStr2Time(startTime),
                                     convertStr2Time(endTime)
                                     );

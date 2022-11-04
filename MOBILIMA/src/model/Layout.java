@@ -7,13 +7,13 @@ public class Layout {
     private int col;
     private int[][] seats;
 
-    public Layout(int row, int col, int[] seats) {
+    public Layout(int row, int col, ArrayList<Integer> s) {
         this.row = row;
         this.col = col;
         this.seats = new int[row][col];
         for (int i = 0; i < row; i ++) {
             for (int j = 0; j < col; j ++) {
-                this.seats[i][j] = seats[col * i + j];
+                this.seats[i][j] = s.get(col * i + j);
             }
         }
     }

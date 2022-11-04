@@ -8,17 +8,15 @@ public class MovieGoer extends User {
     private String ageGroup;
     private ArrayList<Payment> payments;
     private ArrayList<Review> reviews;
-    private User user;
 
     public MovieGoer(String userName){
         super(userName);
     }
-    public MovieGoer(String ageGroup, ArrayList<Payment> payments, ArrayList<Review> reviews, User user, String userName, String phone, String email, int age) {
+    public MovieGoer(String ageGroup, ArrayList<Payment> payments, ArrayList<Review> reviews,  String userName, String phone, String email, int age) {
         super(userName, phone, email, age);
         this.ageGroup = ageGroup;
         this.payments = payments;
         this.reviews = reviews;
-        this.user = user;
     }
 
     public String getAgeGroup() {

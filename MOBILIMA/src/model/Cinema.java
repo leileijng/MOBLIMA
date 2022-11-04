@@ -8,11 +8,7 @@ public class Cinema {
     private String cinemaCode;
     private Layout layout;
 
-    public Cinema(String cinemaCode, ClassOfCinema classOfCinema){
-        this.cinemaCode = cinemaCode;
-        this.classOfCinema = classOfCinema;
-    }
-    public Cinema(String cinemaCode, ClassOfCinema classOfCinema, Layout layout) {
+    public Cinema(String cinemaCode, ClassOfCinema classOfCinema, Layout layout){
         this.cinemaCode = cinemaCode;
         this.classOfCinema = classOfCinema;
         this.layout = layout;

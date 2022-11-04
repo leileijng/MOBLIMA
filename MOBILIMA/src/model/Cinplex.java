@@ -3,15 +3,16 @@ import java.io.*;
 import java.util.*;
 
 public class Cinplex {
+    private String C_id;
     private String cineplexName;
     private String location;
     private ArrayList<Cinema> cinemas;
 
-
-    public Cinplex(String cineplexName, String location){
+    public Cinplex(String c_id, String cineplexName, String location) {
+        C_id = c_id;
         this.cineplexName = cineplexName;
         this.location = location;
-        this.cinemas = new ArrayList<Cinema>();
+        cinemas = new ArrayList<Cinema>();
     }
 
     public String getCineplexName() {
@@ -40,5 +41,13 @@ public class Cinplex {
 
     public void addCinema(Cinema cinema){
         this.cinemas.add(cinema);
+    }
+
+    public String getC_id() {
+        return C_id;
+    }
+
+    public void setC_id(String c_id) {
+        C_id = c_id;
     }
 }
