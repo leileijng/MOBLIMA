@@ -14,15 +14,6 @@ public class MovieCtr {
     static Date date = new Date(System.currentTimeMillis());
     static List<Movie> movieList = new ArrayList<>();
     static List<Movie> showingMovieList = new ArrayList<>();
-    static boolean userViewTop5ByRating = false;
-    static boolean userViewTop5ByRevenue = false;
-
-    static public void setUserViewTop5ByRating(boolean userViewTop5ByRating) {
-        MovieCtr.userViewTop5ByRating = userViewTop5ByRating;
-    }
-    static public void setUserViewTop5ByRevenue(boolean userViewTop5ByRevenue) {
-        MovieCtr.userViewTop5ByRevenue = userViewTop5ByRevenue;
-    }
 
     /**
      * Add movie to movie list and showing movie list in the database
@@ -120,10 +111,6 @@ public class MovieCtr {
     }
 
     public static void printTop5MovieByRevenue() {
-        if (!userViewTop5ByRevenue) {
-            System.out.println("Access Denied!");
-            return ;
-        }
         showingMovieList.sort(Comparator.comparingDouble(Movie::getTotalRevenue).reversed());
         System.out.println("Current Top 5 Movie By Revenue:");
         for (int i = 0; i < Math.min(5, movieList.size()); ++i) {
@@ -134,10 +121,6 @@ public class MovieCtr {
     }
 
     public static void printTop5MovieByRatings() {
-        if (!userViewTop5ByRating) {
-            System.out.println("Access Denied!");
-            return ;
-        }
         showingMovieList.sort(Comparator.comparingDouble(Movie::getOverallRating).reversed());
         System.out.println("Top 5 Movie By Ratings: ");
         for (int i = 0; i < Math.min(5, movieList.size()); ++i) {
@@ -181,8 +164,6 @@ public class MovieCtr {
             movies[i].setDateEndOfShowingDate(2022, 10, 10);
             MovieCtr.addMovieToDB(movies[i]);
         }
-        MovieCtr.setUserViewTop5ByRating(true);
-        MovieCtr.setUserViewTop5ByRevenue(true);
         MovieCtr.printTop5MovieByRatings();
         MovieCtr.printTop5MovieByRevenue();
         MovieCtr.printAllCurrentMovies();
