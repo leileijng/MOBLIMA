@@ -20,14 +20,11 @@ public class Main {
     }
 
     public static void initialiseData() {
-        CinplexCtr.addCinplex();
         LayoutCtr.importLayout();
+        CinplexCtr.loadCinplexFromFile();
+        CinplexCtr.loadCinemaFromFile();
 
-        Layout layout1 = LayoutCtr.layouts.get(0);
-
-        CinplexCtr.getCinplexById("G01").addCinema(new Cinema("G1_T1", Cinema.ClassOfCinema.MAX, layout1));
-        CinplexCtr.getCinplexById("G01").addCinema(new Cinema("G1_T2", Cinema.ClassOfCinema.GOLD, layout1));
-        CinplexCtr.getCinplexById("G01").viewCinemas();
+        //CinplexCtr.getCinplexById("ciine_1").viewCinemas();
 
         MovieCtr.addMovieToDB(new Movie("Her"));
         MovieCtr.addMovieToDB(new Movie("Spider Man"));
@@ -36,7 +33,7 @@ public class Main {
         SessionCtr.addSessionToDB(
                 new Session( "Her_s1",
                         MovieCtr.getMovieByName("Her"),
-                        CinplexCtr.getCinplexById("G01").getCinema("G1_T1"),
+                        CinplexCtr.getCinplexById("ciine_1").getCinema("N01"),
                         SessionCtr.convertStr2Time("2022-11-19 15:00:00"),
                         SessionCtr.convertStr2Time("2022-11-19 17:00:00")
                 ));
@@ -44,7 +41,7 @@ public class Main {
         SessionCtr.addSessionToDB(
                 new Session( "Her_s2",
                         MovieCtr.getMovieByName("Spider Man"),
-                        CinplexCtr.getCinplexById("G01").getCinema("G1_T2"),
+                        CinplexCtr.getCinplexById("ciine_1").getCinema("G02"),
                         SessionCtr.convertStr2Time("2022-11-20 15:00:00"),
                         SessionCtr.convertStr2Time("2022-11-20 17:00:00")
                 ));

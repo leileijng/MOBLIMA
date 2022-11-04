@@ -8,10 +8,22 @@ public class Cinema {
     private String cinemaCode;
     private Layout layout;
 
+    public Cinema() {
+
+    }
+
     public Cinema(String cinemaCode, ClassOfCinema classOfCinema, Layout layout){
         this.cinemaCode = cinemaCode;
         this.classOfCinema = classOfCinema;
         this.layout = layout;
+    }
+
+    public void setClassOfCinema(ClassOfCinema classOfCinema) {
+        this.classOfCinema = classOfCinema;
+    }
+
+    public void setCinemaCode(String cinemaCode) {
+        this.cinemaCode = cinemaCode;
     }
 
     public String getCinemaCode() {
@@ -27,6 +39,10 @@ public class Cinema {
         System.out.println("cinema code  : " + this.cinemaCode);
         System.out.println("cinema class : " + this.classOfCinema);
         //this.layout.viewLayout();
+    }
+
+    public void setLayout(Layout layout) {
+        this.layout = layout;
     }
 
     public Layout getLayout() {

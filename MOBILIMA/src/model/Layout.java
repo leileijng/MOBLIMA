@@ -3,11 +3,13 @@ import java.io.*;
 import java.util.*;
 
 public class Layout {
+    private String layout_id;
     private int row;
     private int col;
     private int[][] seats;
 
-    public Layout(int row, int col, ArrayList<Integer> s) {
+    public Layout(String layout_id, int row, int col, ArrayList<Integer> s) {
+        this.layout_id = layout_id;
         this.row = row;
         this.col = col;
         this.seats = new int[row][col];
@@ -16,6 +18,10 @@ public class Layout {
                 this.seats[i][j] = s.get(col * i + j);
             }
         }
+    }
+
+    public String getLayout_id() {
+        return layout_id;
     }
 
     public void viewLayout() {

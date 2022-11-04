@@ -26,15 +26,21 @@ public class LayoutCtr {
         } catch (IOException e) {
             System.err.println("Cannot get the layout file, please check again!");
         }
-        Layout layout = new Layout(row, col, s);
+        Layout layout = new Layout(("layout_" + (layouts.size()+1)), row, col, s);
         layouts.add(layout);
     }
-
     public static void importLayout() {
         String[] files = new File("data/layout").list();
         for(String f : files){
             System.out.println("data/layout/" + f);
             importSingleLayout("data/layout/" + f);
         }
+    }
+
+    public static Layout getLayoutById(String id){
+        for(Layout l : layouts){
+            if(l.getLayout_id().equals(id)) return l;
+        }
+        return null;
     }
 }
