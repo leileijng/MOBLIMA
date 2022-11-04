@@ -2,23 +2,12 @@ package model;
 import java.io.*;
 import java.util.*;
 
-public class AdminStaff extends User {
+public class AdminStaff {
     private String accessCode;
-    private User user;
+    private String userName;
 
-    public AdminStaff(String accessCode, User user, String userName, String phone, String email, int age) {
-        super(userName, phone, email, age);
-        this.accessCode = accessCode;
-        this.user = user;
-    }
-
-    public String getAccessCode() {
-        return accessCode;
-    }
-
-    public void setAccessCode(String accessCode) {
+    public AdminStaff(String userName, String accessCode) {
+        this.userName = userName;
         this.accessCode = accessCode;
     }
-
-    
 }

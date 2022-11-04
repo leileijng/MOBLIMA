@@ -29,6 +29,14 @@ public class Cinplex {
         }
     }
 
+    public Cinema getCinema(String cinemaCode) {
+        for (int i =0 ; i < cinemas.size(); i ++) {
+            if(this.cinemas.get(i).getCinemaCode().equals(cinemaCode)){
+                return this.cinemas.get(i);
+            }
+        }
+    }
+
     public void addCinema(Cinema cinema){
         this.cinemas.add(cinema);
     }
