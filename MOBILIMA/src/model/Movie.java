@@ -1,8 +1,6 @@
 package model;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Represents a movie in the movie database MovieDB.
@@ -44,6 +42,7 @@ public class Movie {
      */
     private double totalRevenue;
 
+    private Date dateEndOfShowing;
     /**
      * Constructor of the movie, set movie title and
      * initialize reviewList and totalRevenue,
@@ -52,6 +51,7 @@ public class Movie {
      */
     public Movie(String movieTitle) {
         this.movieTitle = movieTitle;
+        this.showingStatus = ShowingStatus.NOWSHOWING;
         reviewList = new LinkedList<>();
         this.overallRating = 0;
     }
@@ -72,7 +72,7 @@ public class Movie {
         this.synopsis = synopsis;
         this.director = director;
         this.casts = casts;
-        this.overallRating = -1;
+        this.overallRating = 0;
         this.reviewList = new LinkedList<>();
         this.totalRevenue = 0;
     }
@@ -107,6 +107,8 @@ public class Movie {
      * @return average rating of the movie's review to one decimal point.
      */
     public double getOverallRating() {
+        if (reviewList.size() <= 1)
+            return -1;
         return Math.round(overallRating * 10) / 10.0;
     }
 
@@ -125,6 +127,10 @@ public class Movie {
     public String getDirector() {
         return director;
     }
+
+    public Date getDateEndOfShowing() {
+        return dateEndOfShowing;
+    };
 
     /**
      * Gets the casts of the movie.
@@ -179,6 +185,10 @@ public class Movie {
         reviewList.add(review);
     }
 
+    public void setDateEndOfShowing(Date date) {
+        this.dateEndOfShowing = date;
+    }
+
     /**
      * Print info of the movie to the terminal.
      * (or return a string of information?)
@@ -200,6 +210,14 @@ public class Movie {
      */
     public void addRevenue(double revenue) {
         this.totalRevenue += revenue;
+    }
+
+    public void printRecentReviews() {
+        for (int i = 0; i < Math.min(5, reviewList.size()); ++i) {
+            Review review = reviewList.get(i);
+            System.out.printf("Rating: %d\n", review.getRating());
+            System.out.printf("Comments: %s\n", review.getComments());
+        }
     }
 
     public static void main(String[] args) {
@@ -239,5 +257,11 @@ public class Movie {
          jvpr.addRevenue(500);
          jvpr.addRevenue(3.14);
          System.out.println(jvpr.getTotalRevenue());
+    }
+
+    public void setDateEndOfShowingDate(int year, int month, int day) {
+        Calendar calendar = new GregorianCalendar();
+        calendar.set(year, month, day);
+        dateEndOfShowing = calendar.getTime();
     }
 }
