@@ -35,6 +35,7 @@ public class Cinplex {
                 return this.cinemas.get(i);
             }
         }
+        return null;
     }
 
     public void addCinema(Cinema cinema){

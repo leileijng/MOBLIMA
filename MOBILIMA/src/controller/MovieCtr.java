@@ -179,12 +179,4 @@ public class MovieCtr {
         MovieCtr.printAllCurrentMovies();
     }
 
-    public static Movie getMovie(String movieTitle) {
-        for(Movie m : movieList){
-            if(m.getMovieTitle().equals(movieTitle)){
-                return m;
-            }
-        }
-        return null;
-    }
 }

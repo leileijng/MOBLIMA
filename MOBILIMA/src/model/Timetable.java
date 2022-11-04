@@ -49,6 +49,7 @@ public class Timetable {
                 return this.sessions.get(i);
             }
         }
+        return null;
     }
 
     public String addSession(Session session) {

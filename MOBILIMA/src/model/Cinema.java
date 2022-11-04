@@ -1,8 +1,4 @@
 package model;
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 import java.io.*;
 import java.util.*;
 
@@ -13,7 +9,8 @@ public class Cinema {
     private Layout layout;
 
     public Cinema(String cinemaCode, ClassOfCinema classOfCinema){
-
+        this.cinemaCode = cinemaCode;
+        this.classOfCinema = classOfCinema;
     }
     public Cinema(String cinemaCode, ClassOfCinema classOfCinema, Layout layout) {
         this.cinemaCode = cinemaCode;
@@ -33,7 +30,7 @@ public class Cinema {
         System.out.println("=========================================================");
         System.out.println("cinema code  : " + this.cinemaCode);
         System.out.println("cinema class : " + this.classOfCinema);
-        this.layout.viewLayout();
+        //this.layout.viewLayout();
     }
 
     public Layout getLayout() {
