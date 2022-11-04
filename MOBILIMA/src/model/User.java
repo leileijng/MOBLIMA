@@ -8,6 +8,12 @@ public class User {
     private String email;
     private int age;
 
+    public User(String userName){
+        this.username = userName;
+        this.phone = "98987676";
+        this.email = userName + "@gmail.com";
+        this.age = 22;
+    }
     public User(String userName, String phone, String email, int age) {
         this.username = userName;
         this.phone = phone;

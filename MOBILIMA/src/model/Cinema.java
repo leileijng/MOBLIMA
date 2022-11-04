@@ -1,5 +1,8 @@
 package model;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 import java.io.*;
 import java.util.*;
 

@@ -39,6 +39,11 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
         int sel = scan.nextInt();
-        if(sel == 1) MoviegoerCtr.moviegoerLogin();
+        if(sel == 1) movieGoer = MoviegoerCtr.moviegoerLogin();
     }
+
+    public static void movieGoerConsole(){}
+
+    public static void adminConsole(){}
+
 }

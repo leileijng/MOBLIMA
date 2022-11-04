@@ -1,4 +1,6 @@
 package model;
+import controller.MoviegoerCtr;
+
 import java.io.*;
 import java.util.*;
 
@@ -8,6 +10,9 @@ public class MovieGoer extends User {
     private ArrayList<Review> reviews;
     private User user;
 
+    public MovieGoer(String userName){
+        super(userName);
+    }
     public MovieGoer(String ageGroup, ArrayList<Payment> payments, ArrayList<Review> reviews, User user, String userName, String phone, String email, int age) {
         super(userName, phone, email, age);
         this.ageGroup = ageGroup;

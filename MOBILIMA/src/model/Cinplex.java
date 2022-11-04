@@ -11,6 +11,7 @@ public class Cinplex {
     public Cinplex(String cineplexName, String location){
         this.cineplexName = cineplexName;
         this.location = location;
+        this.cinemas = new ArrayList<Cinema>();
     }
 
     public String getCineplexName() {

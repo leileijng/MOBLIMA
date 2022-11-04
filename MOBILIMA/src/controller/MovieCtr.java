@@ -1,4 +1,7 @@
-package model;
+package controller;
+
+import model.Movie;
+import model.Review;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -8,9 +11,9 @@ import java.util.List;
  * A database of all movies, containing a list of all movies
  *
  */
-public class MovieDB {
+public class MovieCtr {
     List<Movie> movieList;
-    public MovieDB() { movieList = new ArrayList<>(); }
+    public MovieCtr() { movieList = new ArrayList<>(); }
     public void addMovie(Movie movie) { movieList.add(movie); }
     public void printTop5MovieByRevenue() {
         movieList.sort(Comparator.comparingDouble(Movie::getTotalRevenue).reversed());
@@ -40,7 +43,7 @@ public class MovieDB {
     }
 
     public static void main(String[] args) {
-        MovieDB movieDB = new MovieDB();
+        MovieCtr movieDB = new MovieCtr();
         Movie[] movies = new Movie[6];
         for (int i = 0; i < 6; ++i) {
             movies[i] = new Movie("jvpr"+ i);
