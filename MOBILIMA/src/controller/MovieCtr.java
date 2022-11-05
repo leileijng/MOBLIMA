@@ -85,7 +85,7 @@ public class MovieCtr {
         int sz = Integer.parseInt(scanner.nextLine());
         String[] casts = new String[sz];
         for (int i = 0; i < sz; ++i) {
-            System.out.println("Enter cast %d: ");
+            System.out.printf("Enter cast no.%d: ", i);
             casts[i] = scanner.nextLine();
         }
         movie.setCasts(casts);
@@ -145,6 +145,8 @@ public class MovieCtr {
     }
 
     public static Movie getMovieByName(String name) {
+        if (name == null || name.compareTo("") == 0)
+            throw new IllegalArgumentException("Empty movie name input!");
         for (Movie movie : movieList) {
             if (movie.getMovieTitle().equals(name))
                 return movie;
@@ -180,6 +182,12 @@ public class MovieCtr {
         MovieCtr.printAllCurrentMovies();
         MovieCtr.editMovie(); // set movie jvpr[0] to end of showing
         MovieCtr.printAllCurrentMovies();
+        Movie jvpr = new Movie("jvpr");
+        jvpr.setShowingStatus(ShowingStatus.NOWSHOWING);
+        MovieCtr.addMovieToDB(jvpr);
+        MovieCtr.printAllCurrentMovies();
+        MovieCtr.editMovie(); // edit info for movie jvpr
+        jvpr.printInfo();
     }
 
 }
