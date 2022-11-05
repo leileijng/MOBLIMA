@@ -1,31 +1,54 @@
 package model;
 
 import java.io.*;
+import java.time.DayOfWeek;
 import java.util.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class PriceTable {
-    private double basePrice;
+    private double holidayRate;
     private Set<Date> holidays;
+    private HashMap<String,Double> prices = new HashMap<String, Double>();
     private HashMap<String,Double> movieType = new HashMap<String, Double>();
     private HashMap<String,Double> cinemaClass = new HashMap<String, Double>();
-    private HashMap<String,Double> peopleGroup = new HashMap<String, Double>();
-    private HashMap<String,Double> weekDay = new HashMap<String, Double>();
-
-    private double holidayRate;
+    private HashMap<DayOfWeek,Double> weekDay = new HashMap<DayOfWeek, Double>();
+    enum PRICE_RULE {OVERRIDE, DISCOUNT, NORMAL};
+    private HashMap<String,PRICE_RULE> specialRules = new HashMap<String, PRICE_RULE>();
 
     HashMap<Integer,Double> seatType = new HashMap<>();
 
     public PriceTable(){
-        basePrice = 30;
+        prices.put("Basic", 30.0);
+        prices.put("Senior", 20.0);
+        prices.put("Student", 25.0);
         movieType.put("3D", 1.1);
         cinemaClass.put(Cinema.ClassOfCinema.GOLD.toString(), 1.2);
-        peopleGroup.put("Senior", 0.8);
-        weekDay.put("Monday", 0.7);
+        cinemaClass.put(Cinema.ClassOfCinema.MAX.toString(), 1.1);
+        cinemaClass.put(Cinema.ClassOfCinema.NORMAL.toString(), 1.0);
+        weekDay.put(DayOfWeek.MONDAY, 0.7);
+        weekDay.put(DayOfWeek.TUESDAY, 0.8);
+        weekDay.put(DayOfWeek.WEDNESDAY, 0.8);
+        weekDay.put(DayOfWeek.THURSDAY, 0.9);
+        weekDay.put(DayOfWeek.FRIDAY, 1.0);
         holidayRate = 1.2;
         seatType.put(1, 1.0);
         seatType.put(2, 1.2);
+    }
+
+    public double getPriceByType(String type){
+        return prices.get(type);
+    }
+
+    public double getMovieTypeRate(String movie){
+        return this.movieType.get(movie);
+    }
+
+    public double getCinemaClass(String cinema){
+        return this.cinemaClass.get(cinema);
+    }
+    public double getDayRate(DayOfWeek day){
+        return this.weekDay.get(day);
     }
 
     public void viewPriceTable() {
@@ -34,18 +57,19 @@ public class PriceTable {
         System.out.println(this.movieType);
         System.out.println(">> Cinema Class :");
         System.out.println(this.cinemaClass);
-        System.out.println(">> People Group :");
-        System.out.println(this.peopleGroup);
         System.out.println(">> Week Day     :");
         System.out.println(this.weekDay);
         System.out.println(">> Holiday      :");
         //System.out.println(this.holiday);
     }
 
-    public void updateBasePrice(){
+    public void updatePrices(){
         Scanner scan = new Scanner(System.in);
-        System.out.println("Please enter the base price : ");
-        this.basePrice = scan.nextDouble();
+        for(String key : prices.keySet()){
+            System.out.println("Update for "+ key +": (press 0 to skip)\n");
+            double price;
+            if((price=scan.nextDouble()) != 0) prices.put(key, price);
+        }
     }
 
     public void updateHolidayRate(){
@@ -72,14 +96,6 @@ public class PriceTable {
         this.cinemaClass.put(cinemaClass, para);
     }
 
-    public void updatePeopleGroup() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Please enter the people group : ");
-        String peopleGroup = scan.next();
-        System.out.println("Please enter the parameter : ");
-        double para = scan.nextDouble();
-        this.peopleGroup.put(peopleGroup, para);
-    }
 
     public void updateWeekDay() {
         Scanner scan = new Scanner(System.in);
@@ -87,16 +103,35 @@ public class PriceTable {
         String weekDay = scan.next();
         System.out.println("Please enter the parameter : ");
         double para = scan.nextDouble();
-        this.weekDay.put(weekDay, para);
+        this.weekDay.put(DayOfWeek.valueOf(weekDay), para);
     }
 
-    public double calculatePrice(String movieType, String cinemaClass, String peopleGroup, String weekDay, String holiday) {
-        return this.movieType.get(movieType) * this.cinemaClass.get(cinemaClass) * this.peopleGroup.get(peopleGroup) * this.weekDay.get(weekDay) * this.holiday.get(holiday);
+    public void updateSpecialRules() {
+        String group = null;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Which group to update?\n1.Senior\t2.Student");
+        int selGroup = scan.nextInt();
+        System.out.print("Change to 1.Override\t2.Discount 80% \t3.No Special Price");
+        int selection = scan.nextInt();
+        if(selGroup==1) group = "Senior";
+        else if(selGroup==2) group = "Student";
+        else {
+            System.err.println("Invalid Input");
+            return;
+        }
+        if(selection==1) specialRules.put(group,PRICE_RULE.OVERRIDE);
+        else if(selection==2) specialRules.put(group,PRICE_RULE.DISCOUNT);
+        else if(selection==3) specialRules.put(group,PRICE_RULE.NORMAL);
+        else {
+            System.err.println("Invalid Input");
+            return;
+        }
     }
 
+    public PRICE_RULE getSpecialRules(String group) {
+        return specialRules.get(group);
+    }
     //TODO add holiday date (and its relevant methods)
     //TODO transform attributes type to enum when possible
-    //TODO reconstruct calculatePrice (based on today's day of week, holiday matching, <new param> seat type)
-
 
 }

@@ -85,16 +85,16 @@ public class Main {
         System.out.println("Please enter the features you wanna update : ");
         System.out.println("1. movie type");
         System.out.println("2. cinema class");
-        System.out.println("3. people group");
+        System.out.println("3. all price");
         System.out.println("4. week date");
         System.out.println("5. holiday");
         op = scan.nextInt();
         try {
             if (op == 1) priceTable.updateMovieType();
             if (op == 2) priceTable.updateCinemaClass();
-            if (op == 3) priceTable.updatePeopleGroup();
+            if (op == 3) priceTable.updatePrices();
             if (op == 4) priceTable.updateWeekDay();
-            if (op == 5) priceTable.updateHoliday();
+            if (op == 5) priceTable.updateHolidayRate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
