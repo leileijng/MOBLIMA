@@ -1,10 +1,6 @@
+import Services.Service;
 import controller.*;
 import model.*;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -13,8 +9,14 @@ public class Main {
 
     public static PriceTable priceTable;
 
-
     public static void main(String[] args) {
+        int sel = -1;
+        do{
+            Service.initialiseFromFile();
+            //int sel = -1;
+            //select mode
+            //mgCtr.mainPanel(movieGoer);
+        }while(sel != -1);
         initialiseData();
         systemInit();
     }
@@ -61,7 +63,10 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
         int sel = scan.nextInt();
-        if (sel == 1) movieGoer = MoviegoerCtr.moviegoerLogin();
+        if (sel == 1) {
+            movieGoer = MoviegoerCtr.moviegoerLogin();
+            MoviegoerCtr.printMainPanel(movieGoer);
+        }
         else {
             adminStaff = AdminstaffCtr.AdminstaffLogin();
             adminStaffConsole();
@@ -69,6 +74,7 @@ public class Main {
     }
 
     public static void movieGoerConsole() {
+
     }
 
     public static void updatePriceTable() {
@@ -140,4 +146,6 @@ public class Main {
             }
         } while (true);
     }
+
+
 }
