@@ -35,5 +35,23 @@ public abstract class Service {
         }
     }
 
+    public void viewSessionsByCinemaCode(String cinemaCode){
+        int num = sessions.size();
+        System.out.println("total number of sessions : " + num);
+        for (int i = 0; i < num; i ++) {
+            if(sessions.get(i).getCinema().getCinemaCode().equals(cinemaCode))
+                sessions.get(i).viewDetails();
+        }
+    }
+
+    public void viewSessionsByMovieTitle(String movieTitle){
+        int num = sessions.size();
+        System.out.println("total number of sessions : " + num);
+        for (int i = 0; i < num; i ++) {
+            if(sessions.get(i).getMovie().getMovieTitle().equals(movieTitle))
+                sessions.get(i).viewDetails();
+        }
+    }
+
     public abstract void viewAllSessionsByFilter();
 }

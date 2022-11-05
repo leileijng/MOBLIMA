@@ -27,6 +27,10 @@ public class Session {
         }
     }
 
+    public Movie getMovie() {
+        return movie;
+    }
+
     public void viewDetails() {
         System.out.println("=========================================================");
         System.out.println("Session Index    : " + this.sessionIndex);

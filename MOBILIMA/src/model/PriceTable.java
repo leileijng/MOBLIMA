@@ -6,11 +6,14 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class PriceTable {
+    private double basePrice;
     HashMap<String,Double> movieType = new HashMap<String, Double>();
     HashMap<String,Double> cinemaClass = new HashMap<String, Double>();
     HashMap<String,Double> peopleGroup = new HashMap<String, Double>();
     HashMap<String,Double> weekDay = new HashMap<String, Double>();
     HashMap<String,Double> holiday = new HashMap<String, Double>();
+
+    HashMap<Integer,Double> seatType = new HashMap<>();
 
     public PriceTable(HashMap<String, Double> movieType,
                       HashMap<String, Double> cinemaClass,

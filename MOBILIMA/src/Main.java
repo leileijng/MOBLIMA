@@ -13,9 +13,10 @@ public class Main {
         int sel = -1;
         do{
             Service.initialiseFromFile();
+
             //int sel = -1;
             //select mode
-            //mgCtr.mainPanel(movieGoer);
+            mgCtr.mainPanel(movieGoer);
         }while(sel != -1);
         initialiseData();
         systemInit();

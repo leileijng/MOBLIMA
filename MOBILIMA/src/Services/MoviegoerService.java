@@ -19,4 +19,5 @@ public class MoviegoerService extends Service{
     public void viewAllSessionsByFilter() {
 
     }
+
 }
