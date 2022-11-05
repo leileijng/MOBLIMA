@@ -50,15 +50,11 @@ public class MovieCtr {
         System.out.println("Enter your choice: ");
         int choice = Integer.parseInt(scanner.nextLine());
         switch (choice) {
-            case 1: updateMovieStatus(movie);
-            break;
-            case 2: updateMovieDirector(movie);
-            break;
-            case 3: updateMovieCasts(movie);
-            break;
-            case 4: updateMovieSynopsis(movie);
-            break;
-            default: System.out.println("Invalid choice!");
+            case 1 -> updateMovieStatus(movie);
+            case 2 -> updateMovieDirector(movie);
+            case 3 -> updateMovieCasts(movie);
+            case 4 -> updateMovieSynopsis(movie);
+            default -> System.out.println("Invalid choice!");
         }
     }
 
@@ -98,15 +94,11 @@ public class MovieCtr {
         int choice = Integer.parseInt(scanner.nextLine());
         ShowingStatus status;
         switch (choice) {
-            case 1: status = ShowingStatus.COMMINGSOON;
-            break;
-            case 2: status = ShowingStatus.PREVIEW;
-            break;
-            case 3: status = ShowingStatus.NOWSHOWING;
-            break;
-            case 4: status = ShowingStatus.ENDOFSHOWING;
-            break;
-            default: {
+            case 1 -> status = ShowingStatus.COMMINGSOON;
+            case 2 -> status = ShowingStatus.PREVIEW;
+            case 3 -> status = ShowingStatus.NOWSHOWING;
+            case 4 -> status = ShowingStatus.ENDOFSHOWING;
+            default -> {
                 System.out.println("Invalid choice!");
                 return;
             }
@@ -145,8 +137,10 @@ public class MovieCtr {
     }
 
     public static Movie getMovieByName(String name) {
-        if (name == null || name.compareTo("") == 0)
-            throw new IllegalArgumentException("Empty movie name input!");
+        while (name == null || name.compareTo("") == 0) {
+            System.out.println("Empty name input, please re-enter!");
+            name = scanner.nextLine();
+        }
         for (Movie movie : movieList) {
             if (movie.getMovieTitle().equals(name))
                 return movie;
