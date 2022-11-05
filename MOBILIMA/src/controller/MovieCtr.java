@@ -81,7 +81,7 @@ public class MovieCtr {
         int sz = Integer.parseInt(scanner.nextLine());
         String[] casts = new String[sz];
         for (int i = 0; i < sz; ++i) {
-            System.out.printf("Enter cast no.%d: ", i);
+            System.out.printf("Enter cast no.%d: ", i+1);
             casts[i] = scanner.nextLine();
         }
         movie.setCasts(casts);
