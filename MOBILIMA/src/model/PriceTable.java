@@ -7,24 +7,25 @@ import java.util.Scanner;
 
 public class PriceTable {
     private double basePrice;
-    HashMap<String,Double> movieType = new HashMap<String, Double>();
-    HashMap<String,Double> cinemaClass = new HashMap<String, Double>();
-    HashMap<String,Double> peopleGroup = new HashMap<String, Double>();
-    HashMap<String,Double> weekDay = new HashMap<String, Double>();
-    HashMap<String,Double> holiday = new HashMap<String, Double>();
+    private Set<Date> holidays;
+    private HashMap<String,Double> movieType = new HashMap<String, Double>();
+    private HashMap<String,Double> cinemaClass = new HashMap<String, Double>();
+    private HashMap<String,Double> peopleGroup = new HashMap<String, Double>();
+    private HashMap<String,Double> weekDay = new HashMap<String, Double>();
+
+    private double holidayRate;
 
     HashMap<Integer,Double> seatType = new HashMap<>();
 
-    public PriceTable(HashMap<String, Double> movieType,
-                      HashMap<String, Double> cinemaClass,
-                      HashMap<String, Double> peopleGroup,
-                      HashMap<String, Double> weekDay,
-                      HashMap<String, Double> holiday) {
-        this.movieType = movieType;
-        this.cinemaClass = cinemaClass;
-        this.peopleGroup = peopleGroup;
-        this.weekDay = weekDay;
-        this.holiday = holiday;
+    public PriceTable(){
+        basePrice = 30;
+        movieType.put("3D", 1.1);
+        cinemaClass.put(Cinema.ClassOfCinema.GOLD.toString(), 1.2);
+        peopleGroup.put("Senior", 0.8);
+        weekDay.put("Monday", 0.7);
+        holidayRate = 1.2;
+        seatType.put(1, 1.0);
+        seatType.put(2, 1.2);
     }
 
     public void viewPriceTable() {
@@ -38,7 +39,19 @@ public class PriceTable {
         System.out.println(">> Week Day     :");
         System.out.println(this.weekDay);
         System.out.println(">> Holiday      :");
-        System.out.println(this.holiday);
+        //System.out.println(this.holiday);
+    }
+
+    public void updateBasePrice(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Please enter the base price : ");
+        this.basePrice = scan.nextDouble();
+    }
+
+    public void updateHolidayRate(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Please enter the rate for holiday ticket : ");
+        this.holidayRate = scan.nextDouble();
     }
 
     public void updateMovieType() {
@@ -77,16 +90,13 @@ public class PriceTable {
         this.weekDay.put(weekDay, para);
     }
 
-    public void updateHoliday() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Please enter the week day : ");
-        String holiday = scan.next();
-        System.out.println("Please enter the parameter : ");
-        double para = scan.nextDouble();
-        this.holiday.put(holiday, para);
-    }
-
     public double calculatePrice(String movieType, String cinemaClass, String peopleGroup, String weekDay, String holiday) {
         return this.movieType.get(movieType) * this.cinemaClass.get(cinemaClass) * this.peopleGroup.get(peopleGroup) * this.weekDay.get(weekDay) * this.holiday.get(holiday);
     }
+
+    //TODO add holiday date (and its relevant methods)
+    //TODO transform attributes type to enum when possible
+    //TODO reconstruct calculatePrice (based on today's day of week, holiday matching, <new param> seat type)
+
+
 }

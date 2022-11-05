@@ -1,9 +1,6 @@
 package Services;
 
-import model.Cinplex;
-import model.Layout;
-import model.Movie;
-import model.Session;
+import model.*;
 
 import javax.xml.crypto.Data;
 import java.util.ArrayList;
@@ -15,6 +12,9 @@ public abstract class Service {
     protected static List<Movie> movieList = new ArrayList<>();
     protected static List<Movie> showingMovieList = new ArrayList<>();
     protected static List<Session> sessions = new ArrayList<Session>();
+
+    protected static PriceTable priceTable = new PriceTable();
+
 
     public static void initialiseFromFile(){
         layouts = DataImport.importLayouts();

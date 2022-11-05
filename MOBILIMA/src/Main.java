@@ -10,9 +10,9 @@ public class Main {
     public static PriceTable priceTable;
 
     public static void main(String[] args) {
+        Service.initialiseFromFile();
         int sel = -1;
         do{
-            Service.initialiseFromFile();
 
             //int sel = -1;
             //select mode
