@@ -289,4 +289,9 @@ public class Movie {
         dateEndOfShowing = calendar.getTime();
     }
 
+    public boolean checkShowingStatus() {
+        //TODO check showing status for adding session
+
+        return true;
+    }
 }

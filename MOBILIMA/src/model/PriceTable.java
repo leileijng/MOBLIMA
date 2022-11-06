@@ -1,6 +1,8 @@
 package model;
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.util.*;
 import java.util.Arrays;
@@ -140,7 +142,7 @@ public class PriceTable {
     }
 
     //TODO add holiday date (and its relevant methods)
-    public void updateHolidayDates() {
+    public void updateHolidayDates() throws ParseException {
         System.out.println(this.holiday);
         System.out.println("What you wanna do about the holiday set?\n1.add a new date\t2.remove a existing date");
         Scanner scan = new Scanner(System.in);

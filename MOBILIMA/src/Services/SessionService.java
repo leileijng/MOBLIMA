@@ -34,15 +34,15 @@ public class SessionService {
 
     public static void addSession(){
         System.out.println("Please enter the movie title : ");
-        String movieTitle = scan.next();
+        String movieTitle = scan.nextLine();
         System.out.println("Please enter the cinplex name : ");
-        String cinplexName = scan.next();
+        String cinplexName = scan.nextLine();
         System.out.println("Please enter the cinema code : ");
-        String cinemaCode = scan.next();
+        String cinemaCode = scan.nextLine();
         System.out.println("Please enter the start time : ");
-        String startTime = scan.next();
+        String startTime = scan.nextLine();
         System.out.println("Please enter the end time : ");
-        String endTime = scan.next();
+        String endTime = scan.nextLine();
 
         countSession += 1;
         String sessionIndex = "sessionIdx#" + countSession;
@@ -56,7 +56,7 @@ public class SessionService {
         Session session = new Session(sessionIndex,
                 movie,
                 CinplexService.getCinplexByName(cinplexName),
-                CinplexService.getCinplexById("G01").getCinema(cinemaCode),
+                CinplexService.getCinplexById("ciineA").getCinema(cinemaCode),
                 convertStr2Time(startTime),
                 convertStr2Time(endTime)
         );
@@ -68,7 +68,7 @@ public class SessionService {
         Session session = null;
         do{
             System.out.println("Please enter the session index to edit : ");
-            String sessionIdx = scan.next();
+            String sessionIdx = scan.nextLine();
             session = getSessionBySessionIndex(sessionIdx);
             if(session == null) System.err.println("Please provide valid session ID!");
         }while(session == null);
@@ -78,9 +78,9 @@ public class SessionService {
     public static void editSession(){
         Session session = getSessionByIndex();
         System.out.println("Please enter the start time : ");
-        String startTime = scan.next();
+        String startTime = scan.nextLine();
         System.out.println("Please enter the end time : ");
-        String endTime = scan.next();
+        String endTime = scan.nextLine();
 
         session.setStartTime(convertStr2Time(startTime));
         session.setEndTime(convertStr2Time(endTime));
@@ -88,7 +88,7 @@ public class SessionService {
 
     public static void removeSession(){
         System.out.println("Please enter the session index : ");
-        String sessionIdx = scan.next();
+        String sessionIdx = scan.nextLine();
         removeSession(sessionIdx);
     }
 

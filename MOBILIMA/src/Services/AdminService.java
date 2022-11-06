@@ -10,47 +10,60 @@ import java.util.Scanner;
 public class AdminService extends Service implements ManageMovie, ManageSession, SystemConfiguration {
 
     @Override
-    public static void addNewMovie() {
-        MovieService.addMovie();
+    public void addNewMovie() {
+        //MovieService.addMovie();
+        System.out.println("To do");
     }
 
     @Override
-    public static void updateMovieDetails() {
-        MovieService.editMovie();
+    public void updateMovieDetails() {
+        //MovieService.editMovie();
+        System.out.println("To do");
     }
 
     @Override
-    public static void unlistMovie() {
-        MovieService.removeMovie();
+    public  void unlistMovie() {
+        //MovieService.removeMovie();
+        System.out.println("To do");
+
     }
 
     @Override
-    public static void addNewSession() {
+    public  void addNewSession() {
         SessionService.addSession();
     }
 
     @Override
-    public static void updateSession() {
+    public  void updateSession() {
         SessionService.editSession();
     }
 
     @Override
-    public static void delSession() {
+    public  void delSession() {
         SessionService.removeSession();
     }
 
     @Override
-    public static void configSystem() {
-        MoviegoerService.updateSortingStatus();
+    public  void configSystem() {
+        //MoviegoerService.updateSortingStatus();
+        System.out.println("To do");
     }
 
     @Override
-    public static void updatePublicHoliday() {
-        PriceTableService.updateHolidayDates();
+    public  void updatePublicHoliday() {
+        //PriceTableService.updateHolidayDates();
+        System.out.println("To do");
     }
 
     @Override
-    public static void updatePriceTable() {
+    public void updatePriceTable() {
+
+        System.out.println("To do");
+    }
+
+    /*
+    @Override
+    public void updatePriceTable() {
         Scanner scan = new Scanner(System.in);
         int op;
         PriceTableService.viewPriceTable();
@@ -70,5 +83,5 @@ public class AdminService extends Service implements ManageMovie, ManageSession,
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-    }
+    }*/
 }

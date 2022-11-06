@@ -1,24 +1,23 @@
 package model;
-import java.io.*;
 import java.util.*;
 
-public class Cinplex {
+public class Cineplex {
     private String cinplexID;
     private String cinplexName;
     private String location;
     private ArrayList<Cinema> cinemas = new ArrayList<Cinema>();;
 
-    public Cinplex(String c_id, String cinplexName, String location) {
+    public Cineplex(String c_id, String cinplexName, String location) {
         cinplexID = c_id;
         this.cinplexName = cinplexName;
         this.location = location;
     }
 
-    public Cinplex() {
+    public Cineplex() {
     }
 
     public String getCinplexName() {
-        return this.cineplexName;
+        return this.cinplexName;
     }
 
     public void setCinplexName(String cinplexName) {

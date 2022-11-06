@@ -7,15 +7,16 @@ import model.Movie;
 import java.util.Scanner;
 
 public class AdminstaffCtr {
+    public static AdminService adminService = new AdminService();
     public static AdminStaff AdminstaffLogin() {
         Scanner scan = new Scanner(System.in);
         String username;
         String password;
         while (true) {
             System.out.println("Please enter your username: ");
-            username = scan.next();
+            username = scan.nextLine();
             System.out.println("Please enter your password: ");
-            password = scan.next();
+            password = scan.nextLine();
             if (password.equals("123456") == true) break;
         }
 
@@ -37,7 +38,7 @@ public class AdminstaffCtr {
                 System.out.println("5. system configuration");
                 System.out.println("6. log out");
 
-                String op_s = scan.next();
+                String op_s = scan.nextLine();
                 op = Integer.parseInt(op_s);
             }
             catch(Exception e) {
@@ -58,7 +59,7 @@ public class AdminstaffCtr {
                             System.out.println("4. go back");
                             System.out.println("5. log out");
 
-                            String op2_s = scan.next();
+                            String op2_s = scan.nextLine();
                             op2 = Integer.parseInt(op2_s);
                         }
                         catch(Exception e) {
@@ -93,7 +94,7 @@ public class AdminstaffCtr {
                             System.out.println("4. go back");
                             System.out.println("5. log out");
 
-                            String op2_s = scan.next();
+                            String op2_s = scan.nextLine();
                             op2 = Integer.parseInt(op2_s);
                         }
                         catch(Exception e) {
@@ -103,9 +104,9 @@ public class AdminstaffCtr {
                             System.err.println("Please enter within the selection range (1-5)!");
                         }
                         else {
-                            if (op2 == 1) AdminService.addNewMovie();
-                            else if (op2 == 2) AdminService.updateMovieDetails();
-                            else if (op2 == 3) AdminService.unlistMovie();
+                            if (op2 == 1) adminService.addNewMovie();
+                            else if (op2 == 2) adminService.updateMovieDetails();
+                            else if (op2 == 3) adminService.unlistMovie();
                             else if (op2 == 4) {
                                 System.out.println("Back to Admin Console.");
                                 break;
@@ -128,7 +129,7 @@ public class AdminstaffCtr {
                             System.out.println("4. go back");
                             System.out.println("5. log out");
 
-                            String op2_s = scan.next();
+                            String op2_s = scan.nextLine();
                             op2 = Integer.parseInt(op2_s);
                         }
                         catch(Exception e) {
@@ -141,12 +142,12 @@ public class AdminstaffCtr {
                             if (op2 == 1) AdminService.viewAllSessions();
                             else if (op2 == 2){
                                 System.out.println("Please enter the cinplex name: ");
-                                String cinplexName = scan.next();
+                                String cinplexName = scan.nextLine();
                                 AdminService.viewAllSessionsByCinplexName(cinplexName);
                             }
                             else if (op2 == 3){
                                 System.out.println("Please enter the movie title: ");
-                                String movieTitle = scan.next();
+                                String movieTitle = scan.nextLine();
                                 AdminService.viewAllSessionsByMovieTitle(movieTitle);
                             }
                             else if (op2 == 4) {
@@ -171,7 +172,7 @@ public class AdminstaffCtr {
                             System.out.println("4. go back");
                             System.out.println("5. log out");
 
-                            String op2_s = scan.next();
+                            String op2_s = scan.nextLine();
                             op2 = Integer.parseInt(op2_s);
                         }
                         catch(Exception e) {
@@ -181,9 +182,9 @@ public class AdminstaffCtr {
                             System.err.println("Please enter within the selection range (1-5)!");
                         }
                         else {
-                            if (op2 == 1) AdminService.addNewSession();
-                            else if (op2 == 2) AdminService.updateSession();
-                            else if (op2 == 3) AdminService.delSession();
+                            if (op2 == 1) adminService.addNewSession();
+                            else if (op2 == 2) adminService.updateSession();
+                            else if (op2 == 3) adminService.delSession();
                             else if (op2 == 4) {
                                 System.out.println("Back to Admin Console.");
                                 break;
@@ -206,7 +207,7 @@ public class AdminstaffCtr {
                             System.out.println("4. go back");
                             System.out.println("5. log out");
 
-                            String op2_s = scan.next();
+                            String op2_s = scan.nextLine();
                             op2 = Integer.parseInt(op2_s);
                         }
                         catch(Exception e) {
@@ -216,9 +217,10 @@ public class AdminstaffCtr {
                             System.err.println("Please enter within the selection range (1-5)!");
                         }
                         else {
-                            if (op2 == 1) AdminService.updatePriceTable();
-                            else if (op2 == 2) AdminService.updatePublicHoliday();
-                            else if (op2 == 3) AdminService.configSystem();
+                            if (op2 == 1) //AdminService.updatePriceTable();
+                                System.out.println("todo");
+                            else if (op2 == 2) adminService.updatePublicHoliday();
+                            else if (op2 == 3) adminService.configSystem();
                             else if (op2 == 4) {
                                 System.out.println("Back to Admin Console.");
                                 break;

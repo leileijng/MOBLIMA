@@ -18,38 +18,9 @@ public class Main {
             //select mode
             mgCtr.mainPanel(movieGoer);
         }while(sel != -1);
-        initialiseData();
         systemInit();
     }
 
-    public static void initialiseData() {
-        LayoutCtr.importLayout();
-        CinplexCtr.loadCinplexFromFile();
-        CinplexCtr.loadCinemaFromFile();
-
-        //CinplexCtr.getCinplexById("ciine_1").viewCinemas();
-
-        MovieCtr.addMovieToDB(new Movie("Her"));
-        MovieCtr.addMovieToDB(new Movie("Spider Man"));
-        MovieCtr.addMovieToDB(new Movie("Hello World"));
-
-        SessionCtr.addSessionToDB(
-                new Session( "Her_s1",
-                        MovieCtr.getMovieByName("Her"),
-                        CinplexCtr.getCinplexById("ciine_1").getCinema("N01"),
-                        SessionCtr.convertStr2Time("2022-11-19 15:00:00"),
-                        SessionCtr.convertStr2Time("2022-11-19 17:00:00")
-                ));
-
-        SessionCtr.addSessionToDB(
-                new Session( "Her_s2",
-                        MovieCtr.getMovieByName("Spider Man"),
-                        CinplexCtr.getCinplexById("ciine_1").getCinema("G02"),
-                        SessionCtr.convertStr2Time("2022-11-20 15:00:00"),
-                        SessionCtr.convertStr2Time("2022-11-20 17:00:00")
-                ));
-        // new priceTable
-    }
 
     public static void dataInport() {
 
@@ -69,8 +40,9 @@ public class Main {
             MoviegoerCtr.printMainPanel(movieGoer);
         }
         else {
-            adminStaff = AdminstaffCtr.AdminstaffLogin();
-            AdminstaffCtr.printMainPanel(adminStaff);
+            AdminstaffCtr adminCtr = new AdminstaffCtr();
+            adminStaff = adminCtr.AdminstaffLogin();
+            adminCtr.printMainPanel(adminStaff);
         }
     }
 

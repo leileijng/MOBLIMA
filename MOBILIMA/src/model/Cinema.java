@@ -4,6 +4,8 @@ import java.util.*;
 
 public class Cinema {
     public enum ClassOfCinema { GOLD, MAX, NORMAL }
+
+    public Cineplex cineplex;
 	private ClassOfCinema classOfCinema;
     private String cinemaCode;
     private Layout layout;
@@ -12,10 +14,12 @@ public class Cinema {
 
     }
 
-    public Cinema(String cinemaCode, ClassOfCinema classOfCinema, Layout layout){
-        this.cinemaCode = cinemaCode;
-        this.classOfCinema = classOfCinema;
-        this.layout = layout;
+    public Cineplex getCineplex() {
+        return cineplex;
+    }
+
+    public void setCineplex(Cineplex cineplex) {
+        this.cineplex = cineplex;
     }
 
     public void setClassOfCinema(ClassOfCinema classOfCinema) {

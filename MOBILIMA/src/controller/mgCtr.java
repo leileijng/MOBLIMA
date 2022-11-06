@@ -11,6 +11,6 @@ public class mgCtr {
         /// select view all movies
         service.viewAllMovies();
         /// select view movie list by filter
-        service.viewAllSessionsByFilter();
+        //service.viewAllSessionsByFilter();
     }
 }

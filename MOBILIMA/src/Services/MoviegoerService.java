@@ -15,9 +15,5 @@ public class MoviegoerService extends Service{
         this.movieGoer = mg;
     }
 
-    @Override
-    public void viewAllSessionsByFilter() {
-
-    }
 
 }

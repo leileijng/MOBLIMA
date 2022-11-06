@@ -16,22 +16,22 @@ import java.util.Date;
 import java.util.List;
 
 public class DataImport {
-    public static List<Cinplex> loadCinplexFromFile(){
-        List<Cinplex> cinplexes = new ArrayList<>();
+    public static List<Cineplex> loadCinplexFromFile(){
+        List<Cineplex> cineplexes = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader("data/Cineplex.csv"))) {
             String line = "";
             while ((line = br.readLine()) != null) {
-                Cinplex cinplex = new Cinplex();
+                Cineplex cineplex = new Cineplex();
                 List<String> row_str = Arrays.asList(line.split(","));
-                cinplex.setCinplexID(row_str.get(0).replaceAll("\\p{C}", ""));
-                cinplex.setCineplexName(row_str.get(1).replaceAll("\\p{C}", ""));
-                cinplex.setLocation(row_str.get(2).replaceAll("\\p{C}", ""));
-                cinplexes.add(cinplex);
+                cineplex.setCinplexID(row_str.get(0).replaceAll("\\p{C}", ""));
+                cineplex.setCinplexName(row_str.get(1).replaceAll("\\p{C}", ""));
+                cineplex.setLocation(row_str.get(2).replaceAll("\\p{C}", ""));
+                cineplexes.add(cineplex);
             }
         } catch (IOException e) {
             System.err.println("Cannot get the cinplex file, please check again!");
         }
-        return cinplexes;
+        return cineplexes;
     }
 
     public static List<Cinema> loadCinemaFromFile(){
@@ -45,9 +45,12 @@ public class DataImport {
 
                 cinema.setClassOfCinema(Cinema.ClassOfCinema.valueOf(row_str.get(2).replaceAll("\\p{C}", "").toUpperCase()));
                 cinema.setLayout(LayoutCtr.getLayoutById(row_str.get(3).replaceAll("\\p{C}", "")));
-                for(Cinplex c : Service.cinplexes){
+
+
+                for(Cineplex c : Service.cineplexes){
                     if(c.getCinplexID().equals(row_str.get(0).replaceAll("\\p{C}", ""))){
                         c.addCinema(cinema);
+                        cinema.setCineplex(c);
                     }
                 }
                 cinemas.add(cinema);
@@ -81,7 +84,6 @@ public class DataImport {
         String[] files = new File("data/layout").list();
         int count = 0;
         for(String f : files){
-            System.out.println("data/layout/" + f);
             Layout l = importSingleLayout("data/layout/" + f, ++count);
             layouts.add(l);
         }
@@ -97,7 +99,6 @@ public class DataImport {
                 List<String> row_str = Arrays.asList(line.split(","));
                 movie.setMovieTitle(row_str.get(0).replaceAll("\\p{C}", ""));
                 movie.setMovieType(row_str.get(1).replaceAll("\\p{C}", ""));
-                System.out.println(row_str.get(2).replaceAll("\\p{C}", "").trim());
                 movie.setShowingStatus(ShowingStatus.valueOf(row_str.get(2).replaceAll("\\p{C}", "").trim()));
                 movie.setSynopsis(row_str.get(3).replaceAll("\\p{C}", "").trim());
                 movie.setDirector(row_str.get(4).replaceAll("\\p{C}", "").trim());
@@ -131,6 +132,7 @@ public class DataImport {
 
                 session.setSessionIndex(row_str.get(0).replaceAll("\\p{C}", ""));
                 session.setMovie(getMovieByTitle(row_str.get(1).replaceAll("\\p{C}", "")));
+
                 session.setCinema(getCinemaByCode(row_str.get(2).replaceAll("\\p{C}", "")));
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmm");

@@ -130,10 +130,10 @@ public class MoviegoerCtr {
     public static int makeBooking(MovieGoer movieGoer, Movie movie) {
         // TODO Print session info for a specific movie,
         //  now can only print sessions for all movies
-        SessionCtr.showSessions();
+        //SessionCtr.showSessions();
         System.out.println("Enter session ID: ");
         // TODO change session prompt message for user
-        Session session = SessionCtr.getSessionByIndex();
+        //Session session = SessionCtr.getSessionByIndex();
         System.out.println("Layout: ");
         // TODO print layout
 
@@ -147,8 +147,9 @@ public class MoviegoerCtr {
         // double price = PriceTable.calculatePrice();
         // TODO user make payment
         // TODO add a payment controller?
-        Ticket ticket = new Ticket(String.valueOf(row)+String.valueOf(col),
-                session.getCinema().getCinemaCode());
+
+       // Ticket ticket = new Ticket(String.valueOf(row)+String.valueOf(col),
+        //        session.getCinema().getCinemaCode());
         // TODO Transaction being generated in payment?
         //Payment payment = new Payment("TBC", ticket);
         //movieGoer.addPayments(payment);

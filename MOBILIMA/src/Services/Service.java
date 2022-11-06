@@ -2,24 +2,33 @@ package Services;
 
 import model.*;
 
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Service {
-    protected static List<Cinplex> cinplexes = new ArrayList<>();
+
+    protected static List<Cineplex> cineplexes = new ArrayList<>();
+    protected static List<Cinema> cinemas = new ArrayList<>();
     protected static List<Layout> layouts = new ArrayList<>();
     protected static List<Movie> movieList = new ArrayList<>();
     protected static List<Movie> showingMovieList = new ArrayList<>();
-    protected static List<Session> sessions = new ArrayList<Session>();
+    protected static List<Session> sessions = new ArrayList<>();
+    protected static List<MovieGoer> movieGoerList = new ArrayList<>();
+    protected static List<Review> reviews = new ArrayList<>();
+    protected static List<Payment> payments = new ArrayList<>();
 
-    protected static PriceTable priceTable = new PriceTable();
 
 
     public static void initialiseFromFile(){
+        movieGoerList = DataImport.importMoviegoers();
         layouts = DataImport.importLayouts();
-        cinplexes = DataImport.loadCinplexFromFile();
-        DataImport.loadCinemaFromFile(cinplexes);
+        cineplexes = DataImport.loadCinplexFromFile();
+        cinemas = DataImport.loadCinemaFromFile();
+        movieList = DataImport.importMovies();
+        sessions = DataImport.importSessions();
+        reviews = DataImport.importReviews();
+        payments = DataImport.importPayment();
+
     }
     public void viewAllMovies(){
         for (Movie movie : showingMovieList) {
@@ -38,7 +47,9 @@ public abstract class Service {
     public static void viewAllSessionsByCinplexName(String cinplexName){
         int num = sessions.size();
         for (int i = 0; i < num; i ++) {
-            if(sessions.get(i).getCinplx().getCinplexName().equals(cinplexName))
+            System.out.println(sessions.get(i).getCinema().getCineplex().getCinplexName());
+            System.err.println(cinplexName);
+            if(sessions.get(i).getCinema().getCineplex().getCinplexName().trim().equals(cinplexName.trim()))
                 sessions.get(i).viewDetails();
         }
     }

@@ -1,8 +1,7 @@
 package controller;
 
 import model.Cinema;
-import model.Cinplex;
-import model.Layout;
+import model.Cineplex;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,17 +11,17 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CinplexCtr {
-    public static ArrayList<Cinplex> cinplexes = new ArrayList<Cinplex>();
+    public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>();
     public static void loadCinplexFromFile(){
         try(BufferedReader br = new BufferedReader(new FileReader("data/cinplex.csv"))) {
             String line = "";
             while ((line = br.readLine()) != null) {
-                Cinplex cinplex = new Cinplex();
+                Cineplex cineplex = new Cineplex();
                 List<String> row_str = Arrays.asList(line.split(","));
-                cinplex.setCinplexID(row_str.get(0).replaceAll("\\p{C}", ""));
-                cinplex.setCineplexName(row_str.get(1).replaceAll("\\p{C}", ""));
-                cinplex.setLocation(row_str.get(2).replaceAll("\\p{C}", ""));
-                cinplexes.add(cinplex);
+                cineplex.setCinplexID(row_str.get(0).replaceAll("\\p{C}", ""));
+                cineplex.setCinplexName(row_str.get(1).replaceAll("\\p{C}", ""));
+                cineplex.setLocation(row_str.get(2).replaceAll("\\p{C}", ""));
+                cineplexes.add(cineplex);
             }
         } catch (IOException e) {
             System.err.println("Cannot get the layout file, please check again!");
@@ -39,7 +38,7 @@ public class CinplexCtr {
 
                 cinema.setClassOfCinema(Cinema.ClassOfCinema.valueOf(row_str.get(2).replaceAll("\\p{C}", "").toUpperCase()));
                 cinema.setLayout(LayoutCtr.getLayoutById(row_str.get(3).replaceAll("\\p{C}", "")));
-                for(Cinplex c : cinplexes){
+                for(Cineplex c : cineplexes){
                     if(c.getCinplexID().equals(row_str.get(0).replaceAll("\\p{C}", ""))){
                         c.addCinema(cinema);
                     }
@@ -50,8 +49,8 @@ public class CinplexCtr {
         }
     }
 
-    public static Cinplex getCinplexById(String cId){
-        for(Cinplex c: cinplexes){
+    public static Cineplex getCinplexById(String cId){
+        for(Cineplex c: cineplexes){
             if(c.getCinplexID().equals(cId)){
                 return c;
             }
