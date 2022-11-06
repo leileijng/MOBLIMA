@@ -10,7 +10,8 @@ public class AdultPrice extends Price{
         double price = priceTable.getPriceByType("Basic")
                 * priceTable.getDayRate(this.getWeekDay())
                 * priceTable.getCinemaClass(this.getCinemaClass())
-                * priceTable.getMovieTypeRate(this.getMovieType());
+                * priceTable.getMovieTypeRate(this.getMovieType())
+                * (this.isHoliday()?1*priceTable.getHolidayRate():1);
         return (double) Math.round(price * 100) / 100;
     }
 }

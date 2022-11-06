@@ -36,6 +36,10 @@ public class PriceTable {
         seatType.put(2, 1.2);
     }
 
+    public double getHolidayRate() {
+        return holidayRate;
+    }
+
     public double getPriceByType(String type){
         return prices.get(type);
     }

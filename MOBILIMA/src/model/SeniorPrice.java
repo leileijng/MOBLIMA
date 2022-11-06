@@ -10,19 +10,22 @@ public class SeniorPrice extends Price{
         double price = 0;
         switch (priceTable.getSpecialRules("Senior")){
             case OVERRIDE:
-                price = priceTable.getPriceByType("Senior");
+                price = priceTable.getPriceByType("Senior") *
+                    (this.isHoliday()?1*priceTable.getHolidayRate():1);;
                 break;
             case DISCOUNT:
                 price = priceTable.getPriceByType("basic")
                         * priceTable.getDayRate(this.getWeekDay())
                         * priceTable.getCinemaClass(this.getCinemaClass())
-                        * priceTable.getMovieTypeRate(this.getMovieType())
+                        * priceTable.getMovieTypeRate(this.getMovieType())*
+                        (this.isHoliday()?1*priceTable.getHolidayRate():1)
                         * 0.8;
                 break;
             case NORMAL:
                 price = priceTable.getPriceByType("basic")
                         * priceTable.getDayRate(this.getWeekDay())
-                        * priceTable.getCinemaClass(this.getCinemaClass())
+                        * priceTable.getCinemaClass(this.getCinemaClass())*
+                        (this.isHoliday()?1*priceTable.getHolidayRate():1)
                         * priceTable.getMovieTypeRate(this.getMovieType());
                 break;
         }

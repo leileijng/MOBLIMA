@@ -11,7 +11,8 @@ public class StudentPrice extends Price{
         double price = 0;
         switch (priceTable.getSpecialRules("Student")){
             case OVERRIDE:
-                price = priceTable.getPriceByType("Student");
+                price = priceTable.getPriceByType("Student") *
+                        (this.isHoliday()?1*priceTable.getHolidayRate():1);;
                 break;
             case DISCOUNT:
                  price = priceTable.getPriceByType("basic")
