@@ -2,14 +2,16 @@ package model;
 
 public class Payment {
     private String TID;
-    private Ticket ticket;
+    private Session session;
     private MovieGoer movieGoer;
 
     private double amount;
 
-    public Payment(String TID, Ticket ticket) {
+    public Payment(String TID, Session session, MovieGoer movieGoer, double amount) {
         this.TID = TID;
-        this.ticket = ticket;
+        this.session = session;
+        this.movieGoer = movieGoer;
+        this.amount = amount;
     }
 
     public String getTID() {
@@ -20,12 +22,20 @@ public class Payment {
         this.TID = TID;
     }
 
-    public Ticket getTicket() {
-        return ticket;
+    public Session getSession() {
+        return session;
     }
 
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public MovieGoer getMovieGoer() {

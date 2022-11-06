@@ -164,8 +164,8 @@ public class MovieCtr {
         Movie[] movies = new Movie[6];
         for (int i = 0; i < 6; ++i) {
             movies[i] = new Movie("jvpr"+ i);
-            movies[i].addReview(new Review(123, movies[i], i%5+1, "comment "+i));
-            movies[i].addReview(new Review(456, movies[i], i%5+1, "comment "+i));
+            movies[i].addReview(new Review("123", movies[i], i%5+1, "comment "+i));
+            movies[i].addReview(new Review("456", movies[i], i%5+1, "comment "+i));
 
             movies[i].addRevenue(100 * i);
             movies[i].setDateEndOfShowingDate(2022, 10, 10);

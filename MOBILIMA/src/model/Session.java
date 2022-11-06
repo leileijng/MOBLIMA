@@ -11,6 +11,9 @@ public class Session {
     private Timestamp endTime;
     private Vector<Ticket> tickets = new Vector<>();
 
+    public Session() {
+    }
+
     public Session(String sessionIndex, Movie movie, Cinema cinema, Timestamp startTime, Timestamp endTime) {
         this.sessionIndex = sessionIndex;
         this.movie = movie;
@@ -77,7 +80,14 @@ public class Session {
     public void setSessionIndex(String sessionIndex) {
         this.sessionIndex = sessionIndex;
     }
-    
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public void setTickets(Vector<Ticket> tickets) {
+        this.tickets = tickets;
+    }
 
     public Cinema getCinema() {
         return cinema;
@@ -93,5 +103,9 @@ public class Session {
 
     public void setEndTime(Timestamp endTime) {
         this.endTime = endTime;
+    }
+
+    public Vector<Ticket> getTickets() {
+        return tickets;
     }
 }

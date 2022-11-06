@@ -10,11 +10,13 @@ public class Movie {
     /**
      * The title of the movie.
      */
-    private final String movieTitle;
+    private String movieTitle;
     /**
      * The showing status of the movie.
      */
     private ShowingStatus showingStatus;
+
+    private String movieType;
     /**
      * An abstract of the movie.
      */
@@ -36,13 +38,30 @@ public class Movie {
     /**
      * A list of all reviews about the movie.
      */
-    private final List<Review> reviewList;
+    private List<Review> reviewList;
     /**
      * Total revenue of the movie in SGD.
      */
     private double totalRevenue;
 
     private Date dateEndOfShowing;
+
+    public Movie() {
+        reviewList = new ArrayList<Review>();
+    }
+
+    public void setOverallRating(double overallRating) {
+        this.overallRating = overallRating;
+    }
+
+    public void setTotalRevenue(double totalRevenue) {
+        this.totalRevenue = totalRevenue;
+    }
+
+    public void setMovieType(String movieType) {
+        this.movieType = movieType;
+    }
+
     /**
      * Constructor of the movie, set movie title and
      * initialize reviewList and totalRevenue,
@@ -73,14 +92,19 @@ public class Movie {
         this.director = director;
         this.casts = casts;
         this.overallRating = 0;
-        this.reviewList = new LinkedList<>();
         this.totalRevenue = 0;
     }
+
+    public void setMovieTitle(String movieTitle) {
+        this.movieTitle = movieTitle;
+    }
+
 
     /**
      * Gets the title of the movie.
      * @return title of the movie.
      */
+
     public String getMovieTitle() {
         return movieTitle;
     }
@@ -234,19 +258,19 @@ public class Movie {
 
         // test addReview()
         Review r1 = new Review
-                (123, jvpr, 5, "Best Movie Ever!");
+                ("123", jvpr, 5, "Best Movie Ever!");
         jvpr.addReview(r1);
         Review r2 = new Review
-                (456, jvpr, 4, "Good movie!");
+                ("456", jvpr, 4, "Good movie!");
         jvpr.addReview(r2);
         Review r3 = new Review
-                (789, jvpr, 4, "Average movie...");
+                ("789", jvpr, 4, "Average movie...");
         jvpr.addReview(r3);
         System.out.println(jvpr.getOverallRating());
          try {
             Movie ntu = new Movie("NTU");
             Review r4 = new Review
-                    (567, ntu, 5, "Best Movie Ever!");
+                    ("567", ntu, 5, "Best Movie Ever!");
             jvpr.addReview(r4);
          } catch (IllegalArgumentException e) {
              System.out.println("Titles not match!");
@@ -264,4 +288,5 @@ public class Movie {
         calendar.set(year, month, day);
         dateEndOfShowing = calendar.getTime();
     }
+
 }

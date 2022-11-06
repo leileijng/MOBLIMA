@@ -1,10 +1,11 @@
 package model;
 
 public class Review {
-    private final int userID;
+    private final String userID;
     private final Movie movie;
-    private final int rating;
+    private final double rating;
     private final String comments;
+
 
     /**
      * @param userID userID of the review's writer
@@ -12,7 +13,8 @@ public class Review {
      * @param rating rating of the movie, an integer between 1 and 5
      * @param comments comments about the movie
      */
-    public Review(int userID, Movie movie, int rating, String comments) {
+
+    public Review(String userID, Movie movie, double rating, String comments) {
         if (rating < 1 || rating > 5)
             throw new IllegalArgumentException("Rating should be between 1 and 5!");
         this.userID = userID;
@@ -24,7 +26,7 @@ public class Review {
     /**
      * @return userID of the review's writer
      */
-    public int getUserID() { return userID; }
+    public String getUserID() { return userID; }
 
     /**
      * @return a pointer to the movie the review about
@@ -33,7 +35,7 @@ public class Review {
     /**
      * @return rating given in the review
      */
-    public int getRating() { return rating; }
+    public double getRating() { return rating; }
     /**
      * @return comments in the review
      */
@@ -41,19 +43,19 @@ public class Review {
 
     public static void main(String[] args) {
         Movie jvpr = new Movie("JVPR");
-        Review r1 = new Review(123, jvpr, 5, "Best movie ever!(ɔ◔‿◔)ɔ ♥");
+        Review r1 = new Review("123", jvpr, 5, "Best movie ever!(ɔ◔‿◔)ɔ ♥");
         jvpr.addReview(r1);
         System.out.println(r1.getUserID());
         System.out.println(r1.getMovie().getMovieTitle());
         System.out.println(r1.getRating());
         System.out.println(r1.getComments());
-        Review r2 = new Review(456, jvpr, 4, "Good movie!");
+        Review r2 = new Review("456", jvpr, 4, "Good movie!");
         jvpr.addReview(r2);
-        Review r3 = new Review(789, jvpr, 3, "Average movie...");
+        Review r3 = new Review("789", jvpr, 3, "Average movie...");
         jvpr.addReview(r3);
         System.out.println(jvpr.getOverallRating());
         try {
-            Review r4 = new Review(123, jvpr, 6, "Best best movie!");
+            Review r4 = new Review("123", jvpr, 6, "Best best movie!");
             jvpr.addReview(r4);
         } catch (IllegalArgumentException e) {
             System.out.println("rating 6 is out of range!");

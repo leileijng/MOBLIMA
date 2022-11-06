@@ -150,8 +150,8 @@ public class MoviegoerCtr {
         Ticket ticket = new Ticket(String.valueOf(row)+String.valueOf(col),
                 session.getCinema().getCinemaCode());
         // TODO Transaction being generated in payment?
-        Payment payment = new Payment("TBC", ticket);
-        movieGoer.addPayments(payment);
+        //Payment payment = new Payment("TBC", ticket);
+        //movieGoer.addPayments(payment);
         System.out.println("Booking has been made!");
         return 1;
     }
