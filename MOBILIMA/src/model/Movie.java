@@ -59,6 +59,22 @@ public class Movie {
         reviewList = new ArrayList<>();
     }
 
+    public MovieType getType() {
+        return type;
+    }
+
+    public List<Review> getReviewList() {
+        return reviewList;
+    }
+
+    public void setType(MovieType type) {
+        this.type = type;
+    }
+
+    public void setReviewList(List<Review> reviewList) {
+        this.reviewList = reviewList;
+    }
+
     public void setOverallRating(double overallRating) {
         this.overallRating = overallRating;
     }
@@ -205,6 +221,7 @@ public class Movie {
     public void setClassification(Classification classification) {
         this.classification = classification;
     }
+
     /**
      * Changes the showing status of the movie.
      * @param showingStatus new showing status for the movie.
@@ -341,4 +358,5 @@ public class Movie {
 
         return true;
     }
+
 }

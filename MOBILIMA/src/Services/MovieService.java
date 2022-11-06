@@ -10,7 +10,6 @@ import java.util.*;
 public class MovieService {
     static Scanner scanner = new Scanner(System.in);
     static Date date = new Date(System.currentTimeMillis());
-    static List<Movie> movieList = new ArrayList<>();
     static List<Movie> showingMovieList = new ArrayList<>();
 
     /**
@@ -18,7 +17,7 @@ public class MovieService {
      * @param movie movie to be added
      */
     public static void addMovieToDB(Movie movie) {
-        movieList.add(movie);
+        Service.movieList.add(movie);
         if (movie.getShowingStatus() == ShowingStatus.NOWSHOWING ||
                 movie.getShowingStatus() == ShowingStatus.PREVIEW)
             showingMovieList.add(movie);
@@ -132,7 +131,7 @@ public class MovieService {
     public static void printTop5MovieByRevenue() {
         showingMovieList.sort(Comparator.comparingDouble(Movie::getTotalRevenue).reversed());
         System.out.println("Current Top 5 Movie By Revenue:");
-        for (int i = 0; i < Math.min(5, movieList.size()); ++i) {
+        for (int i = 0; i < Math.min(5, Service.movieList.size()); ++i) {
             Movie movie = showingMovieList.get(i);
             System.out.printf("%d\tTitle:%s\tRevenue:%.2f\n",
                     i+1, movie.getMovieTitle(), movie.getTotalRevenue());
@@ -142,7 +141,7 @@ public class MovieService {
     public static void printTop5MovieByRatings() {
         showingMovieList.sort(Comparator.comparingDouble(Movie::getOverallRating).reversed());
         System.out.println("Top 5 Movie By Ratings: ");
-        for (int i = 0; i < Math.min(5, movieList.size()); ++i) {
+        for (int i = 0; i < Math.min(5, Service.movieList.size()); ++i) {
             Movie movie = showingMovieList.get(i);
             System.out.printf("%d\tTitle:%s\tRating:%.1f\n",
                     i+1, movie.getMovieTitle(), movie.getOverallRating());
@@ -160,7 +159,7 @@ public class MovieService {
             System.out.println("Empty name input, please re-enter!");
             name = scanner.nextLine();
         }
-        for (Movie movie : movieList) {
+        for (Movie movie : Service.movieList) {
             if (movie.getMovieTitle().equals(name))
                 return movie;
         }

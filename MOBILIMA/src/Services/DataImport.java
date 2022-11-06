@@ -14,6 +14,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import static Services.MovieService.addMovieToDB;
+
 public class DataImport {
     public static List<Cineplex> loadCinplexFromFile(){
         List<Cineplex> cineplexes = new ArrayList<>();
@@ -89,16 +91,16 @@ public class DataImport {
         return layouts;
     }
 
-    public static List<Movie> importMovies(){
-        List<Movie> movies = new ArrayList<>();
+    public static void importMovies(){
         try(BufferedReader br = new BufferedReader(new FileReader("data/Movie.csv"))) {
             String line = "";
             while ((line = br.readLine()) != null) {
                 Movie movie = new Movie();
                 List<String> row_str = Arrays.asList(line.split(","));
                 movie.setMovieTitle(row_str.get(0).replaceAll("\\p{C}", ""));
-                movie.setMovieType(row_str.get(1).replaceAll("\\p{C}", ""));
+                movie.setClassification(Classification.valueOf(row_str.get(1).replaceAll("\\p{C}", "")));
                 movie.setShowingStatus(ShowingStatus.valueOf(row_str.get(2).replaceAll("\\p{C}", "").trim()));
+
                 movie.setSynopsis(row_str.get(3).replaceAll("\\p{C}", "").trim());
                 movie.setDirector(row_str.get(4).replaceAll("\\p{C}", "").trim());
 
@@ -111,14 +113,13 @@ public class DataImport {
                 String revenue_s = row_str.get(8).replaceAll("\\p{C}", "").trim();
                 if(!revenue_s.equals("NA"))movie.setTotalRevenue(Double.parseDouble(revenue_s));
                 movie.setMovieType(row_str.get(9).replaceAll("\\p{C}", "").trim());
-                movies.add(movie);
+                addMovieToDB(movie);
             }
         } catch (IOException e) {
             System.err.println("Cannot get the layout file, please check again!");
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-        return movies;
     }
 
     public static List<Session> importSessions(){

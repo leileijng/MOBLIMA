@@ -24,7 +24,7 @@ public abstract class Service {
         layouts = DataImport.importLayouts();
         cineplexes = DataImport.loadCinplexFromFile();
         cinemas = DataImport.loadCinemaFromFile();
-        movieList = DataImport.importMovies();
+        DataImport.importMovies();
         sessions = DataImport.importSessions();
         reviews = DataImport.importReviews();
         payments = DataImport.importPayment();
