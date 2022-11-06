@@ -135,7 +135,7 @@ public class MovieService {
         for (int i = 0; i < Math.min(5, movieList.size()); ++i) {
             Movie movie = showingMovieList.get(i);
             System.out.printf("%d\tTitle:%s\tRevenue:%.2f\n",
-                    i, movie.getMovieTitle(), movie.getTotalRevenue());
+                    i+1, movie.getMovieTitle(), movie.getTotalRevenue());
         }
     }
 
@@ -145,7 +145,7 @@ public class MovieService {
         for (int i = 0; i < Math.min(5, movieList.size()); ++i) {
             Movie movie = showingMovieList.get(i);
             System.out.printf("%d\tTitle:%s\tRating:%.1f\n",
-                    i, movie.getMovieTitle(), movie.getOverallRating());
+                    i+1, movie.getMovieTitle(), movie.getOverallRating());
         }
     }
 

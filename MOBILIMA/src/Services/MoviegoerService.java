@@ -106,7 +106,7 @@ public class MoviegoerService extends Service{
     public static int viewAllMovies(MovieGoer movieGoer) {
         List<Movie> movies = MovieService.getShowingMovieList();
         for (int i = 0; i < movies.size(); ++i) {
-            System.out.printf("=== Movie #%d ===\n", i);
+            System.out.printf("=== Movie #%d ===\n", i+1);
             movies.get(i).printInfo();
         }
         System.out.println("Choice 1: Make bookings");
@@ -119,7 +119,7 @@ public class MoviegoerService extends Service{
                     System.out.println("Enter #id of the movie you want to book:");
                     int movieID = Integer.parseInt(scanner.nextLine());
                     if (movieID >= 0 && movieID < movies.size()) {
-                        return makeBooking(movieGoer, movies.get(movieID));
+                        return makeBooking(movieGoer, movies.get(movieID-1));
                     }
                 }default -> {
                     System.out.println("Invalid choice!");
@@ -277,7 +277,7 @@ public class MoviegoerService extends Service{
         for (Payment payment : payments) {
             // TODO: Add ticket information
             // Ticket ticket = payment.getTicket();
-            System.out.printf("=== For record %d ===\n", i);
+            System.out.printf("=== For record %d ===\n", i+1);
             System.out.printf("Transaction ID: %s\n", payment.getTID());
             System.out.printf("Price: %.2f\n", payment.getPrice());
             ++i;
@@ -298,7 +298,7 @@ public class MoviegoerService extends Service{
                 }
                 System.out.println("Enter your comments: ");
                 String comments = scanner.nextLine();
-                Movie movie = payments.get(recordID).getSession().getMovie();
+                Movie movie = payments.get(recordID-1).getSession().getMovie();
                 Review review = new Review(movieGoer.getUsername(), movie,
                         ratings, comments);
                 movie.addReview(review);
