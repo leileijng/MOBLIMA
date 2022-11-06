@@ -1,7 +1,5 @@
 package Services;
 
-import controller.CinplexCtr;
-import model.Cinema;
 import model.Cineplex;
 
 public class CinplexService {

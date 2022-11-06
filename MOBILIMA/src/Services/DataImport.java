@@ -1,6 +1,5 @@
 package Services;
 
-import controller.LayoutCtr;
 import model.*;
 
 import java.io.BufferedReader;
@@ -44,7 +43,7 @@ public class DataImport {
                 cinema.setCinemaCode(row_str.get(1).replaceAll("\\p{C}", ""));
 
                 cinema.setClassOfCinema(Cinema.ClassOfCinema.valueOf(row_str.get(2).replaceAll("\\p{C}", "").toUpperCase()));
-                cinema.setLayout(LayoutCtr.getLayoutById(row_str.get(3).replaceAll("\\p{C}", "")));
+                cinema.setLayout(getLayoutById(row_str.get(3).replaceAll("\\p{C}", "")));
 
 
                 for(Cineplex c : Service.cineplexes){
@@ -243,6 +242,13 @@ public class DataImport {
         for(Session s : Service.sessions){
             if(s.getSessionIndex().equals(sessionId))
                 return s;
+        }
+        return null;
+    }
+
+    private static Layout getLayoutById(String id){
+        for(Layout l : Service.layouts){
+            if(l.getLayout_id().equals(id)) return l;
         }
         return null;
     }
