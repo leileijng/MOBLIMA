@@ -176,6 +176,7 @@ public class MoviegoerService extends Service{
         Payment payment = new Payment(generateTransactionID(session), session,
                 movieGoer, price);
         movieGoer.addPayments(payment);
+        movie.addRevenue(price);
         System.out.println("Booking has been made!");
         return 1;
     }
