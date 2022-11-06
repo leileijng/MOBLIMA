@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class PriceTable {
     private double holidayRate;
-    private Set<Date> holidays;
+    private HashSet<Date> holiday = new HashSet<Date>();
     private HashMap<String,Double> prices = new HashMap<String, Double>();
     private HashMap<String,Double> movieType = new HashMap<String, Double>();
     private HashMap<String,Double> cinemaClass = new HashMap<String, Double>();
@@ -138,7 +138,27 @@ public class PriceTable {
     public PRICE_RULE getSpecialRules(String group) {
         return specialRules.get(group);
     }
-    //TODO add holiday date (and its relevant methods)
-    //TODO transform attributes type to enum when possible
 
+    //TODO add holiday date (and its relevant methods)
+    public void updateHolidayDates() {
+        System.out.println(this.holiday);
+        System.out.println("What you wanna do about the holiday set?\n1.add a new date\t2.remove a existing date");
+        Scanner scan = new Scanner(System.in);
+        int op = scan.nextInt();
+        if (op == 1) {
+            String dateStr = scan.next();
+            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dateStr);
+            this.holiday.add(date);
+        } else {
+            String dateStr = scan.next();
+            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dateStr);
+            this.holiday.remove(date);
+        }
+    }
+
+    public boolean isHoliday(Date date){
+        return this.holiday.contains(date);
+    }
+
+    //TODO transform attributes type to enum when possible
 }

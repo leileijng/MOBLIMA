@@ -6,6 +6,7 @@ import java.util.*;
 public class Session {
     private String sessionIndex;
     private Movie movie;
+    private Cinplex cinplex;
     private Cinema cinema;
     private Timestamp startTime;
     private Timestamp endTime;
@@ -14,9 +15,10 @@ public class Session {
     public Session() {
     }
 
-    public Session(String sessionIndex, Movie movie, Cinema cinema, Timestamp startTime, Timestamp endTime) {
+    public Session(String sessionIndex, Movie movie, Cinplex cinplex, Cinema cinema, Timestamp startTime, Timestamp endTime) {
         this.sessionIndex = sessionIndex;
         this.movie = movie;
+        this.cinplex = cinplex;
         this.cinema = cinema;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -38,6 +40,7 @@ public class Session {
         System.out.println("=========================================================");
         System.out.println("Session Index    : " + this.sessionIndex);
         System.out.println("Movie Name       : " + this.movie.getMovieTitle());
+        System.out.println("Cinplex Name     : " + this.cinplex.getCinplexName());
         System.out.println("Cinema Code      : " + this.cinema.getCinemaCode());
         System.out.println("Movie Start Time : " + this.startTime);
         System.out.println("Movie End Time   : " + this.endTime);
@@ -87,6 +90,14 @@ public class Session {
 
     public void setTickets(Vector<Ticket> tickets) {
         this.tickets = tickets;
+    }
+
+    public Cinema getCinplex() {
+        return cinplex;
+    }
+
+    public void setCinplex(Cinplex cinplex) {
+        this.cinplex = cinplex;
     }
 
     public Cinema getCinema() {

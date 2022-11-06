@@ -4,25 +4,25 @@ import java.util.*;
 
 public class Cinplex {
     private String cinplexID;
-    private String cineplexName;
+    private String cinplexName;
     private String location;
     private ArrayList<Cinema> cinemas = new ArrayList<Cinema>();;
 
-    public Cinplex(String c_id, String cineplexName, String location) {
+    public Cinplex(String c_id, String cinplexName, String location) {
         cinplexID = c_id;
-        this.cineplexName = cineplexName;
+        this.cinplexName = cinplexName;
         this.location = location;
     }
 
     public Cinplex() {
     }
 
-    public String getCineplexName() {
+    public String getCinplexName() {
         return this.cineplexName;
     }
 
-    public void setCineplexName(String cineplexName) {
-        this.cineplexName = cineplexName;
+    public void setCinplexName(String cinplexName) {
+        this.cinplexName = cinplexName;
     }
 
     public void setLocation(String location) {
@@ -34,7 +34,7 @@ public class Cinplex {
     }
 
     public void viewCinemas() {
-        System.out.println("count of the cineplex " + this.cineplexName + " : " + this.cinemas.size());
+        System.out.println("count of the cinplex " + this.cinplexName + " : " + this.cinemas.size());
         for (int i = 0; i < cinemas.size(); i ++) {
             this.cinemas.get(i).viewDetails();
         }

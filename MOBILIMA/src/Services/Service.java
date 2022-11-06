@@ -8,36 +8,18 @@ import java.util.List;
 
 public abstract class Service {
     protected static List<Cinplex> cinplexes = new ArrayList<>();
-    protected static List<Cinema> cinemas = new ArrayList<>();
     protected static List<Layout> layouts = new ArrayList<>();
     protected static List<Movie> movieList = new ArrayList<>();
     protected static List<Movie> showingMovieList = new ArrayList<>();
-    protected static List<Session> sessions = new ArrayList<>();
-    protected static List<MovieGoer> movieGoerList = new ArrayList<>();
-    protected static List<Review> reviews = new ArrayList<>();
-    protected static List<Payment> payments = new ArrayList<>();
+    protected static List<Session> sessions = new ArrayList<Session>();
 
+    protected static PriceTable priceTable = new PriceTable();
 
 
     public static void initialiseFromFile(){
-        movieGoerList = DataImport.importMoviegoers();
         layouts = DataImport.importLayouts();
         cinplexes = DataImport.loadCinplexFromFile();
-        cinemas = DataImport.loadCinemaFromFile();
-        movieList = DataImport.importMovies();
-        sessions = DataImport.importSessions();
-        reviews = DataImport.importReviews();
-        payments = DataImport.importPayment();
-
-        /*
-        System.out.println("Number of cinplexes:" + cinplexes.size());
-        System.out.println("Number of layouts:" + layouts.size());
-        System.out.println("Number of movieList:" + movieList.size());
-        System.out.println("Number of sessions:" + sessions.size());
-        System.out.println("Number of reviews:" + reviews.size());
-        System.out.println("Number of payments:" + payments.size());
-
-         */
+        DataImport.loadCinemaFromFile(cinplexes);
     }
     public void viewAllMovies(){
         for (Movie movie : showingMovieList) {
@@ -45,7 +27,7 @@ public abstract class Service {
         }
     }
 
-    public void viewAllSessions(){
+    public static void viewAllSessions(){
         int num = sessions.size();
         System.out.println("total number of sessions : " + num);
         for (int i = 0; i < num; i ++) {
@@ -53,23 +35,19 @@ public abstract class Service {
         }
     }
 
-    public void viewSessionsByCinemaCode(String cinemaCode){
+    public static void viewAllSessionsByCinplexName(String cinplexName){
         int num = sessions.size();
-        System.out.println("total number of sessions : " + num);
         for (int i = 0; i < num; i ++) {
-            if(sessions.get(i).getCinema().getCinemaCode().equals(cinemaCode))
+            if(sessions.get(i).getCinplx().getCinplexName().equals(cinplexName))
                 sessions.get(i).viewDetails();
         }
     }
 
-    public void viewSessionsByMovieTitle(String movieTitle){
+    public static void viewAllSessionsByMovieTitle(String movieTitle){
         int num = sessions.size();
-        System.out.println("total number of sessions : " + num);
         for (int i = 0; i < num; i ++) {
             if(sessions.get(i).getMovie().getMovieTitle().equals(movieTitle))
                 sessions.get(i).viewDetails();
         }
     }
-
-    public abstract void viewAllSessionsByFilter();
 }
