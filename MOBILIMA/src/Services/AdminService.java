@@ -11,21 +11,17 @@ public class AdminService extends Service implements ManageMovie, ManageSession,
 
     @Override
     public void addNewMovie() {
-        //MovieService.addMovie();
-        System.out.println("To do");
+        MovieService.addMovie();
     }
 
     @Override
     public void updateMovieDetails() {
-        //MovieService.editMovie();
-        System.out.println("To do");
+        MovieService.editMovie();
     }
 
     @Override
     public  void unlistMovie() {
-        //MovieService.removeMovie();
-        System.out.println("To do");
-
+        MovieService.removeMovie();
     }
 
     @Override
@@ -45,8 +41,7 @@ public class AdminService extends Service implements ManageMovie, ManageSession,
 
     @Override
     public  void configSystem() {
-        //MoviegoerService.updateSortingStatus();
-        System.out.println("To do");
+        MoviegoerService.updateSortingStatus();
     }
 
     @Override

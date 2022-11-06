@@ -1,6 +1,7 @@
 package controller;
 
 import Services.AdminService;
+import Services.MovieService;
 import model.AdminStaff;
 import model.Movie;
 
@@ -69,9 +70,9 @@ public class AdminstaffCtr {
                             System.err.println("Please enter within the selection range (1-5)!");
                         }
                         else {
-                            if (op2 == 1) MovieCtr.printAllCurrentMovies();
-                            else if (op2 == 2) MovieCtr.printTop5MovieByRevenue();
-                            else if (op2 == 3) MovieCtr.printTop5MovieByRatings();
+                            if (op2 == 1) MovieService.printAllCurrentMovies();
+                            else if (op2 == 2) MovieService.printTop5MovieByRevenue();
+                            else if (op2 == 3) MovieService.printTop5MovieByRatings();
                             else if (op2 == 4) {
                                 System.out.println("Back to Admin Console.");
                                 break;

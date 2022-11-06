@@ -72,7 +72,15 @@ public class Session {
         }
         return "No such ticket at this session";
     }
-    
+
+    public Ticket getTicketBySeatID(String seatIndex) {
+        for (Ticket ticket : tickets) {
+            if (ticket.getSeatIndex().equals(seatIndex)) {
+                return ticket;
+            }
+        }
+        return null;
+    }
      public String getSessionIndex() {
         return sessionIndex;
     }

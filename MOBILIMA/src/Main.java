@@ -1,3 +1,4 @@
+import Services.MoviegoerService;
 import Services.Service;
 import controller.*;
 import model.*;
@@ -36,8 +37,8 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         int sel = scan.nextInt();
         if (sel == 1) {
-            movieGoer = MoviegoerCtr.moviegoerLogin();
-            MoviegoerCtr.printMainPanel(movieGoer);
+            movieGoer = MoviegoerService.moviegoerLogin();
+            MoviegoerService.printMainPanel(movieGoer);
         }
         else {
             AdminstaffCtr adminCtr = new AdminstaffCtr();

@@ -1,5 +1,5 @@
 package model;
-import controller.MoviegoerCtr;
+// import controller.MoviegoerCtr;
 
 import java.io.*;
 import java.util.*;

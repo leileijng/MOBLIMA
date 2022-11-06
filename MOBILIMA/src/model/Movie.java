@@ -7,6 +7,7 @@ import java.util.*;
  * A movie can be changed its showing status, update revenue, and add reviews.
  */
 public class Movie {
+    private int movieID;
     /**
      * The title of the movie.
      */
@@ -16,7 +17,11 @@ public class Movie {
      */
     private ShowingStatus showingStatus;
 
-    private String movieType;
+    private Classification classification;
+
+    private MovieType type;
+
+
     /**
      * An abstract of the movie.
      */
@@ -45,9 +50,13 @@ public class Movie {
     private double totalRevenue;
 
     private Date dateEndOfShowing;
-
     public Movie() {
-        reviewList = new ArrayList<Review>();
+        this(-1, "");
+    }
+    public Movie(int id, String title) {
+        movieID = id;
+        movieTitle = title;
+        reviewList = new ArrayList<>();
     }
 
     public void setOverallRating(double overallRating) {
@@ -59,7 +68,17 @@ public class Movie {
     }
 
     public void setMovieType(String movieType) {
-        this.movieType = movieType;
+        switch (movieType) {
+            case "2D" -> setMovieType(MovieType.TwoD);
+            case "3D" -> setMovieType(MovieType.ThreeD);
+            case "Blockbuster" -> setMovieType(MovieType.Blockbuster);
+            case "IMAX" -> setMovieType(MovieType.IMAX);
+            default -> {
+//                throw new IllegalArgumentException("Unknown movie type "
+//                        + movieType);
+                setMovieType(MovieType.OTHERS);
+            }
+        }
     }
 
     /**
@@ -93,6 +112,14 @@ public class Movie {
         this.casts = casts;
         this.overallRating = 0;
         this.totalRevenue = 0;
+    }
+
+    public MovieType getMovieType() {
+        return type;
+    }
+
+    public void setMovieType(MovieType type) {
+        this.type = type;
     }
 
     public void setMovieTitle(String movieTitle) {
@@ -154,8 +181,15 @@ public class Movie {
 
     public Date getDateEndOfShowing() {
         return dateEndOfShowing;
-    };
+    }
 
+    public int getMovieID() {
+        return movieID;
+    }
+
+    public void setMovieID(int id) {
+        this.movieID = id;
+    }
     /**
      * Gets the casts of the movie.
      * @return casts of the movie in a String array.
@@ -164,6 +198,13 @@ public class Movie {
         return casts;
     }
 
+    public Classification getClassification() {
+        return classification;
+    }
+
+    public void setClassification(Classification classification) {
+        this.classification = classification;
+    }
     /**
      * Changes the showing status of the movie.
      * @param showingStatus new showing status for the movie.
@@ -204,10 +245,14 @@ public class Movie {
     public void addReview(Review review) {
         if (this != review.getMovie())
             throw new IllegalArgumentException("Movie titles don't match!");
+        if (showingStatus == ShowingStatus.COMMINGSOON)
+            throw new IllegalArgumentException("Cannot add review for " +
+                    "coming soon movies");
         this.overallRating = (this.overallRating * this.reviewList.size() +
                 review.getRating()) / (this.reviewList.size()+1);
         reviewList.add(review);
     }
+
 
     public void setDateEndOfShowing(Date date) {
         this.dateEndOfShowing = date;
@@ -239,7 +284,7 @@ public class Movie {
     public void printRecentReviews() {
         for (int i = 0; i < Math.min(5, reviewList.size()); ++i) {
             Review review = reviewList.get(i);
-            System.out.printf("Rating: %d\n", review.getRating());
+            System.out.printf("Rating: %.1f\n", review.getRating());
             System.out.printf("Comments: %s\n", review.getComments());
         }
     }
@@ -275,6 +320,8 @@ public class Movie {
          } catch (IllegalArgumentException e) {
              System.out.println("Titles not match!");
          }
+         jvpr.setMovieType("3D");
+        System.out.println(jvpr.getMovieType().toString());
 
          // test addRevenue()
          System.out.println(jvpr.getTotalRevenue());
