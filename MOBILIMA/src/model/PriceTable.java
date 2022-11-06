@@ -23,6 +23,9 @@ public class PriceTable {
         prices.put("Senior", 20.0);
         prices.put("Student", 25.0);
         movieType.put("3D", 1.1);
+        movieType.put("Blockbuster", 1.05);
+        movieType.put("2D", 1.0);
+        movieType.put("IMAX", 1.2);
         cinemaClass.put(Cinema.ClassOfCinema.GOLD.toString(), 1.2);
         cinemaClass.put(Cinema.ClassOfCinema.MAX.toString(), 1.1);
         cinemaClass.put(Cinema.ClassOfCinema.NORMAL.toString(), 1.0);
