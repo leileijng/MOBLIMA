@@ -47,8 +47,14 @@ public class SessionService {
         countSession += 1;
         String sessionIndex = "sessionIdx#" + countSession;
 
+        Movie movie = MovieService.getMovieByName(movieTitle);
+        if(movie.checkShowingStatus() == false){
+            System.out.println("Failure! The movie is end of showing.");
+            return ;
+        }
+
         Session session = new Session(sessionIndex,
-                MovieService.getMovieByName(movieTitle),
+                movie,
                 CinplexService.getCinplexByName(cinplexName),
                 CinplexService.getCinplexById("G01").getCinema(cinemaCode),
                 convertStr2Time(startTime),
