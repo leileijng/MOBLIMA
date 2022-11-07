@@ -128,20 +128,17 @@ public class DataImport {
             String line = "";
             while ((line = br.readLine()) != null) {
                 List<String> row_str = Arrays.asList(line.split(","));
-                Session session = new Session();
+                String sessionId = row_str.get(0).replaceAll("\\p{C}", "");
+                Movie movie = getMovieByTitle(row_str.get(1).replaceAll("\\p{C}", ""));
+                Cinema cinema = getCinemaByCode(row_str.get(2).replaceAll("\\p{C}", ""));
 
-                session.setSessionIndex(row_str.get(0).replaceAll("\\p{C}", ""));
-                session.setMovie(getMovieByTitle(row_str.get(1).replaceAll("\\p{C}", "")));
-
-                session.setCinema(getCinemaByCode(row_str.get(2).replaceAll("\\p{C}", "")));
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmm");
                 Date parsedDateStart = dateFormat.parse(row_str.get(3).replaceAll("\\p{C}", "").trim());
                 Date parsedEndStart = dateFormat.parse(row_str.get(4).replaceAll("\\p{C}", "").trim());
                 Timestamp startTime = new java.sql.Timestamp(parsedDateStart.getTime());
                 Timestamp endTime = new java.sql.Timestamp(parsedEndStart.getTime());
-                session.setStartTime(startTime);
-                session.setEndTime(endTime);
+                Session session = new Session(sessionId, movie, cinema, startTime, endTime);
 
                 sessions.add(session);
             }
@@ -167,6 +164,9 @@ public class DataImport {
                 Review review = new Review(userId,m,rating,comments);
                 m.addReview(review);
                 reviews.add(review);
+                MovieGoer movieGoer = getMoviegoerByName(userId);
+                movieGoer.addReview(review);
+
             }
         } catch (IOException e) {
             System.err.println("Cannot get the layout file, please check again!");
@@ -208,6 +208,7 @@ public class DataImport {
                 session.occupySeat(seatIndex, price);
                 Payment payment = new Payment(TID, session, movieGoer, price);
                 payments.add(payment);
+                movieGoer.addPayments(payment);
             }
         } catch (IOException e) {
             System.err.println("Cannot get the layout file, please check again!");

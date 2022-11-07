@@ -15,15 +15,6 @@ public class Main {
         systemInit();
     }
 
-
-    public static void dataInport() {
-
-    }
-
-    public static void dataExport() {
-
-    }
-
     public static void systemInit() {
         System.out.println("Please select mode:\n1. User Mode\t2.Admin Mode");
 

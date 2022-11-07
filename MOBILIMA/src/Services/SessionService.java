@@ -9,7 +9,6 @@ import java.sql.Timestamp;
 
 public class SessionService {
     private static int countSession = 0;
-    public static ArrayList<Session> sessions = new ArrayList<Session>();
 
     public static Scanner scan = new Scanner(System.in);
 
@@ -26,7 +25,7 @@ public class SessionService {
     }
 
     public static void addSessionToDB(Session session){
-        sessions.add(session);
+        Service.sessions.add(session);
     }
 
     public static void addSession(){
@@ -52,12 +51,11 @@ public class SessionService {
 
         Session session = new Session(sessionIndex,
                 movie,
-                CinplexService.getCinplexByName(cinplexName),
                 CinplexService.getCinplexById("ciineA").getCinema(cinemaCode),
                 convertStr2Time(startTime),
                 convertStr2Time(endTime)
         );
-        sessions.add(session);
+        Service.sessions.add(session);
     }
 
     public static Session getSessionByIndex(){
@@ -90,16 +88,16 @@ public class SessionService {
     }
 
     public static void showSessions() {
-        int num = sessions.size();
+        int num = Service.sessions.size();
         System.out.println("total number of sessions : " + num);
         for (int i = 0; i < num; i ++) {
-            sessions.get(i).viewDetails();
+            Service.sessions.get(i).viewDetails();
         }
     }
 
     public static void showSessionsByMovie(Movie movie) {
         int i = 0;
-        for (Session session : sessions) {
+        for (Session session : Service.sessions) {
             if (session.getMovie() != movie)
                 continue;
             System.out.printf("=== Session %d ===\n", ++i);
@@ -108,10 +106,10 @@ public class SessionService {
     }
 
     public static String removeSession(String sessionIndex) {
-        int num = sessions.size();
+        int num = Service.sessions.size();
         for (int i = 0; i < num; i ++) {
-            if (Objects.equals(sessions.get(i).getSessionIndex(), sessionIndex)) {//incompatable type, string and int
-                sessions.remove(i);
+            if (Objects.equals(Service.sessions.get(i).getSessionIndex(), sessionIndex)) {//incompatable type, string and int
+                Service.sessions.remove(i);
                 return "Successfully Removing the Session.";
             }
         }
@@ -119,17 +117,17 @@ public class SessionService {
     }
 
     public static Session getSessionBySessionIndex(String sessionIndex) {
-        int num = sessions.size();
+        int num = Service.sessions.size();
         for (int i = 0; i < num; i ++) {
-            if (Objects.equals(sessions.get(i).getSessionIndex(), sessionIndex)) {
-                return sessions.get(i);
+            if (Objects.equals(Service.sessions.get(i).getSessionIndex(), sessionIndex)) {
+                return Service.sessions.get(i);
             }
         }
         return null;
     }
 
     public String addSession(Session session) {
-        this.sessions.add(session);
+        Service.sessions.add(session);
         return "Successfully Adding the Session.";
     }
 }

@@ -39,6 +39,8 @@ public class PriceTable {
         holidayRate = 1.2;
         seatType.put(1, 1.0);
         seatType.put(2, 1.2);
+        specialRules.put("Senior",PRICE_RULE.OVERRIDE);
+        specialRules.put("Student",PRICE_RULE.OVERRIDE);
     }
 
     public double getHolidayRate() {

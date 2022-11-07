@@ -13,7 +13,7 @@ public class Session {
     public Session() {
     }
 
-    public Session(String sessionIndex, Movie movie, Cineplex cineplex, Cinema cinema, Timestamp startTime, Timestamp endTime) {
+    public Session(String sessionIndex, Movie movie, Cinema cinema, Timestamp startTime, Timestamp endTime) {
         this.sessionIndex = sessionIndex;
         this.movie = movie;
         this.cinema = cinema;

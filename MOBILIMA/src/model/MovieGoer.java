@@ -11,6 +11,8 @@ public class MovieGoer extends User {
 
     public MovieGoer(String userName){
         super(userName);
+        this.payments = new ArrayList<>();
+        this.reviews = new ArrayList<>();
     }
     public MovieGoer(String ageGroup, ArrayList<Payment> payments, ArrayList<Review> reviews,  String userName, String phone, String email, int age) {
         super(userName, phone, email, age);
