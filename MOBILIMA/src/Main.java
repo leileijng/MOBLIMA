@@ -12,13 +12,6 @@ public class Main {
 
     public static void main(String[] args) {
         Service.initialiseFromFile();
-        int sel = -1;
-        do{
-
-            //int sel = -1;
-            //select mode
-            mgCtr.mainPanel(movieGoer);
-        }while(sel != -1);
         systemInit();
     }
 
@@ -42,9 +35,8 @@ public class Main {
                 MovieGoerCtr.printMainPanel(movieGoer);
         }
         else {
-            AdminstaffCtr adminCtr = new AdminstaffCtr();
-            adminStaff = adminCtr.AdminstaffLogin();
-            adminCtr.printMainPanel(adminStaff);
+            adminStaff = AdminstaffCtr.AdminstaffLogin();
+            AdminstaffCtr.printMainPanel(adminStaff);
         }
     }
 

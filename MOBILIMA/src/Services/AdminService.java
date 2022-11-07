@@ -21,22 +21,22 @@ public class AdminService extends Service implements ManageMovie, ManageSession,
     }
 
     @Override
-    public  void unlistMovie() {
+    public void unlistMovie() {
         MovieService.removeMovie();
     }
 
     @Override
-    public  void addNewSession() {
+    public void addNewSession() {
         SessionService.addSession();
     }
 
     @Override
-    public  void updateSession() {
+    public void updateSession() {
         SessionService.editSession();
     }
 
     @Override
-    public  void delSession() {
+    public void delSession() {
         SessionService.removeSession();
     }
 

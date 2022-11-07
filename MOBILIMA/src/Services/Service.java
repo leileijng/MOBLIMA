@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Service {
-
     protected static List<Cineplex> cineplexes = new ArrayList<>();
     protected static List<Cinema> cinemas = new ArrayList<>();
     protected static List<Layout> layouts = new ArrayList<>();
@@ -16,7 +15,6 @@ public abstract class Service {
     protected static List<MovieGoer> movieGoerList = new ArrayList<>();
     protected static List<Review> reviews = new ArrayList<>();
     protected static List<Payment> payments = new ArrayList<>();
-
 
 
     public static void initialiseFromFile(){
@@ -48,7 +46,6 @@ public abstract class Service {
         int num = sessions.size();
         for (int i = 0; i < num; i ++) {
             System.out.println(sessions.get(i).getCinema().getCineplex().getCinplexName());
-            System.err.println(cinplexName);
             if(sessions.get(i).getCinema().getCineplex().getCinplexName().trim().equals(cinplexName.trim()))
                 sessions.get(i).viewDetails();
         }

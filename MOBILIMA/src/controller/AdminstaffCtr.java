@@ -140,16 +140,16 @@ public class AdminstaffCtr {
                             System.err.println("Please enter within the selection range (1-5)!");
                         }
                         else {
-                            if (op2 == 1) AdminService.viewAllSessions();
+                            if (op2 == 1) adminService.viewAllSessions();
                             else if (op2 == 2){
                                 System.out.println("Please enter the cinplex name: ");
                                 String cinplexName = scan.nextLine();
-                                AdminService.viewAllSessionsByCinplexName(cinplexName);
+                                adminService.viewAllSessionsByCinplexName(cinplexName);
                             }
                             else if (op2 == 3){
                                 System.out.println("Please enter the movie title: ");
                                 String movieTitle = scan.nextLine();
-                                AdminService.viewAllSessionsByMovieTitle(movieTitle);
+                                adminService.viewAllSessionsByMovieTitle(movieTitle);
                             }
                             else if (op2 == 4) {
                                 System.out.println("Back to Admin Console.");
@@ -218,7 +218,7 @@ public class AdminstaffCtr {
                             System.err.println("Please enter within the selection range (1-5)!");
                         }
                         else {
-                            if (op2 == 1) //AdminService.updatePriceTable();
+                            if (op2 == 1) //adminService.updatePriceTable();
                                 System.out.println("todo");
                             else if (op2 == 2) adminService.updatePublicHoliday();
                             else if (op2 == 3) adminService.configSystem();
