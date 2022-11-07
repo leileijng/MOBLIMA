@@ -4,11 +4,8 @@ import model.*;
 
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 import java.sql.Timestamp;
-import java.util.Vector;
 
 public class SessionService {
     private static int countSession = 0;
@@ -100,10 +97,20 @@ public class SessionService {
         }
     }
 
+    public static void showSessionsByMovie(Movie movie) {
+        int i = 0;
+        for (Session session : sessions) {
+            if (session.getMovie() != movie)
+                continue;
+            System.out.printf("=== Session %d ===\n", ++i);
+            session.viewDetails();
+        }
+    }
+
     public static String removeSession(String sessionIndex) {
         int num = sessions.size();
         for (int i = 0; i < num; i ++) {
-            if (sessions.get(i).getSessionIndex() == sessionIndex) {//incompatable type, string and int
+            if (Objects.equals(sessions.get(i).getSessionIndex(), sessionIndex)) {//incompatable type, string and int
                 sessions.remove(i);
                 return "Successfully Removing the Session.";
             }
@@ -114,7 +121,7 @@ public class SessionService {
     public static Session getSessionBySessionIndex(String sessionIndex) {
         int num = sessions.size();
         for (int i = 0; i < num; i ++) {
-            if (sessions.get(i).getSessionIndex() == sessionIndex) {
+            if (Objects.equals(sessions.get(i).getSessionIndex(), sessionIndex)) {
                 return sessions.get(i);
             }
         }

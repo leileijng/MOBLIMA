@@ -105,10 +105,8 @@ public class MoviegoerService extends Service{
      * @return status of booking, 1 for success, 0 for fail
      */
     public int makeBookingByMovie(MovieGoer movieGoer, Movie movie) {
-        // TODO SessionService Print session info for a specific movie,
-        //  now can only print sessions for all movies
-        // list sessions for user to select (for a movie)
-        SessionService.showSessions();
+        // list sessions for user to select for the movie
+         SessionService.showSessionsByMovie(movie);
 
         // let user select session
         System.out.println("Enter session ID: ");
