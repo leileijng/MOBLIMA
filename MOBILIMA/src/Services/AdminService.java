@@ -1,5 +1,6 @@
 package Services;
 
+import controller.MovieGoerCtr;
 import interfaces.ManageMovie;
 import interfaces.ManageSession;
 import interfaces.SystemConfiguration;
@@ -41,7 +42,9 @@ public class AdminService extends Service implements ManageMovie, ManageSession,
 
     @Override
     public  void configSystem() {
-        MoviegoerService.updateSortingStatus();
+        // TODO not sure where it be added to
+        MoviegoerService moviegoerService = new MoviegoerService();
+        moviegoerService.updateSortingStatus();
     }
 
     @Override

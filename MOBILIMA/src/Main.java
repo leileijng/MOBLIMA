@@ -37,8 +37,9 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         int sel = scan.nextInt();
         if (sel == 1) {
-            movieGoer = MoviegoerService.moviegoerLogin();
-            MoviegoerService.printMainPanel(movieGoer);
+            movieGoer = MovieGoerCtr.movieGoerLogin();
+            if (movieGoer!= null)
+                MovieGoerCtr.printMainPanel(movieGoer);
         }
         else {
             AdminstaffCtr adminCtr = new AdminstaffCtr();

@@ -149,7 +149,9 @@ public class MovieService {
     }
 
     public static void printAllCurrentMovies() {
+        int i = 0;
         for (Movie movie : showingMovieList) {
+            System.out.printf("%d\t", ++i);
             System.out.println(movie.getMovieTitle());
         }
     }
