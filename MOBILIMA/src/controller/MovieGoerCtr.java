@@ -195,18 +195,19 @@ public class MovieGoerCtr {
                 List<Review> reviews = movieGoer.getReviews();
                 int orderID;
                 do {
-                    System.out.println("Enter the id of the order you want to book:");
+                    System.out.println("Enter the index of the order you want " +
+                            "to review:");
                     try {
                         orderID = Integer.parseInt(scanner.nextLine());
                     } catch (Exception e) {
                         System.err.println("Input should be an integer!");
                         continue;
                     }
-                    if (orderID < 1 || orderID > reviews.size()) {
+                    if (orderID < 1 || orderID > movieGoer.getPayments().size()) {
                         System.err.println("ID out of range!");
                     } else {
                         moviegoerService.writeReview(movieGoer,
-                                reviews.get(orderID-1).getMovie());
+                                movieGoer.getPayments().get(orderID-1).getSession().getMovie());
                         return 1;
                     }
                 } while (true);

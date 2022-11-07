@@ -133,8 +133,8 @@ public class MovieService {
         System.out.println("Current Top 5 Movie By Revenue:");
         for (int i = 0; i < Math.min(5, Service.movieList.size()); ++i) {
             Movie movie = showingMovieList.get(i);
-            System.out.printf("%d\tTitle:%s\tRevenue:%.2f\n",
-                    i+1, movie.getMovieTitle(), movie.getTotalRevenue());
+            System.out.printf("%d\tRevenue: %5.2f\tTitle: %s\n",
+                    i+1, movie.getTotalRevenue(), movie.getMovieTitle());
         }
     }
 
@@ -143,8 +143,8 @@ public class MovieService {
         System.out.println("Top 5 Movie By Ratings: ");
         for (int i = 0; i < Math.min(5, Service.movieList.size()); ++i) {
             Movie movie = showingMovieList.get(i);
-            System.out.printf("%d\tTitle:%s\tRating:%.1f\n",
-                    i+1, movie.getMovieTitle(), movie.getOverallRating());
+            System.out.printf("%d\tRating:%5.1f\tTitle: %s\n",
+                    i+1, movie.getOverallRating(), movie.getMovieTitle());
         }
     }
 

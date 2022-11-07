@@ -59,7 +59,7 @@ public class SessionService {
     }
 
     public static Session getSessionByIndex(){
-        showSessions();
+        // showSessions();
         Session session = null;
         do{
             System.out.println("Please enter the session index to edit : ");
@@ -98,10 +98,10 @@ public class SessionService {
     public static void showSessionsByMovie(Movie movie) {
         int i = 0;
         for (Session session : Service.sessions) {
-            if (session.getMovie() != movie)
-                continue;
-            System.out.printf("=== Session %d ===\n", ++i);
-            session.viewDetails();
+            if (session.getMovie().getMovieTitle().equals(movie.getMovieTitle())) {
+                System.out.printf("=== Session %d ===\n", ++i);
+                session.viewDetails();
+            }
         }
     }
 

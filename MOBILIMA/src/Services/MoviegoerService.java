@@ -106,6 +106,7 @@ public class MoviegoerService extends Service{
      */
     public int makeBookingByMovie(MovieGoer movieGoer, Movie movie) {
         // list sessions for user to select for the movie
+        System.out.println("Booking for movie " + movie.getMovieTitle());
          SessionService.showSessionsByMovie(movie);
 
         // let user select session
@@ -271,8 +272,6 @@ public class MoviegoerService extends Service{
             return -1;
         }
         for (Payment payment : payments) {
-            // TODO: Add ticket information
-            // Ticket ticket = payment.getTicket();
             System.out.printf("=== For record %d ===\n", ++i);
             System.out.printf("Transaction ID: %s\n", payment.getTID());
             System.out.printf("Price: %.2f\n", payment.getPrice());
