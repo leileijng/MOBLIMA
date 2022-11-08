@@ -42,9 +42,7 @@ public class AdminService extends Service implements ManageMovie, ManageSession,
 
     @Override
     public  void configSystem() {
-        // TODO not sure where it be added to
-        MoviegoerService moviegoerService = new MoviegoerService();
-        moviegoerService.updateSortingStatus();
+        MoviegoerService.updateSortingStatus();
     }
 
     @Override

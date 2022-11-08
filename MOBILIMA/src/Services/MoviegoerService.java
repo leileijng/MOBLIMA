@@ -9,8 +9,8 @@ import java.util.Scanner;
 
 public class MoviegoerService extends Service{
     private static final Scanner scanner = new Scanner(System.in);
-    private boolean canListByRevenue;
-    private boolean canListByRatings;
+    private static boolean canListByRevenue;
+    private static boolean canListByRatings;
 
     /**
      * Given a username, check if it is in the database, return reference
@@ -38,7 +38,7 @@ public class MoviegoerService extends Service{
      * Update movie-goers accessibility to view movies
      * sorted by revenue or by ratings.
      */
-    public void updateSortingStatus() {
+    public static void updateSortingStatus() {
         System.out.println("Enter attribute to set: ");
         System.out.println("1: Whether User can list by revenue or not.");
         System.out.println("2: Whether User can list by ratings or not.");
@@ -57,7 +57,7 @@ public class MoviegoerService extends Service{
      * Helper function for updateSortingStatus,
      * decide whether movie-goers can view by revenue or not
      */
-    public void updateListByRevenue() {
+    private static void updateListByRevenue() {
         System.out.println("Set User can list movies by revenue or not? " +
                 "(Yes 1 / No 0)");
         int choice = Integer.parseInt(scanner.nextLine());
@@ -74,7 +74,7 @@ public class MoviegoerService extends Service{
      * Helper function for updateSortingStatus,
      * decide whether movie-goers can view by ratings or not
      */
-    public void updateListByRatings() {
+    private static void updateListByRatings() {
         System.out.println("Set User can list movies by ratings or not? " +
                 "(Yes 1 / No 0)");
         int choice = Integer.parseInt(scanner.nextLine());
@@ -189,7 +189,7 @@ public class MoviegoerService extends Service{
      * @param seatID seat the user is to book
      * @return calculated price
      */
-    public static double calculateAdultPrice(Session session, String seatID) {
+    private static double calculateAdultPrice(Session session, String seatID) {
         String movieType = session.getMovie().getMovieType().toString();
         String cinemaClass = session.getCinema().getClassOfCinema().toString();
         int seatType = session.getTicketBySeatID(seatID).getSeatType();
@@ -203,7 +203,7 @@ public class MoviegoerService extends Service{
      * @param seatID seat the user is to book
      * @return calculated price
      */
-    public double calculateSeniorPrice(Session session, String seatID) {
+    private double calculateSeniorPrice(Session session, String seatID) {
         String movieType = session.getMovie().getMovieType().toString();
         String cinemaClass = session.getCinema().getClassOfCinema().toString();
         int seatType = session.getTicketBySeatID(seatID).getSeatType();
@@ -217,7 +217,7 @@ public class MoviegoerService extends Service{
      * @param seatID seat the user is to book
      * @return calculated price
      */
-    public double calculateStudentPrice(Session session, String seatID) {
+    private double calculateStudentPrice(Session session, String seatID) {
         String movieType = session.getMovie().getMovieType().toString();
         String cinemaClass = session.getCinema().getClassOfCinema().toString();
         int seatType = session.getTicketBySeatID(seatID).getSeatType();
@@ -231,7 +231,7 @@ public class MoviegoerService extends Service{
      * @param session session the user is to book
      * @return transaction ID
      */
-    public String generateTransactionID(Session session) {
+    private String generateTransactionID(Session session) {
         String cinemaCode = session.getCinema().getCinemaCode();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
         LocalDateTime time = LocalDateTime.now();
@@ -262,7 +262,7 @@ public class MoviegoerService extends Service{
      * Helper function to capture personal information of the user after booking
      * @param movieGoer movie-goer made the booking
      */
-    public void capturePersonalInfo(MovieGoer movieGoer) {
+    private void capturePersonalInfo(MovieGoer movieGoer) {
         System.out.println("Please input your name: ");
         String name = scanner.nextLine();
         System.out.println("Please input your mobile number: ");
