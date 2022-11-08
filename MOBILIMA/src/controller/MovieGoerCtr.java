@@ -29,7 +29,11 @@ public class MovieGoerCtr {
             password = scanner.nextLine();
         } while (!password.equals("12345678"));
         MovieGoer movieGoer = moviegoerService.getMovieGoerByName(username);
-        return movieGoer == null ? new MovieGoer(username) : movieGoer;
+        if (movieGoer == null) {
+            movieGoer = new MovieGoer(username);
+            moviegoerService.addMovieGoer(movieGoer);
+        }
+        return movieGoer;
     }
 
     /**

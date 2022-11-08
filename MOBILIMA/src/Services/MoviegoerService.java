@@ -4,8 +4,6 @@ import model.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,12 +11,6 @@ public class MoviegoerService extends Service{
     private static final Scanner scanner = new Scanner(System.in);
     private boolean canListByRevenue;
     private boolean canListByRatings;
-    // list of all payments history
-    private final List<Payment> payments = new LinkedList<>();
-    // list of all reviews
-    private final List<Review> reviews = new LinkedList<>();
-    // list of all users in the database
-    private final List<MovieGoer> movieGoers = new ArrayList<>();
 
     /**
      * Given a username, check if it is in the database, return reference
@@ -27,7 +19,7 @@ public class MoviegoerService extends Service{
      * @return MovieGoer object of the user
      */
     public MovieGoer getMovieGoerByName(String username) {
-        for (MovieGoer movieGoer : movieGoers) {
+        for (MovieGoer movieGoer : movieGoerList) {
             if (movieGoer.getUsername().equals(username))
                 return movieGoer;
         }
@@ -39,7 +31,7 @@ public class MoviegoerService extends Service{
      * @param movieGoer movie-goer to be added
      */
     public void addMovieGoer(MovieGoer movieGoer) {
-        movieGoers.add(movieGoer);
+        movieGoerList.add(movieGoer);
     }
 
     /**

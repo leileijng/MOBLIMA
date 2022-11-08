@@ -7,10 +7,9 @@ import model.ShowingStatus;
 
 import java.util.*;
 
-public class MovieService {
+public class MovieService extends Service {
     static Scanner scanner = new Scanner(System.in);
     static Date date = new Date(System.currentTimeMillis());
-    static List<Movie> showingMovieList = new ArrayList<>();
 
     /**
      * Add movie to movie list and showing movie list in the database
