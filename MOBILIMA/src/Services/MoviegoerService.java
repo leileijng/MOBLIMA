@@ -4,6 +4,7 @@ import model.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,6 +17,30 @@ public class MoviegoerService extends Service{
     private final List<Payment> payments = new LinkedList<>();
     // list of all reviews
     private final List<Review> reviews = new LinkedList<>();
+    // list of all users in the database
+    private final List<MovieGoer> movieGoers = new ArrayList<>();
+
+    /**
+     * Given a username, check if it is in the database, return reference
+     * if it is in the database
+     * @param username username of the user to be found
+     * @return MovieGoer object of the user
+     */
+    public MovieGoer getMovieGoerByName(String username) {
+        for (MovieGoer movieGoer : movieGoers) {
+            if (movieGoer.getUsername().equals(username))
+                return movieGoer;
+        }
+        return null;
+    }
+
+    /**
+     * Add a moviegoer to the list to store
+     * @param movieGoer movie-goer to be added
+     */
+    public void addMovieGoer(MovieGoer movieGoer) {
+        movieGoers.add(movieGoer);
+    }
 
     /**
      * Update movie-goers accessibility to view movies
@@ -267,7 +292,7 @@ public class MoviegoerService extends Service{
     public int printAllOrders(MovieGoer movieGoer) {
         List<Payment> payments = movieGoer.getPayments();
         int i = 0;
-        if (payments == null) {
+        if (payments == null || payments.size() == 0) {
             System.out.println("No history found!");
             return -1;
         }

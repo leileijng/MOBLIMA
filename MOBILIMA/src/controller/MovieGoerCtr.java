@@ -13,8 +13,9 @@ public class MovieGoerCtr {
     public static MoviegoerService moviegoerService = new MoviegoerService();
 
     /**
-     * Create a movieGoer object with username and password
-     * @return movie-goer object
+     * Find a movieGoer with the username and password,
+     * if the username cannot be found, create a new one
+     * @return an movie-goer object
      */
     public static MovieGoer movieGoerLogin() {
         String username;
@@ -27,7 +28,8 @@ public class MovieGoerCtr {
             System.out.println("Please enter your password: ");
             password = scanner.nextLine();
         } while (!password.equals("12345678"));
-        return new MovieGoer(username);
+        MovieGoer movieGoer = moviegoerService.getMovieGoerByName(username);
+        return movieGoer == null ? new MovieGoer(username) : movieGoer;
     }
 
     /**
