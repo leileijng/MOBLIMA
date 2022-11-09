@@ -12,7 +12,6 @@ public abstract class Price {
     private String movieType;
     private String cinemaClass;
     private DayOfWeek weekDay;
-    private boolean holiday;
     private int seatType;
 
     public Price(String movieType, String cinemaClass, int seatType) {
@@ -22,7 +21,6 @@ public abstract class Price {
         this.seatType = seatType;
         LocalDate today = LocalDate.now();
         weekDay = today.getDayOfWeek();
-        //TODO decide whether it is in the holiday;
     }
     public abstract double calculatePrice();
 
@@ -43,7 +41,8 @@ public abstract class Price {
     }
 
     public boolean isHoliday() {
-        return holiday;
+        LocalDate today = LocalDate.now();
+        return priceTable.isHoliday(today.getDayofWeek());
     }
 
     public int getSeatType() {

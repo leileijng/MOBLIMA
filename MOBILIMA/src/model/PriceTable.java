@@ -1,5 +1,7 @@
 package model;
 
+import interfaces.SystemConfiguration;
+
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,8 +19,7 @@ public class PriceTable {
     private HashMap<DayOfWeek,Double> weekDay = new HashMap<DayOfWeek, Double>();
     enum PRICE_RULE {OVERRIDE, DISCOUNT, NORMAL};
     private HashMap<String,PRICE_RULE> specialRules = new HashMap<String, PRICE_RULE>();
-
-    HashMap<Integer,Double> seatType = new HashMap<>();
+    private HashMap<Integer,Double> seatType = new HashMap<Integer, Double>();
 
     public PriceTable(){
         prices.put("Basic", 30.0);
@@ -62,6 +63,9 @@ public class PriceTable {
         return this.weekDay.get(day);
     }
 
+    public double getSeatType(int type) { return seatType.get(type); }
+
+    /*
     public void viewPriceTable() {
         System.out.println("=========================================================");
         System.out.println(">> Movie Type   :");
@@ -73,6 +77,7 @@ public class PriceTable {
         System.out.println(">> Holiday      :");
         //System.out.println(this.holiday);
     }
+    */
 
     public void updatePrices(){
         Scanner scan = new Scanner(System.in);
@@ -117,6 +122,15 @@ public class PriceTable {
         this.weekDay.put(DayOfWeek.valueOf(weekDay), para);
     }
 
+    public void updateSeatType() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Please enter the seat type : ");
+        String seatType = scan.nextInt();
+        System.out.println("Please enter the parameter : ");
+        double para = scan.nextDouble();
+        this.seatType.put(seatType, para);
+    }
+
     public void updateSpecialRules() {
         String group = null;
         Scanner scan = new Scanner(System.in);
@@ -143,7 +157,6 @@ public class PriceTable {
         return specialRules.get(group);
     }
 
-    //TODO add holiday date (and its relevant methods)
     public void updateHolidayDates() throws ParseException {
         System.out.println(this.holiday);
         System.out.println("What you wanna do about the holiday set?\n1.add a new date\t2.remove a existing date");
@@ -164,5 +177,29 @@ public class PriceTable {
         return this.holiday.contains(date);
     }
 
-    //TODO transform attributes type to enum when possible
+    public void updatePriceTable() {
+        Scanner scan = new Scanner(System.in);
+        int op;
+        System.out.println("Please enter the features you wanna update : ");
+        System.out.println("1. base prices");
+        System.out.println("2. movie types affect parameters");
+        System.out.println("3. cinema classes affect parameters");
+        System.out.println("4. week dates affect parameters");
+        System.out.println("5. seat types affect parameters");
+        System.out.println("6. holiday rate");
+        System.out.println("7. special rules");
+        op = scan.nextInt();
+        try {
+            if (op == 1) updatePrices();
+            if (op == 2) updateMovieType();
+            if (op == 3) updateCinemaClass();
+            if (op == 4) updateWeekDay();
+            if (op == 5) updateSeatType();
+            if (op == 6) updateHolidayRate();
+            if (op == 7) updateSpecialRules();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }

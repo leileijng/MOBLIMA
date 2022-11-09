@@ -19,13 +19,15 @@ public class StudentPrice extends Price{
                          * priceTable.getDayRate(this.getWeekDay())
                          * priceTable.getCinemaClass(this.getCinemaClass())
                          * priceTable.getMovieTypeRate(this.getMovieType())
+                         * priceTable.getSeatType(this.getSeatType())
                          * 0.8;
                 break;
             case NORMAL:
                 price = priceTable.getPriceByType("basic")
                         * priceTable.getDayRate(this.getWeekDay())
                         * priceTable.getCinemaClass(this.getCinemaClass())
-                        * priceTable.getMovieTypeRate(this.getMovieType());
+                        * priceTable.getMovieTypeRate(this.getMovieType())
+                        * priceTable.getSeatType(this.getSeatType());
                 break;
         }
         return (double) Math.round(price * 100) / 100;
