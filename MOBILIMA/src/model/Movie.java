@@ -347,7 +347,7 @@ public class Movie {
          System.out.println(jvpr.getTotalRevenue());
     }
 
-    public void setDateEndOfShowingDate(int year, int month, int day) {
+    public void setDateEndOfShowing(int year, int month, int day) {
         Calendar calendar = new GregorianCalendar();
         calendar.set(year, month, day);
         dateEndOfShowing = calendar.getTime();

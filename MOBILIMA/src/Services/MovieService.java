@@ -30,6 +30,7 @@ public class MovieService extends Service {
         updateMovieCasts(movie);
         updateMovieSynopsis(movie);
         updateMovieClassification(movie);
+        updateMovieEndOfShowingDate(movie);
         addMovieToDB(movie);
     }
 
@@ -44,6 +45,7 @@ public class MovieService extends Service {
         System.out.println(" 3: edit movie casts");
         System.out.println(" 4: edit movie synopsis");
         System.out.println(" 5: edit movie classification");
+        System.out.println(" 6: edit movie end of showing date");
         System.out.println("-1: quit");
         System.out.println("Enter your choice: ");
         int choice = Integer.parseInt(scanner.nextLine());
@@ -53,6 +55,7 @@ public class MovieService extends Service {
             case 3 -> updateMovieCasts(movie);
             case 4 -> updateMovieSynopsis(movie);
             case 5 -> updateMovieClassification(movie);
+            case 6 -> updateMovieEndOfShowingDate(movie);
             default -> System.out.println("Invalid choice!");
         }
     }
@@ -63,7 +66,8 @@ public class MovieService extends Service {
         Movie movie = getMovieByName(title);
         if (movie == null)
             throw new IllegalArgumentException("Cannot find movie!");
-
+        showingMovieList.remove(movie);
+        movieList.remove(movie);
     }
     public static void updateMovieDirector(Movie movie) {
         System.out.println("Enter director of the movie: ");
@@ -86,8 +90,28 @@ public class MovieService extends Service {
         movie.setCasts(casts);
     }
 
+    public static void updateMovieEndOfShowingDate(Movie movie) {
+        do {
+            System.out.println("Enter end of showing date for movie " +
+                    movie.getMovieTitle() + "(format: YYYYMMDD): ");
+            String input = scanner.nextLine();
+            try {
+                int year = Integer.parseInt(input.substring(0, 4));
+                int month = Integer.parseInt(input.substring(4, 6));
+                int day = Integer.parseInt(input.substring(6, 8));
+                System.out.println("Set date: " + year + month + day);
+                // movie.setDateEndOfShowing(year, month, day);
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid input!");
+            }
+        } while (true);
+
+    }
+
     public static void updateMovieStatus(Movie movie) {
-        System.out.println("Enter showing status of the movie:");
+        System.out.println("Enter showing status for movie " +
+                movie.getMovieTitle() + ": ");
         System.out.println("1 for Coming Soon\t2 for Preview");
         System.out.println("3 for Now showing\t4 for End of Showing");
         int choice = Integer.parseInt(scanner.nextLine());
@@ -128,7 +152,8 @@ public class MovieService extends Service {
     }
 
     public static void printTop5MovieByRevenue() {
-        showingMovieList.sort(Comparator.comparingDouble(Movie::getTotalRevenue).reversed());
+        showingMovieList.sort(Comparator.
+                comparingDouble(Movie::getTotalRevenue).reversed());
         System.out.println("Current Top 5 Movie By Revenue:");
         for (int i = 0; i < Math.min(5, Service.movieList.size()); ++i) {
             Movie movie = showingMovieList.get(i);
@@ -138,7 +163,8 @@ public class MovieService extends Service {
     }
 
     public static void printTop5MovieByRatings() {
-        showingMovieList.sort(Comparator.comparingDouble(Movie::getOverallRating).reversed());
+        showingMovieList.sort(Comparator.
+                comparingDouble(Movie::getOverallRating).reversed());
         System.out.println("Top 5 Movie By Ratings: ");
         for (int i = 0; i < Math.min(5, Service.movieList.size()); ++i) {
             Movie movie = showingMovieList.get(i);
@@ -151,6 +177,15 @@ public class MovieService extends Service {
         int i = 0;
         for (Movie movie : showingMovieList) {
             System.out.printf("%d\t", ++i);
+            System.out.println(movie.getMovieTitle());
+        }
+    }
+
+    public static void printAllMovies() {
+        int i = 0;
+        for (Movie movie : movieList) {
+            System.out.printf("%d:\tstatus:%s\t\t", ++i,
+                    movie.getShowingStatus().toString());
             System.out.println(movie.getMovieTitle());
         }
     }
@@ -187,7 +222,7 @@ public class MovieService extends Service {
             movies[i].addReview(new Review("456", movies[i], i%5+1, "comment "+i));
 
             movies[i].addRevenue(100 * i);
-            movies[i].setDateEndOfShowingDate(2022, 10, 10);
+            movies[i].setDateEndOfShowing(2022, 10, 10);
             MovieService.addMovieToDB(movies[i]);
         }
         MovieService.printTop5MovieByRatings();

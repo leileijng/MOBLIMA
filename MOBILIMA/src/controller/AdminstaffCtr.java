@@ -70,7 +70,7 @@ public class AdminstaffCtr {
                             System.err.println("Please enter within the selection range (1-5)!");
                         }
                         else {
-                            if (op2 == 1) MovieService.printAllCurrentMovies();
+                            if (op2 == 1) MovieService.printAllMovies();
                             else if (op2 == 2) MovieService.printTop5MovieByRevenue();
                             else if (op2 == 3) MovieService.printTop5MovieByRatings();
                             else if (op2 == 4) {
