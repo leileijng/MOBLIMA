@@ -45,7 +45,7 @@ public class MovieGoerCtr {
         int choice = 0;
         do {
             try {
-                System.out.println(" 1: View Movies");
+                System.out.println(" 1: View/Search Movies");
                 System.out.println(" 2: View My Reviews");
                 System.out.println(" 3: View My Orders");
                 System.out.println(" 0: Go back");
@@ -106,6 +106,7 @@ public class MovieGoerCtr {
                 System.out.println("1: View All Current Movies");
                 System.out.println("2: View Top 5 Movie by Revenue");
                 System.out.println("3: View Top 5 Movie by Ratings");
+                System.out.println("4: Search Movie by Name");
                 System.out.println("0: Go Back");
                 System.out.println("-1: Logout");
                 System.out.println("Enter your choice: ");
@@ -113,8 +114,8 @@ public class MovieGoerCtr {
             }  catch (Exception e) {
                 System.err.println("Input choice should be an integer!");
             }
-            if (choice < -1 || choice > 3) {
-                System.err.println("Choice should be between -1 to 3!");
+            if (choice < -1 || choice > 4) {
+                System.err.println("Choice should be between -1 to 4!");
             } else {
                 switch (choice) {
                     case -1 -> { return -1; }
@@ -122,6 +123,7 @@ public class MovieGoerCtr {
                     case  1 -> moviegoerService.viewMovieByFilter("");
                     case  2 -> moviegoerService.viewMovieByFilter("revenue");
                     case  3 -> moviegoerService.viewMovieByFilter("ratings");
+                    case  4 -> moviegoerService.searchMovieByName();
                 }
                 if (choice == 1)
                     return bookingPanel(movieGoer);

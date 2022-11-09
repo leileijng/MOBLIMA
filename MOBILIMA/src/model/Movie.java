@@ -286,6 +286,10 @@ public class Movie {
         info.append("Director: \t").append(getDirector()).append("\n");
         info.append("Casts: \t").append(Arrays.toString(getCasts()))
                 .append("\n");
+        info.append("Classification: \t").append(getClassification())
+                .append("\n");
+        info.append("End of showing date: \t").append(getDateEndOfShowing())
+                .append("\n");
         info.append("Rating: \t").append(getOverallRating()).append("\n");
         info.append("Revenue: \t").append(getTotalRevenue()).append("\n");
         System.out.println(info.toString());

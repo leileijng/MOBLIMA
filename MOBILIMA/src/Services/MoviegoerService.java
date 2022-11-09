@@ -115,6 +115,22 @@ public class MoviegoerService extends Service{
         }
     }
 
+    public void searchMovieByName() {
+        System.out.println("Enter the name of the movie you want to search: " +
+                "(-1 to quit)");
+        String name = scanner.nextLine();
+        if (name.equals("-1"))
+            return ;
+        Movie movie = MovieService.getMovieByName(name);
+        if (movie == null) {
+            System.out.println("Sorry cannot find the movie you entered.");
+        }
+        else {
+            System.out.println("Movie found!");
+            movie.printInfo();
+        }
+    }
+
     /**
      * Make booking for movieGoer for movie
      * @param movieGoer user to book
