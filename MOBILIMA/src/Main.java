@@ -8,15 +8,12 @@ public class Main {
     public static MovieGoer movieGoer;
     public static AdminStaff adminStaff;
 
-    public static PriceTable priceTable;
-
     public static void main(String[] args) {
         Service.initialiseFromFile();
         systemInit();
     }
 
     public static void systemInit() {
-
         Scanner scan = new Scanner(System.in);
         int sel;
         do {
