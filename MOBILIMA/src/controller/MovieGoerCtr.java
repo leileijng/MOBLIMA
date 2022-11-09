@@ -215,7 +215,8 @@ public class MovieGoerCtr {
                         System.err.println("ID out of range!");
                     } else {
                         moviegoerService.writeReview(movieGoer,
-                                movieGoer.getPayments().get(orderID-1).getSession().getMovie());
+                                movieGoer.getPayments().get(orderID-1)
+                                        .getSession().getMovie());
                         return 1;
                     }
                 } while (true);

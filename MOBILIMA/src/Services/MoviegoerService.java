@@ -267,6 +267,7 @@ public class MoviegoerService extends Service{
         }
         for (Review review : reviews) {
             System.out.printf("=== Review %d ===\n", ++i);
+            System.out.println("Movie Name: " + review.getMovie().getMovieTitle());
             System.out.println("Ratings:\t"+review.getRating());
             System.out.println("Comments:\t"+review.getComments());
         }
@@ -306,6 +307,10 @@ public class MoviegoerService extends Service{
         }
         for (Payment payment : payments) {
             System.out.printf("=== For record %d ===\n", ++i);
+            System.out.printf("Movie Name: %s\n", payment.getSession()
+                    .getMovie().getMovieTitle());
+            System.out.printf("Session Time: %s\n", payment.getSession()
+                    .getStartTime().toString());
             System.out.printf("Transaction ID: %s\n", payment.getTID());
             System.out.printf("Price: %.2f\n", payment.getPrice());
         }
@@ -321,7 +326,7 @@ public class MoviegoerService extends Service{
         int ratings = -1;
         do {
             System.out.println("Enter the rating of the movie: " +
-                    "(integer between 1 to 5");
+                    "(integer between 1 to 5)");
             try {
                 ratings = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {

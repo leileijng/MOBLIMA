@@ -81,6 +81,10 @@ public class Session {
         }
         return null;
     }
+
+    public Timestamp getStartTime() {
+        return startTime;
+    }
      public String getSessionIndex() {
         return sessionIndex;
     }
