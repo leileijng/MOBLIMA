@@ -20,18 +20,28 @@ public class MovieGoerCtr {
     public static MovieGoer movieGoerLogin() {
         String username;
         String password;
+        boolean access = false;
+        MovieGoer movieGoer = null;
         do {
             System.out.println("Please enter your username: (enter -1 to quit)");
             username = scanner.nextLine();
             if (username.equals("-1"))
                 return null;
-            System.out.println("Please enter your password: ");
-            password = scanner.nextLine();
-        } while (!password.equals("12345678"));
-        MovieGoer movieGoer = moviegoerService.getMovieGoerByName(username);
+            if((movieGoer = moviegoerService.getMovieGoerByName(username))!=null){
+                System.out.println("Please enter your password: ");
+                password = scanner.nextLine();
+                if(password.equals("12345678")) access = true;
+            }
+            else access = true;
+        } while (!access);
+
         if (movieGoer == null) {
+            System.out.println("Hi," + username + "! Nice to meet you!");
             movieGoer = new MovieGoer(username);
             moviegoerService.addMovieGoer(movieGoer);
+        }
+        else{
+            System.out.println("Welcome back " + username + "!");
         }
         return movieGoer;
     }

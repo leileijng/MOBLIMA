@@ -14,6 +14,7 @@ public class Main {
     }
 
     public static void systemInit() {
+        System.out.println("**************************\n*   Welcome to Mobilima  * \n*     Golden Village     *\n**************************\n");
         Scanner scan = new Scanner(System.in);
         int sel;
         do {

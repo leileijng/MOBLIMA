@@ -145,17 +145,29 @@ public class MoviegoerService extends Service{
 
         // let user select session
         System.out.println("Enter session ID: ");
-        // TODO SessionService change session prompt message for user
-        Session session = SessionService.getSessionByIndex();
+        Session session = SessionService.getSessionByIndex("Please enter the session index to book:");
 
         // shows available seats and let user select seat
         System.out.println("Layout: ");
         session.viewTickets();
-        System.out.println("Select row of the seat: ");
-        String row = scanner.nextLine();
-        System.out.println("Select col of the seat: ");
-        String col = scanner.nextLine();
-        String seatID = row + col;
+        Ticket ticket = null;
+        String seatID = "";
+        // check for seat availability
+        do{
+            System.out.println("Select row of the seat: ");
+            String row = scanner.nextLine();
+            System.out.println("Select col of the seat: ");
+            String col = scanner.nextLine();
+            seatID = row + col;
+            ticket = session.getTicketBySeatID(seatID);
+            if(ticket == null) System.err.println("There is no seat in your selected place");
+            else if(ticket.isBooked()) {
+                ticket = null;
+                System.err.println("The seat is not available");
+            }
+        }while(ticket == null);
+
+
 
         // calculate prices for adult, senior, and student
         // and let users choose which ticket to buy
@@ -255,7 +267,7 @@ public class MoviegoerService extends Service{
         String cinemaCode = session.getCinema().getCinemaCode();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
         LocalDateTime time = LocalDateTime.now();
-        return cinemaCode.substring(0, 3) + dtf.format(time);
+        return cinemaCode + dtf.format(time);
     }
 
     /**
@@ -327,14 +339,14 @@ public class MoviegoerService extends Service{
      * @param movie movie to be reviewed
      */
     public void writeReview(MovieGoer movieGoer, Movie movie) {
-        int ratings = -1;
+        double ratings = -1;
         do {
             System.out.println("Enter the rating of the movie: " +
-                    "(integer between 1 to 5)");
+                    "(between 1 to 5)");
             try {
-                ratings = Integer.parseInt(scanner.nextLine());
+                ratings = Double.parseDouble(scanner.nextLine());
             } catch (Exception e) {
-                System.err.println("Input should be an integer!");
+                System.err.println("Input should be a number!");
                 continue;
             }
             if (ratings < 1 || ratings > 5)

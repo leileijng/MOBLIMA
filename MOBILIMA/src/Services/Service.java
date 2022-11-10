@@ -26,12 +26,6 @@ public abstract class Service {
         sessions = DataImport.importSessions();
         reviews = DataImport.importReviews();
         payments = DataImport.importPayment();
-
-    }
-    public void viewAllMovies(){
-        for (Movie movie : showingMovieList) {
-            System.out.println(movie.getMovieTitle());
-        }
     }
 
     public static void viewAllSessions(){

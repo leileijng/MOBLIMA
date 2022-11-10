@@ -58,11 +58,11 @@ public class SessionService {
         Service.sessions.add(session);
     }
 
-    public static Session getSessionByIndex(){
+    public static Session getSessionByIndex(String msg){
         // showSessions();
         Session session = null;
         do{
-            System.out.println("Please enter the session index to edit : ");
+            System.out.println(msg);
             String sessionIdx = scan.nextLine();
             session = getSessionBySessionIndex(sessionIdx);
             if(session == null) System.err.println("Please provide valid session ID!");
@@ -71,7 +71,7 @@ public class SessionService {
     }
 
     public static void editSession(){
-        Session session = getSessionByIndex();
+        Session session = getSessionByIndex("Please enter the session index to edit:");
         System.out.println("Please enter the start time : ");
         String startTime = scan.nextLine();
         System.out.println("Please enter the end time : ");

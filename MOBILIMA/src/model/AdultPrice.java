@@ -9,6 +9,7 @@ public class AdultPrice extends Price{
 
     @Override
     public double calculatePrice() {
+        System.out.println(this.getSeatType());
         double price = priceTable.getPriceByType("Basic")
                 * priceTable.getDayRate(this.getWeekDay())
                 * priceTable.getCinemaClass(this.getCinemaClass())

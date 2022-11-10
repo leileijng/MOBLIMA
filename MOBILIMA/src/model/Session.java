@@ -23,7 +23,7 @@ public class Session {
             char rowIndex = (char)('A' + i);
             for (int j = 0; j < cinema.getLayout().getCol(); j ++) {
                 if(cinema.getLayout().getSeats()[i][j] == 1 || cinema.getLayout().getSeats()[i][j] == 2){
-                    tickets.add(new Ticket(Character.toString(rowIndex) + "" + j, cinema.getCinemaCode()));//Cannot convert int to string with (String)
+                    tickets.add(new Ticket(Character.toString(rowIndex) + "" + j, cinema.getCinemaCode(), cinema.getLayout().getSeats()[i][j]));
                 }
             }
         }
@@ -55,7 +55,7 @@ public class Session {
                 else {
                     if (this.tickets.get(cnt).isBooked()) System.out.print("[v]");//Array reqiured but Vector<Ticket> found
                     else System.out.print("[ ]");
-                    cnt += 1;
+                    cnt ++;
                 }
             }
             System.out.print("\n");
@@ -81,6 +81,7 @@ public class Session {
         }
         return null;
     }
+
 
     public Timestamp getStartTime() {
         return startTime;

@@ -10,19 +10,12 @@ public class Ticket {
     private Boolean booked;
     private String cinemaCode;
 
-    public Ticket(Session session, int seatType, String seatIndex, double price, Boolean booked, String cinemaCode) {
-        this.session = session;
-        this.seatType = seatType;
-        this.seatIndex = seatIndex;
-        this.price = price;
-        this.booked = booked;
-        this.cinemaCode = cinemaCode;
-    }
 
-    public Ticket(String seatIndex, String cinemaCode) {
+    public Ticket(String seatIndex, String cinemaCode, int seatType) {
         this.seatIndex = seatIndex;
         this.booked = false;
         this.cinemaCode = cinemaCode;
+        this.seatType = seatType;
     }
 
     public Boolean isBooked() {

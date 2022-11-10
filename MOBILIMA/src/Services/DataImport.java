@@ -205,6 +205,7 @@ public class DataImport {
                 Session session = getSessionById(row_str.get(2).replaceAll("\\p{C}", "").trim());
                 String seatIndex = row_str.get(4).replaceAll("\\p{C}", "").trim();
                 double price = Double.parseDouble(row_str.get(5).replaceAll("\\p{C}", "").trim());
+                if(session.getSessionIndex().equals("ciineA3m_202211201400")) System.out.println(session.occupySeat(seatIndex, price));
                 session.occupySeat(seatIndex, price);
                 //System.out.println("occupy session for" + session.getMovie().getMovieTitle() + " with session " + session.getSessionIndex());
                 Payment payment = new Payment(TID, session, movieGoer, price);
