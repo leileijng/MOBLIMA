@@ -1,8 +1,10 @@
 package model;
 
+import java.util.Date;
+
 public class AdultPrice extends Price{
-    public AdultPrice(String movieType, String cinemaClass, int seatType) {
-        super(movieType, cinemaClass, seatType);
+    public AdultPrice(String movieType, String cinemaClass, int seatType, Date date) {
+        super(movieType, cinemaClass, seatType, date);
     }
 
     @Override

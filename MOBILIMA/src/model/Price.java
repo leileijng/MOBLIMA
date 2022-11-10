@@ -1,6 +1,7 @@
 package model;
 
 import java.time.DayOfWeek;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
@@ -8,19 +9,18 @@ import java.util.Scanner;
 import java.util.Set;
 
 public abstract class Price {
-    protected static PriceTable priceTable;
+    protected static PriceTable priceTable = new PriceTable();
     private String movieType;
     private String cinemaClass;
-    private DayOfWeek weekDay;
+    private Date date;
     private int seatType;
 
-    public Price(String movieType, String cinemaClass, int seatType) {
+    public Price(String movieType, String cinemaClass, int seatType, Date date) {
         priceTable = new PriceTable();
         this.movieType = movieType;
         this.cinemaClass = cinemaClass;
         this.seatType = seatType;
-        LocalDate today = LocalDate.now();
-        weekDay = today.getDayOfWeek();
+        this.date = date;
     }
     public abstract double calculatePrice();
 
@@ -37,12 +37,15 @@ public abstract class Price {
     }
 
     public DayOfWeek getWeekDay() {
-        return weekDay;
+        return new java.sql.Date(date.getTime()).toLocalDate().getDayOfWeek();
+    }
+    public Date getDate() {
+        return date;
     }
 
     public boolean isHoliday() {
         LocalDate today = LocalDate.now();
-        return priceTable.isHoliday(today.getDayofWeek());
+        return priceTable.isHoliday(date);
     }
 
     public int getSeatType() {

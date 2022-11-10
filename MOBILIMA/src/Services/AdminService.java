@@ -49,7 +49,11 @@ public class AdminService extends Service implements ManageMovie, ManageSession,
     @Override
     public  void updatePublicHoliday() {
         PriceTable priceTable = Price.getPriceTable();
-        priceTable.updateHolidayDates();
+        try {
+            priceTable.updateHolidayDates();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override

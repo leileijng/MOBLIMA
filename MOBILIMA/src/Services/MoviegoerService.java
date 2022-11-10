@@ -2,6 +2,7 @@ package Services;
 
 import model.*;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -209,7 +210,8 @@ public class MoviegoerService extends Service{
         String movieType = session.getMovie().getMovieType().toString();
         String cinemaClass = session.getCinema().getClassOfCinema().toString();
         int seatType = session.getTicketBySeatID(seatID).getSeatType();
-        return new AdultPrice(movieType, cinemaClass, seatType).calculatePrice();
+        return new AdultPrice(movieType, cinemaClass, seatType,
+                new Date(session.getStartTime().getTime())).calculatePrice();
     }
 
     /**
@@ -223,7 +225,8 @@ public class MoviegoerService extends Service{
         String movieType = session.getMovie().getMovieType().toString();
         String cinemaClass = session.getCinema().getClassOfCinema().toString();
         int seatType = session.getTicketBySeatID(seatID).getSeatType();
-        return new SeniorPrice(movieType, cinemaClass, seatType).calculatePrice();
+        return new SeniorPrice(movieType, cinemaClass, seatType,
+                new Date(session.getStartTime().getTime())).calculatePrice();
     }
 
     /**
@@ -237,7 +240,8 @@ public class MoviegoerService extends Service{
         String movieType = session.getMovie().getMovieType().toString();
         String cinemaClass = session.getCinema().getClassOfCinema().toString();
         int seatType = session.getTicketBySeatID(seatID).getSeatType();
-        return new StudentPrice(movieType, cinemaClass, seatType).calculatePrice();
+        return new StudentPrice(movieType, cinemaClass, seatType,
+                new Date(session.getStartTime().getTime())).calculatePrice();
     }
 
     /**

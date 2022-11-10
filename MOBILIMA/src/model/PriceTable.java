@@ -1,25 +1,21 @@
 package model;
 
-import interfaces.SystemConfiguration;
 
-import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.util.*;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class PriceTable {
     private double holidayRate;
-    private HashSet<Date> holiday = new HashSet<Date>();
-    private HashMap<String,Double> prices = new HashMap<String, Double>();
-    private HashMap<String,Double> movieType = new HashMap<String, Double>();
-    private HashMap<String,Double> cinemaClass = new HashMap<String, Double>();
-    private HashMap<DayOfWeek,Double> weekDay = new HashMap<DayOfWeek, Double>();
-    enum PRICE_RULE {OVERRIDE, DISCOUNT, NORMAL};
-    private HashMap<String,PRICE_RULE> specialRules = new HashMap<String, PRICE_RULE>();
-    private HashMap<Integer,Double> seatType = new HashMap<Integer, Double>();
+    private final HashSet<Date> holiday = new HashSet<>();
+    private final HashMap<String,Double> prices = new HashMap<>();
+    private final HashMap<String,Double> movieType = new HashMap<>();
+    private final HashMap<String,Double> cinemaClass = new HashMap<>();
+    private final HashMap<DayOfWeek,Double> weekDay = new HashMap<>();
+    enum PRICE_RULE {OVERRIDE, DISCOUNT, NORMAL}
+    private final HashMap<String,PRICE_RULE> specialRules = new HashMap<>();
+    private final HashMap<Integer,Double> seatType = new HashMap<>();
 
     public PriceTable(){
         prices.put("Basic", 30.0);
@@ -125,14 +121,14 @@ public class PriceTable {
     public void updateSeatType() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter the seat type : ");
-        String seatType = scan.nextInt();
+        int seatType = scan.nextInt();
         System.out.println("Please enter the parameter : ");
         double para = scan.nextDouble();
         this.seatType.put(seatType, para);
     }
 
     public void updateSpecialRules() {
-        String group = null;
+        String group;
         Scanner scan = new Scanner(System.in);
         System.out.println("Which group to update?\n1.Senior\t2.Student");
         int selGroup = scan.nextInt();
@@ -149,7 +145,6 @@ public class PriceTable {
         else if(selection==3) specialRules.put(group,PRICE_RULE.NORMAL);
         else {
             System.err.println("Invalid Input");
-            return;
         }
     }
 
@@ -162,13 +157,11 @@ public class PriceTable {
         System.out.println("What you wanna do about the holiday set?\n1.add a new date\t2.remove a existing date");
         Scanner scan = new Scanner(System.in);
         int op = scan.nextInt();
+        String dateStr = scan.next();
+        Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dateStr);
         if (op == 1) {
-            String dateStr = scan.next();
-            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dateStr);
             this.holiday.add(date);
         } else {
-            String dateStr = scan.next();
-            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dateStr);
             this.holiday.remove(date);
         }
     }
