@@ -135,42 +135,82 @@ public class Session {
         return null;
     }
 
-
+    /**
+     * get the start time
+     * @return
+     */
     public Timestamp getStartTime() {
         return startTime;
     }
+
+    /**
+     * get the session index
+     * @return
+     */
     public String getSessionIndex() {
         return sessionIndex;
     }
 
+    /**
+     * set the session index
+     * @param sessionIndex
+     */
     public void setSessionIndex(String sessionIndex) {
         this.sessionIndex = sessionIndex;
     }
 
+    /**
+     * set the movie
+     * @param movie
+     */
     public void setMovie(Movie movie) {
         this.movie = movie;
     }
 
+    /**
+     * set the tickets
+     * @param tickets
+     */
     public void setTickets(Vector<Ticket> tickets) {
         this.tickets = tickets;
     }
 
+    /**
+     * get the cinema
+     * @return
+     */
     public Cinema getCinema() {
         return cinema;
     }
 
+    /**
+     * set the cinema
+     * @param cinema
+     */
     public void setCinema(Cinema cinema) {
         this.cinema = cinema;
     }
 
+    /**
+     * set the start time
+     * @param startTime
+     */
     public void setStartTime(Timestamp startTime) {
         this.startTime = startTime;
     }
 
+    /**
+     * set the end time
+     * @param endTime
+     */
     public void setEndTime(Timestamp endTime) {
         this.endTime = endTime;
     }
 
+    /**
+     * get the tickets
+     * @return
+     */
     public Vector<Ticket> getTickets() {
         return tickets;
     }
