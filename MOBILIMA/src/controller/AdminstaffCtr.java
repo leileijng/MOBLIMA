@@ -12,16 +12,14 @@ public class AdminstaffCtr {
         Scanner scan = new Scanner(System.in);
         String username;
         String password;
-        while (true) {
+        do {
             System.out.println("Please enter your username: ");
             username = scan.nextLine();
             System.out.println("Please enter your password: ");
             password = scan.nextLine();
-            if (password.equals("123456") == true) break;
-        }
+        } while (!password.equals("123456"));
 
-        AdminStaff adminStaff = new AdminStaff(username, password);
-        return adminStaff;
+        return new AdminStaff(username, password);
     }
 
     public static void printMainPanel(AdminStaff adminStaff){
@@ -30,6 +28,7 @@ public class AdminstaffCtr {
         boolean format = false;
         do {
             try {
+                System.out.println("\n=== Main Panel ===");
                 System.out.println("Please enter your option of functions: ");
                 System.out.println("1. view movies");
                 System.out.println("2. manage movies");
@@ -52,6 +51,7 @@ public class AdminstaffCtr {
                     do {
                         int op2 = 0;
                         try {
+                            System.out.println("\n=== Movie Panel ===");
                             System.out.println("Please enter your option of functions: ");
                             System.out.println("1. view all movies");
                             System.out.println("2. view top 5 movies by revenue");
@@ -87,6 +87,7 @@ public class AdminstaffCtr {
                     do {
                         int op2 = 0;
                         try {
+                            System.out.println("\n=== Main Panel ===");
                             System.out.println("Please enter your option of functions: ");
                             System.out.println("1. add a new movie");
                             System.out.println("2. update movie details");
@@ -122,6 +123,7 @@ public class AdminstaffCtr {
                     do {
                         int op2 = 0;
                         try {
+                            System.out.println("\n=== Session Panel ===");
                             System.out.println("Please enter your option of functions: ");
                             System.out.println("1. view all sessions");
                             System.out.println("2. view sessions by cinplex name");
@@ -165,6 +167,7 @@ public class AdminstaffCtr {
                     do {
                         int op2 = 0;
                         try {
+                            System.out.println("\n=== Session Panel ===");
                             System.out.println("Please enter your option of functions: ");
                             System.out.println("1. add a new session");
                             System.out.println("2. update session details");
@@ -200,6 +203,7 @@ public class AdminstaffCtr {
                     do {
                         int op2 = 0;
                         try {
+                            System.out.println("\n=== Config Panel ===");
                             System.out.println("Please enter your option of functions: ");
                             System.out.println("1. update price table");
                             System.out.println("2. update holiday set");
@@ -217,7 +221,8 @@ public class AdminstaffCtr {
                             System.err.println("Please enter within the selection range (1-5)!");
                         }
                         else {
-                            if (op2 == 1) adminService.updatePriceTable();
+                            if (op2 == 1) //adminService.updatePriceTable();
+                                System.out.println("todo");
                             else if (op2 == 2) adminService.updatePublicHoliday();
                             else if (op2 == 3) adminService.configSystem();
                             else if (op2 == 4) {

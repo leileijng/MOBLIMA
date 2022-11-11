@@ -17,8 +17,13 @@ public class Movie {
      */
     private ShowingStatus showingStatus;
 
+    /**
+     * Classification of the movie (G, PG, PG13, etc)
+     */
     private Classification classification;
-
+    /**
+     * type of the movie (2D, 3D, IMAX, etc)
+     */
     private MovieType type;
 
 
@@ -49,10 +54,23 @@ public class Movie {
      */
     private double totalRevenue;
 
+    /**
+     * The date the movie ends
+     */
     private Date dateEndOfShowing;
+
+    /**
+     * default constructor, initially some dummy values
+     */
     public Movie() {
         this(-1, "");
     }
+
+    /**
+     * Constructor of the movie, setting movieID and its title
+     * @param id id of the movie to be created
+     * @param title title of the movie to be created
+     */
     public Movie(int id, String title) {
         movieID = id;
         movieTitle = title;

@@ -9,6 +9,9 @@ import model.MovieGoer;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Controller for Movie-Goer, providing interaction with the user
+ */
 public class MovieGoerCtr {
     public static Scanner scanner = new Scanner(System.in);
     public static MoviegoerService moviegoerService = new MoviegoerService();
