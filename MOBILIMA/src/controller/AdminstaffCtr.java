@@ -225,8 +225,8 @@ public class AdminstaffCtr {
                             System.err.println("Please enter within the selection range (1-5)!");
                         }
                         else {
-                            if (op2 == 1) //adminService.updatePriceTable();
-                                System.out.println("todo");
+                            if (op2 == 1) 
+                                adminService.updatePriceTable();
                             else if (op2 == 2) adminService.updatePublicHoliday();
                             else if (op2 == 3) adminService.settingFilter();
                             else if (op2 == 4) {
