@@ -11,10 +11,21 @@ import java.sql.Timestamp;
  * Session Service
  */
 public class SessionService {
+    /**
+     * the count of session
+     */
     private static int countSession = 0;
 
+    /**
+     * scanner
+     */
     public static Scanner scan = new Scanner(System.in);
 
+    /**
+     * convert the str to time
+     * @param time
+     * @return
+     */
     public static Timestamp convertStr2Time(String time){
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -26,10 +37,17 @@ public class SessionService {
         return null;
     }
 
+    /**
+     * add the session to data base
+     * @param session
+     */
     public static void addSessionToDB(Session session){
         Service.sessions.add(session);
     }
 
+    /**
+     * add the session
+     */
     public static void addSession(){
         System.out.println("Please enter the movie title : ");
         String movieTitle = scan.nextLine();
@@ -60,6 +78,11 @@ public class SessionService {
         Service.sessions.add(session);
     }
 
+    /**
+     * get the session by index
+     * @param msg
+     * @return
+     */
     public static Session getSessionByIndex(String msg){
         // showSessions();
         Session session = null;
@@ -72,6 +95,9 @@ public class SessionService {
         return session;
     }
 
+    /**
+     * edit the session
+     */
     public static void editSession(){
         Session session = getSessionByIndex("Please enter the session index to edit:");
         System.out.println("Please enter the start time : ");
@@ -83,12 +109,18 @@ public class SessionService {
         session.setEndTime(convertStr2Time(endTime));
     }
 
+    /**
+     * remove the session
+     */
     public static void removeSession(){
         System.out.println("Please enter the session index : ");
         String sessionIdx = scan.nextLine();
         removeSession(sessionIdx);
     }
 
+    /**
+     * show the sessions
+     */
     public static void showSessions() {
         int num = Service.sessions.size();
         System.out.println("total number of sessions : " + num);
@@ -97,6 +129,10 @@ public class SessionService {
         }
     }
 
+    /**
+     * show the sessions by the movie
+     * @param movie
+     */
     public static void showSessionsByMovie(Movie movie) {
         int i = 0;
         for (Session session : Service.sessions) {
@@ -107,6 +143,11 @@ public class SessionService {
         }
     }
 
+    /**
+     * remove the session
+     * @param sessionIndex
+     * @return
+     */
     public static String removeSession(String sessionIndex) {
         int num = Service.sessions.size();
         for (int i = 0; i < num; i ++) {
@@ -118,6 +159,11 @@ public class SessionService {
         return "Can't Find this Session Index.";
     }
 
+    /**
+     * get the session by session index
+     * @param sessionIndex
+     * @return
+     */
     public static Session getSessionBySessionIndex(String sessionIndex) {
         int num = Service.sessions.size();
         for (int i = 0; i < num; i ++) {
@@ -128,6 +174,11 @@ public class SessionService {
         return null;
     }
 
+    /**
+     * add the session
+     * @param session
+     * @return
+     */
     public String addSession(Session session) {
         Service.sessions.add(session);
         return "Successfully Adding the Session.";

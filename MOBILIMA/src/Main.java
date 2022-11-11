@@ -6,19 +6,35 @@ import java.util.Scanner;
 
 public class Main {
 
+    /**
+     * static moviegoer
+     */
     public static MovieGoer movieGoer;
+    /**
+     * static adminstaff
+     */
     public static AdminStaff adminStaff;
 
+    /**
+     * clear
+     */
     private static void clear() {
         System.out.print("\033[H\033[2J");
     }
 
+    /**
+     * main entrance
+     * @param args
+     */
     public static void main(String[] args) {
         Service.initialiseFromFile();
         systemInit();
         System.out.println("\nThank you for using MOBLIMA!");
     }
 
+    /**
+     * system initialize
+     */
     public static void systemInit() {
         Scanner scan = new Scanner(System.in);
         int sel;
@@ -63,7 +79,4 @@ public class Main {
            }
         } while (true);
     }
-
-
-
 }
