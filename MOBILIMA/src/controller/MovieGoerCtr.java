@@ -2,8 +2,10 @@ package controller;
 
 import Services.MovieService;
 import Services.MoviegoerService;
+import Services.Service;
 import model.Movie;
 import model.MovieGoer;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -58,6 +60,7 @@ public class MovieGoerCtr {
                 System.out.println(" 1: View/Search Movies");
                 System.out.println(" 2: View My Reviews");
                 System.out.println(" 3: View My Orders");
+                System.out.println(" 4: View Price Table");
                 System.out.println(" 0: Go back");
                 System.out.println("-1: Logout");
                 System.out.println("Enter your choice: ");
@@ -98,6 +101,9 @@ public class MovieGoerCtr {
                             return -1;
                         }
                     }
+                    case 4 -> {
+                        Service.priceTable.viewPriceTable();
+                    }
                 }
             }
         } while (true);
@@ -134,10 +140,12 @@ public class MovieGoerCtr {
                     case  1 -> moviegoerService.viewMovieByFilter("");
                     case  2 -> moviegoerService.viewMovieByFilter("revenue");
                     case  3 -> moviegoerService.viewMovieByFilter("ratings");
-                    case  4 -> moviegoerService.searchMovieByName();
+                    case  4 -> {
+                        bookingPanel(movieGoer, moviegoerService.searchMovieByName());
+                    }
                 }
                 if (choice == 1)
-                    return bookingPanel(movieGoer);
+                    return bookingPanel(movieGoer, null);
             }
         } while (true);
     }
@@ -147,7 +155,7 @@ public class MovieGoerCtr {
      * @param movieGoer user making the booking
      * @return status, 1 success, 0 go back, -1 logout
      */
-    public static int bookingPanel(MovieGoer movieGoer) {
+    public static int bookingPanel(MovieGoer movieGoer, Movie movie) {
         int choice;
         do {
             System.out.println("\n=== Booking Panel === ");
@@ -165,6 +173,9 @@ public class MovieGoerCtr {
             } else if (choice == -1 || choice == 0) {
                 return choice;
             } else {
+                if (movie != null) {
+                    return moviegoerService.makeBookingByMovie(movieGoer, movie);
+                }
                 moviegoerService.viewMovieByFilter("");
                 int movieID;
                 List<Movie> movieList = MovieService.getShowingMovieList();

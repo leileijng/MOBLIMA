@@ -116,13 +116,13 @@ public class MoviegoerService extends Service{
         }
     }
 
-    public void searchMovieByName() {
+    public Movie searchMovieByName() {
         do {
             System.out.println("Enter the name of the movie you want to search: " +
                     "(-1 to quit)");
             String name = scanner.nextLine();
             if (name.equals("-1"))
-                return ;
+                return null;
             Movie movie = MovieService.getMovieByName(name);
             if (movie == null) {
                 System.out.println("Sorry cannot find the movie you entered.");
@@ -130,9 +130,8 @@ public class MoviegoerService extends Service{
             else {
                 System.out.println("Movie found!");
                 movie.printInfo();
-                return ;
+                return movie;
             }
-
         } while (true);
     }
 

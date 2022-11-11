@@ -1,5 +1,7 @@
-package model;
+package Services;
 
+
+import model.Cinema;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -14,7 +16,7 @@ public class PriceTable {
     private final HashMap<String,Double> movieType = new HashMap<>();
     private final HashMap<String,Double> cinemaClass = new HashMap<>();
     private final HashMap<DayOfWeek,Double> weekDay = new HashMap<>();
-    enum PRICE_RULE {OVERRIDE, DISCOUNT, NORMAL}
+    public enum PRICE_RULE {OVERRIDE, DISCOUNT, NORMAL}
     private final HashMap<String,PRICE_RULE> specialRules = new HashMap<>();
     private final HashMap<Integer,Double> seatType = new HashMap<>();
 
@@ -74,31 +76,34 @@ public class PriceTable {
         System.out.println("=========================================================");
         for(String key : prices.keySet()){
             System.out.println("Base Price for " + key);
-            System.out.println(prices.get(key));
+            System.out.println("SGD" + prices.get(key));
         }
         System.out.println("=========================================================");
         System.out.println(">> Movie Type   :");
         for(String key : movieType.keySet()){
-            System.out.println("Current parameter for " + key);
-            System.out.println(movieType.get(key));
+            System.out.println("Current rate for " + key);
+            System.out.println(movieType.get(key)+"x");
         }
         System.out.println("=========================================================");
         System.out.println(">> Cinema Class :");
         for(String key : cinemaClass.keySet()){
-            System.out.println("Current parameter for " + key);
-            System.out.println(cinemaClass.get(key));
+            System.out.println("Current rate for " + key);
+            System.out.println(cinemaClass.get(key) + "x");
         }
         System.out.println("=========================================================");
         System.out.println(">> Week Day     :");
-        for(String key : weekDay.keySet()){
-            System.out.println("Current parameter for " + key);
-            System.out.println(weekDay.get(key));
-        }
+        System.out.println("Monday rate: " + weekDay.get(DayOfWeek.MONDAY) + "x");
+        System.out.println("TUESDAY rate: " + weekDay.get(DayOfWeek.TUESDAY) + "x");
+        System.out.println("WEDNESDAY rate: " + weekDay.get(DayOfWeek.WEDNESDAY) + "x");
+        System.out.println("THURSDAY rate: " + weekDay.get(DayOfWeek.THURSDAY) + "x");
+        System.out.println("FRIDAY rate: " + weekDay.get(DayOfWeek.FRIDAY) + "x");
+        System.out.println("SATURDAY rate: " + weekDay.get(DayOfWeek.SATURDAY) + "x");
+        System.out.println("SUNDAY rate: " + weekDay.get(DayOfWeek.SUNDAY) + "x");
         System.out.println("=========================================================");
         System.out.println(">> Seat Type    :");
-        for(String key : seatType.keySet()){
-            System.out.println("Current parameter for " + key);
-            System.out.println(seatType.get(key));
+        for(int key : seatType.keySet()){
+            System.out.println("Current rate for type" + key);
+            System.out.println(seatType.get(key) + "x");
         }
         System.out.println("=========================================================");
         System.out.println(">> Holiday      :");

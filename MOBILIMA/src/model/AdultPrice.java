@@ -1,6 +1,5 @@
 package model;
 
-import Services.Price;
 import Services.Service;
 
 import java.util.Date;

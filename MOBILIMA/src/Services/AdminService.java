@@ -3,7 +3,6 @@ package Services;
 import interfaces.IManageMovie;
 import interfaces.IManageSession;
 import interfaces.ISystemConfiguration;
-import model.PriceTable;
 
 
 public class AdminService extends Service implements IManageMovie, IManageSession, ISystemConfiguration {
