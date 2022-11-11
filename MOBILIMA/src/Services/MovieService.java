@@ -133,8 +133,8 @@ public class MovieService extends Service {
                 int year = Integer.parseInt(input.substring(0, 4));
                 int month = Integer.parseInt(input.substring(4, 6));
                 int day = Integer.parseInt(input.substring(6, 8));
-                System.out.println("Set date: " + year + month + day);
-                // movie.setDateEndOfShowing(year, month, day);
+                System.out.println("Setting date: " + year + month + day);
+                movie.setDateEndOfShowing(year, month, day);
                 break;
             } catch (Exception e) {
                 System.out.println("Invalid input!");

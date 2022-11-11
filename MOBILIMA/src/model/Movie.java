@@ -331,6 +331,7 @@ public class Movie {
      */
     public void setDateEndOfShowing(int year, int month, int day) {
         Calendar calendar = new GregorianCalendar();
+        calendar.clear();
         calendar.set(year, month, day);
         dateEndOfShowing = calendar.getTime();
     }
