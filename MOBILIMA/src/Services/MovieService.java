@@ -7,7 +7,13 @@ import model.ShowingStatus;
 
 import java.util.*;
 
+/**
+ * Movie Service
+ */
 public class MovieService extends Service {
+    /**
+     * scanner
+     */
     static Scanner scanner = new Scanner(System.in);
 
     /**
@@ -20,6 +26,10 @@ public class MovieService extends Service {
                 movie.getShowingStatus() == ShowingStatus.PREVIEW)
             showingMovieList.add(movie);
     }
+
+    /**
+     * add the movie
+     */
     public static void addMovie() {
         System.out.println("Enter movie title: ");
         String title = scanner.nextLine();
@@ -33,6 +43,9 @@ public class MovieService extends Service {
         addMovieToDB(movie);
     }
 
+    /**
+     * edit the movie
+     */
     public static void editMovie() {
         System.out.println("Enter movie title to edit: ");
         String title = scanner.nextLine();
@@ -59,6 +72,9 @@ public class MovieService extends Service {
         }
     }
 
+    /**
+     * remove the movie
+     */
     public static void removeMovie() {
         System.out.println("Enter movie title to remove: ");
         String title = scanner.nextLine();
@@ -68,16 +84,31 @@ public class MovieService extends Service {
         movie.setShowingStatus(ShowingStatus.ENDOFSHOWING);
         showingMovieList.remove(movie);
     }
+
+    /**
+     * update the movie director
+     * @param movie
+     */
     public static void updateMovieDirector(Movie movie) {
         System.out.println("Enter director of the movie: ");
         String director = scanner.nextLine();
         movie.setDirector(director);
     }
+
+    /**
+     * update the movie synopsis
+     * @param movie
+     */
     public static void updateMovieSynopsis(Movie movie) {
         System.out.println("Enter synopsis of the movie: ");
         String synopsis = scanner.nextLine();
         movie.setSynopsis(synopsis);
     }
+
+    /**
+     * update the movie casts
+     * @param movie
+     */
     public static void updateMovieCasts(Movie movie) {
         System.out.println("Enter number of the casts: (>= 2)");
         int sz = Integer.parseInt(scanner.nextLine());
@@ -89,6 +120,10 @@ public class MovieService extends Service {
         movie.setCasts(casts);
     }
 
+    /**
+     * update the movie end of showing date
+     * @param movie
+     */
     public static void updateMovieEndOfShowingDate(Movie movie) {
         do {
             System.out.println("Enter end of showing date for movie " +
@@ -108,6 +143,10 @@ public class MovieService extends Service {
 
     }
 
+    /**
+     * update the movie status
+     * @param movie
+     */
     public static void updateMovieStatus(Movie movie) {
         System.out.println("Enter showing status for movie " +
                 movie.getMovieTitle() + ": ");
@@ -132,6 +171,10 @@ public class MovieService extends Service {
         movie.setShowingStatus(status);
     }
 
+    /**
+     * update the movie classification
+     * @param movie
+     */
     public static void updateMovieClassification(Movie movie) {
         System.out.println("Enter the classification of the movie: ");
         System.out.println("1: G, 2: PG, 3: PG13, 4: NC16, 5: M18, 6: R21");
@@ -150,6 +193,9 @@ public class MovieService extends Service {
         }
     }
 
+    /**
+     * print the top 5 movies by revenue
+     */
     public static void printTop5MovieByRevenue() {
         showingMovieList.sort(Comparator.
                 comparingDouble(Movie::getTotalRevenue).reversed());
@@ -161,6 +207,9 @@ public class MovieService extends Service {
         }
     }
 
+    /**
+     * print the top 5 movies by ratings
+     */
     public static void printTop5MovieByRatings() {
         showingMovieList.sort(Comparator.
                 comparingDouble(Movie::getOverallRating).reversed());
@@ -172,6 +221,9 @@ public class MovieService extends Service {
         }
     }
 
+    /**
+     * print all current showing movies
+     */
     public static void printAllCurrentMovies() {
         int i = 0;
         for (Movie movie : showingMovieList) {
@@ -180,6 +232,9 @@ public class MovieService extends Service {
         }
     }
 
+    /**
+     * print all movies
+     */
     public static void printAllMovies() {
         int i = 0;
         for (Movie movie : movieList) {
@@ -189,6 +244,11 @@ public class MovieService extends Service {
         }
     }
 
+    /**
+     * get the movie by name
+     * @param name
+     * @return the movie
+     */
     public static Movie getMovieByName(String name) {
         while (name == null || name.compareTo("") == 0) {
             System.out.println("Empty name input, please re-enter!");
@@ -201,6 +261,10 @@ public class MovieService extends Service {
         return null;
     }
 
+    /**
+     * get the list of showing movies
+     * @return the list of movies
+     */
     public static List<Movie> getShowingMovieList() {
         return showingMovieList;
     }

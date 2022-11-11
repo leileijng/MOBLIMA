@@ -13,7 +13,14 @@ import java.util.Scanner;
  * Controller for Movie-Goer, providing interaction with the user
  */
 public class MovieGoerCtr {
+    /**
+     * scanner
+     */
     public static Scanner scanner = new Scanner(System.in);
+
+    /**
+     * the static moviegoer service
+     */
     public static MoviegoerService moviegoerService = new MoviegoerService();
 
     /**

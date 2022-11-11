@@ -8,9 +8,21 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Moviegoer Service
+ */
 public class MoviegoerService extends Service{
+    /**
+     * scanner
+     */
     private static final Scanner scanner = new Scanner(System.in);
+    /**
+     * the rank list by revenue
+     */
     private static boolean canListByRevenue;
+    /**
+     * the rank list by ratings
+     */
     private static boolean canListByRatings;
 
     /**
@@ -116,6 +128,10 @@ public class MoviegoerService extends Service{
         }
     }
 
+    /**
+     * get the layout by the id
+     * @return the list of cineplex
+     */
     public Movie searchMovieByName() {
         do {
             System.out.println("Enter the name of the movie you want to search: " +

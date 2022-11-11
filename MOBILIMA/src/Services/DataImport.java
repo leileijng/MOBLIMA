@@ -16,8 +16,16 @@ import java.util.List;
 
 import static Services.MovieService.addMovieToDB;
 
+/**
+ * Import the Data
+ */
 public class DataImport {
-    public static List<Cineplex> loadCinplexFromFile(){
+
+    /**
+     * load the cineplex
+     * @return the list of cineplex
+     */
+    public static List<Cineplex> loadCineplexFromFile(){
         List<Cineplex> cineplexes = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader("data/Cineplex.csv"))) {
             String line = "";
@@ -25,16 +33,20 @@ public class DataImport {
                 Cineplex cineplex = new Cineplex();
                 List<String> row_str = Arrays.asList(line.split(","));
                 cineplex.setCineplexID(row_str.get(0).replaceAll("\\p{C}", ""));
-                cineplex.setCinplexName(row_str.get(1).replaceAll("\\p{C}", ""));
+                cineplex.setCineplexName(row_str.get(1).replaceAll("\\p{C}", ""));
                 cineplex.setLocation(row_str.get(2).replaceAll("\\p{C}", ""));
                 cineplexes.add(cineplex);
             }
         } catch (IOException e) {
-            System.err.println("Cannot get the cinplex file, please check again!");
+            System.err.println("Cannot get the cineplex file, please check again!");
         }
         return cineplexes;
     }
 
+    /**
+     * load the cinema
+     * @return the list of cinemas
+     */
     public static List<Cinema> loadCinemaFromFile(){
         List<Cinema> cinemas = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader("data/Cinema.csv"))) {
@@ -49,7 +61,7 @@ public class DataImport {
 
                 /*
                 for(Cineplex c : Service.cineplexes){
-                    if(c.getCinplexID().equals(row_str.get(0).replaceAll("\\p{C}", ""))){
+                    if(c.getCineplexID().equals(row_str.get(0).replaceAll("\\p{C}", ""))){
                         c.addCinema(cinema);
                         cinema.setCineplex(c);
                     }
@@ -62,6 +74,12 @@ public class DataImport {
         return cinemas;
     }
 
+    /**
+     * import the single layout
+     * @param filepath
+     * @param index
+     * @return the layout
+     */
     public static Layout importSingleLayout(String filepath, int index){
         ArrayList<Integer> s = new ArrayList<>();
         int row = 0;
@@ -80,6 +98,10 @@ public class DataImport {
         return new Layout(("layout_" + index), row, col, s);
     }
 
+    /**
+     * import yhe layouts
+     * @return the list of layouts
+     */
     public static List<Layout> importLayouts() {
         List<Layout> layouts = new ArrayList<>();
         String[] files = new File("data/layout").list();
@@ -91,6 +113,9 @@ public class DataImport {
         return layouts;
     }
 
+    /**
+     * import yhe movies
+     */
     public static void importMovies(){
         try(BufferedReader br = new BufferedReader(new FileReader("data/Movie.csv"))) {
             String line = "";
@@ -122,6 +147,10 @@ public class DataImport {
         }
     }
 
+    /**
+     * import the sessions
+     * @return the list of sessions
+     */
     public static List<Session> importSessions(){
         List<Session> sessions = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader("data/Session.csv"))) {
@@ -150,6 +179,10 @@ public class DataImport {
         return sessions;
     }
 
+    /**
+     * import the reviews
+     * @return the list of reviews
+     */
     public static List<Review> importReviews(){
         List<Review> reviews = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader("data/Review.csv"))) {
@@ -174,6 +207,10 @@ public class DataImport {
         return reviews;
     }
 
+    /**
+     * import the moviegoers
+     * @return the list of moviegoers
+     */
     public static List<MovieGoer> importMoviegoers(){
         List<MovieGoer> movieGoers = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader("data/Movie-goer.csv"))) {
@@ -193,6 +230,10 @@ public class DataImport {
         return movieGoers;
     }
 
+    /**
+     * import the payment
+     * @return the list of payment
+     */
     public static List<Payment> importPayment(){
         List<Payment> payments = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader("data/Payment.csv"))) {
@@ -216,6 +257,11 @@ public class DataImport {
         return payments;
     }
 
+    /**
+     * get the movie by the title
+     * @param title
+     * @return the movie
+     */
     private static Movie getMovieByTitle(String title){
         for(Movie movie : Service.movieList){
             if(movie.getMovieTitle().equals(title))
@@ -224,6 +270,11 @@ public class DataImport {
         return null;
     }
 
+    /**
+     * get the cinema by the code
+     * @param title
+     * @return the cinema
+     */
     private static Cinema getCinemaByCode(String title){
         for(Cinema cinema : Service.cinemas){
             if(cinema.getCinemaCode().equals(title))
@@ -232,6 +283,11 @@ public class DataImport {
         return null;
     }
 
+    /**
+     * get the moviegoer by the name
+     * @param userName
+     * @return the moviegoer
+     */
     private static MovieGoer getMoviegoerByName(String userName){
         for(MovieGoer m : Service.movieGoerList){
             if(m.getUsername().equals(userName))
@@ -240,6 +296,11 @@ public class DataImport {
         return null;
     }
 
+    /**
+     * get the session by the id
+     * @param sessionId
+     * @return the session
+     */
     private static Session getSessionById(String sessionId){
         for(Session s : Service.sessions){
             if(s.getSessionIndex().equals(sessionId))
@@ -248,6 +309,11 @@ public class DataImport {
         return null;
     }
 
+    /**
+     * get the layout by the id
+     * @param id
+     * @return the list of cineplex
+     */
     private static Layout getLayoutById(String id){
         for(Layout l : Service.layouts){
             if(l.getLayout_id().equals(id)) return l;

@@ -2,6 +2,7 @@ package Services;
 
 
 import model.ClassOfCinema;
+import model.SpecialPriceRule;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -9,17 +10,46 @@ import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.util.*;
 
+/**
+ * Price Table Service
+ */
 public class PriceTableService {
+    /**
+     * the holiday rate
+     */
     private double holidayRate;
+    /**
+     * the hash set of holiday
+     */
     private final HashSet<Date> holiday = new HashSet<>();
+    /**
+     * the hash map of base prices
+     */
     private final HashMap<String,Double> prices = new HashMap<>();
+    /**
+     * the hash map of movie types rate
+     */
     private final HashMap<String,Double> movieType = new HashMap<>();
+    /**
+     * the hash map of cinema classes rate
+     */
     private final HashMap<String,Double> cinemaClass = new HashMap<>();
+    /**
+     * the hash map of week dates rate
+     */
     private final HashMap<DayOfWeek,Double> weekDay = new HashMap<>();
-    public enum PRICE_RULE {OVERRIDE, DISCOUNT, NORMAL}
-    private final HashMap<String,PRICE_RULE> specialRules = new HashMap<>();
+    /**
+     * the hash map of special rules rate
+     */
+    private final HashMap<String, SpecialPriceRule> specialRules = new HashMap<>();
+    /**
+     * the hash map of seat types rate
+     */
     private final HashMap<Integer,Double> seatType = new HashMap<>();
 
+    /**
+     * load the data of price table
+     */
     public PriceTableService(){
         prices.put("Basic", 30.0);
         prices.put("Senior", 20.0);
@@ -41,8 +71,8 @@ public class PriceTableService {
         holidayRate = 1.5;
         seatType.put(1, 1.0);
         seatType.put(2, 1.2);
-        specialRules.put("Senior",PRICE_RULE.OVERRIDE);
-        specialRules.put("Student",PRICE_RULE.OVERRIDE);
+        specialRules.put("Senior",SpecialPriceRule.OVERRIDE);
+        specialRules.put("Student",SpecialPriceRule.OVERRIDE);
         try {
             holiday.add(new SimpleDateFormat("dd/MM/yyyy").parse("31/10/2022"));
             holiday.add(new SimpleDateFormat("dd/MM/yyyy").parse("24/11/2022"));
@@ -51,27 +81,60 @@ public class PriceTableService {
         }
     }
 
+    /**
+     * get the holiday rate
+     * @return
+     */
     public double getHolidayRate() {
         return holidayRate;
     }
 
+    /**
+     * get the base price by the type
+     * @param type
+     * @return
+     */
     public double getPriceByType(String type){
         return prices.get(type);
     }
 
+    /**
+     * get the rate by the movie type
+     * @param movie
+     * @return
+     */
     public double getMovieTypeRate(String movie){
         return this.movieType.get(movie);
     }
 
+    /**
+     * get the rate by the cinema class
+     * @param cinema
+     * @return
+     */
     public double getCinemaClass(String cinema){
         return this.cinemaClass.get(cinema);
     }
+
+    /**
+     * get the rate by the week date
+     * @param day
+     * @return
+     */
     public double getDayRate(DayOfWeek day){
         return this.weekDay.get(day);
     }
 
+    /**
+     * get the rate by the seat type
+     * @param type
+     * @return
+     */
     public double getSeatType(int type) { return seatType.get(type); }
 
+    /**
+     * view the price table
+     */
     public void viewPriceTable() {
         System.out.println("=========================================================");
         for(String key : prices.keySet()){
@@ -112,6 +175,9 @@ public class PriceTableService {
         System.out.println(this.holidayRate);
     }
 
+    /**
+     * update the base prices
+     */
     public void updatePrices(){
         Scanner scan = new Scanner(System.in);
         for(String key : prices.keySet()){
@@ -121,12 +187,18 @@ public class PriceTableService {
         }
     }
 
+    /**
+     * update the holiday rate
+     */
     public void updateHolidayRate(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter the rate for holiday ticket : ");
         this.holidayRate = scan.nextDouble();
     }
 
+    /**
+     * update the rate of movie type
+     */
     public void updateMovieType() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter the movie type : ");
@@ -136,6 +208,9 @@ public class PriceTableService {
         this.movieType.put(movieType, para);
     }
 
+    /**
+     * update the rate of cinema class
+     */
     public void updateCinemaClass() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter the cinema class : ");
@@ -145,7 +220,9 @@ public class PriceTableService {
         this.cinemaClass.put(cinemaClass, para);
     }
 
-
+    /**
+     * update the rate of week date
+     */
     public void updateWeekDay() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter the week day : ");
@@ -155,6 +232,9 @@ public class PriceTableService {
         this.weekDay.put(DayOfWeek.valueOf(weekDay), para);
     }
 
+    /**
+     * update the rate of seat type
+     */
     public void updateSeatType() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter the seat type : ");
@@ -164,6 +244,9 @@ public class PriceTableService {
         this.seatType.put(seatType, para);
     }
 
+    /**
+     * update the special rules
+     */
     public void updateSpecialRules() {
         String group;
         Scanner scan = new Scanner(System.in);
@@ -177,24 +260,37 @@ public class PriceTableService {
             System.err.println("Invalid Input");
             return;
         }
-        if(selection==1) specialRules.put(group,PRICE_RULE.OVERRIDE);
-        else if(selection==2) specialRules.put(group,PRICE_RULE.DISCOUNT);
-        else if(selection==3) specialRules.put(group,PRICE_RULE.NORMAL);
+        if(selection==1) specialRules.put(group,SpecialPriceRule.OVERRIDE);
+        else if(selection==2) specialRules.put(group,SpecialPriceRule.DISCOUNT);
+        else if(selection==3) specialRules.put(group,SpecialPriceRule.NORMAL);
         else {
             System.err.println("Invalid Input");
         }
     }
 
-    public PRICE_RULE getSpecialRules(String group) {
+    /**
+     * get the special rules
+     * @param group
+     * @return
+     */
+    public SpecialPriceRule getSpecialRules(String group) {
         return specialRules.get(group);
     }
 
+    /**
+     * display the holidays in the set
+     */
     public void displayHoliday(){
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         for(Date date:this.holiday){
             System.out.println(dateFormat.format(date));
         }
     }
+
+    /**
+     * update the holidays in the set
+     * @throws ParseException
+     */
     public void updateHolidayDates() throws ParseException {
         System.out.println("==== Holiday List ====");
         displayHoliday();
@@ -212,6 +308,11 @@ public class PriceTableService {
         displayHoliday();
     }
 
+    /**
+     * check if it is the holiday
+     * @param date
+     * @return
+     */
     public boolean isHoliday(Date date){
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         for(Date d : this.holiday){
@@ -222,6 +323,9 @@ public class PriceTableService {
         return false;
     }
 
+    /**
+     * update the price table
+     */
     public void updatePriceTable() {
         Scanner scan = new Scanner(System.in);
         int op;

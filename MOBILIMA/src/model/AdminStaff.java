@@ -3,23 +3,19 @@ package model;
 /**
  * Admin Staff Class
  */
-public class AdminStaff {
+public class AdminStaff extends User {
     /**
      * The accessCode of AdminStaff
      */
     private String accessCode;
-    /**
-     * The userName of AdminStaff
-     */
-    private String userName;
 
     /**
      * constructor of admin staff
-     * @param userName
+     * @param username
      * @param accessCode
      */
-    public AdminStaff(String userName, String accessCode) {
-        this.userName = userName;
+    public AdminStaff(String username, String accessCode) {
+        super(username);
         this.accessCode = accessCode;
     }
 
@@ -36,6 +32,6 @@ public class AdminStaff {
      * @return
      */
     public String getUserName() {
-        return userName;
+        return super.getUsername();
     }
 }

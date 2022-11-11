@@ -7,6 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.sql.Timestamp;
 
+/**
+ * Session Service
+ */
 public class SessionService {
     private static int countSession = 0;
 
@@ -30,8 +33,8 @@ public class SessionService {
     public static void addSession(){
         System.out.println("Please enter the movie title : ");
         String movieTitle = scan.nextLine();
-        System.out.println("Please enter the cinplex name : ");
-        String cinplexName = scan.nextLine();
+        System.out.println("Please enter the cineplex name : ");
+        String cineplexName = scan.nextLine();
         System.out.println("Please enter the cinema code : ");
         String cinemaCode = scan.nextLine();
         System.out.println("Please enter the start time : ");
@@ -50,7 +53,7 @@ public class SessionService {
 
         Session session = new Session(sessionIndex,
                 movie,
-                CinplexService.getCinplexById("ciineA").getCinemas(cinemaCode),
+                CineplexService.getCineplexById("ciineA").getCinemas(cinemaCode),
                 convertStr2Time(startTime),
                 convertStr2Time(endTime)
         );

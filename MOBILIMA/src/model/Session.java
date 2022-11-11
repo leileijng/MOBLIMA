@@ -54,15 +54,22 @@ public class Session {
         }
     }
 
+    /**
+     * get the movie
+     * @return the movie
+     */
     public Movie getMovie() {
         return movie;
     }
 
+    /**
+     * view the details of the session
+     */
     public void viewDetails() {
         System.out.println("=========================================================");
         System.out.println("Session Index    : " + this.sessionIndex);
         System.out.println("Movie Name       : " + this.movie.getMovieTitle());
-        System.out.println("Cinplex Name     : " + this.cinema.getCineplex().getCinplexName());
+        System.out.println("Cineplex Name    : " + this.cinema.getCineplex().getCineplexName());
         System.out.println("Cinema Code      : " + this.cinema.getCinemaCode());
         System.out.println("Cinema Type      : " + this.cinema.getClassOfCinema().toString());
         System.out.println("Day of Week      : " + this.startTime.toLocalDateTime().getDayOfWeek());
@@ -70,6 +77,9 @@ public class Session {
         System.out.println("Movie End Time   : " + this.endTime);
     }
 
+    /**
+     * view the tickets of the session
+     */
     public void viewTickets() {
         int cnt = 0;
         System.out.println("============= Screen ==============");
@@ -94,6 +104,12 @@ public class Session {
         }
     }
 
+    /**
+     * occupy the seat and book the ticket
+     * @param seatIndex
+     * @param price
+     * @return the message
+     */
     public String occupySeat(String seatIndex, double price) {
         for (int i = 0; i < this.tickets.size(); i ++) {
             if (this.tickets.get(i).getSeatIndex().equals(seatIndex)) {
@@ -105,6 +121,11 @@ public class Session {
         return "No such ticket at this session";
     }
 
+    /**
+     * find the ticket by the seat ID
+     * @param seatIndex
+     * @return the required ticket
+     */
     public Ticket getTicketBySeatID(String seatIndex) {
         for (Ticket ticket : tickets) {
             if (ticket.getSeatIndex().equals(seatIndex)) {
@@ -118,7 +139,7 @@ public class Session {
     public Timestamp getStartTime() {
         return startTime;
     }
-     public String getSessionIndex() {
+    public String getSessionIndex() {
         return sessionIndex;
     }
 

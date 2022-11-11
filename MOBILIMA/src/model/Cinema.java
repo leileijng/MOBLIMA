@@ -30,7 +30,7 @@ public class Cinema {
 
     /**
      *
-     * @return corresponding Cinplex
+     * @return corresponding Cineplex
      */
     public Cineplex getCineplex() {
         return cineplex;

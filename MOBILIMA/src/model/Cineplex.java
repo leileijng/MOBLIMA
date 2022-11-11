@@ -26,16 +26,16 @@ public class Cineplex {
      *
      * @return cineplex name
      */
-    public String getCinplexName() {
+    public String getCineplexName() {
         return this.cineplexName;
     }
 
     /**
      * set cineplex name
-     * @param cinplexName
+     * @param cineplexName
      */
-    public void setCinplexName(String cinplexName) {
-        this.cineplexName = cinplexName;
+    public void setCineplexName(String cineplexName) {
+        this.cineplexName = cineplexName;
     }
 
     /**
@@ -74,4 +74,5 @@ public class Cineplex {
     public String getCineplexID() {
         return cineplexID;
     }
+
 }

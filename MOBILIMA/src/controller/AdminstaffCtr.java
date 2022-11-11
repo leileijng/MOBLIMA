@@ -8,9 +8,19 @@ import model.AdminStaff;
 import java.util.Scanner;
 
 public class AdminstaffCtr {
+    /**
+     * static admin service
+     */
     public static AdminService adminService = new AdminService();
 
+    /**
+     * fixed admin staff
+     */
     public static AdminStaff adminStaff = new AdminStaff("admin", "123456");
+
+    /**
+     * admin staff login
+     */
     public static AdminStaff AdminstaffLogin() {
         Scanner scan = new Scanner(System.in);
         String username;
@@ -26,6 +36,10 @@ public class AdminstaffCtr {
         return new AdminStaff(username, password);
     }
 
+    /**
+     * admin staff main panel
+     * @param adminStaff
+     */
     public static void printMainPanel(AdminStaff adminStaff){
         Scanner scan = new Scanner(System.in);
         int op = 0;
@@ -149,7 +163,7 @@ public class AdminstaffCtr {
                             else if (op2 == 2){
                                 System.out.println("Please enter the cinplex name: ");
                                 String cinplexName = scan.nextLine();
-                                adminService.viewAllSessionsByCinplexName(cinplexName);
+                                adminService.viewAllSessionsByCineplexName(cinplexName);
                             }
                             else if (op2 == 3){
                                 System.out.println("Please enter the movie title: ");

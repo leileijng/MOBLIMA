@@ -8,7 +8,7 @@ public class Ticket {
      */
     private Session session;
     /**
-     * seat type of a ticket
+     * seat type of the ticket
      */
     private int seatType;
     /**
@@ -27,7 +27,6 @@ public class Ticket {
     /**
      * constructor of ticket
      * @param seatIndex
-     * @param cinemaCode
      * @param seatType
      */
     public Ticket(String seatIndex, int seatType) {

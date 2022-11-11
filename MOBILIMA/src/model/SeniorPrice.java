@@ -28,7 +28,7 @@ public class SeniorPrice extends Price {
         switch (Service.priceTable.getSpecialRules("Senior")){
             case OVERRIDE:
                 price = Service.priceTable.getPriceByType("Senior") *
-                    (this.isHoliday()?1*Service.priceTable.getHolidayRate():1);;
+                    (this.isHoliday()?1*Service.priceTable.getHolidayRate():1);
                 break;
             case DISCOUNT:
                 price = Service.priceTable.getPriceByType("basic")
