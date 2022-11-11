@@ -15,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
         Service.initialiseFromFile();
         systemInit();
-        System.out.println("Thank you for using MOBLIMA!");
+        System.out.println("\nThank you for using MOBLIMA!");
     }
 
     public static void systemInit() {
@@ -23,6 +23,17 @@ public class Main {
         int sel;
         do {
             clear();
+            System.out.print("""
+                              .----.
+                  .---------. | == |
+                  |.-""\"""-.| |----|
+                  ||       || | == |
+                  ||       || |----|
+                  |'-.....-'| |::::|
+                  `"")---(""` |___.|
+                 /:::::::::::\\" _  "
+                /:::=======:::\\`\\`\\
+                `""\"""\"""\"""\""`  '-'""".indent(4));
             System.out.println("**************************\n" +
                     "*   Welcome to MOBLIMA   * \n" +
                     "*     Golden Village     *\n**************************\n");
@@ -51,10 +62,6 @@ public class Main {
                }
            }
         } while (true);
-    }
-
-    public static void movieGoerConsole() {
-
     }
 
 

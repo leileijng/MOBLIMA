@@ -291,7 +291,14 @@ public class Movie {
         info.append("End of showing date: \t").append(getDateEndOfShowing())
                 .append("\n");
         info.append("Rating: \t").append(getOverallRating()).append("\n");
-        info.append("Revenue: \t").append(getTotalRevenue()).append("\n");
+        // info.append("Revenue: \t").append(getTotalRevenue()).append("\n");
+        info.append("Recent Reviews: \n");
+        for (int i = 0; i < 2; ++i) {
+            Review review = reviewList.get(reviewList.size()-i-1);
+            info.append("  Review record " + (i+1) + "\n");
+            info.append("  Rating:" + review.getRating()).append("\n");
+            info.append("  Review:" + review.getComments()).append("\n");
+        }
         System.out.println(info.toString());
     }
     /**

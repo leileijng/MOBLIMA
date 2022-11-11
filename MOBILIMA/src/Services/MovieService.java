@@ -9,7 +9,6 @@ import java.util.*;
 
 public class MovieService extends Service {
     static Scanner scanner = new Scanner(System.in);
-    static Date date = new Date(System.currentTimeMillis());
 
     /**
      * Add movie to movie list and showing movie list in the database
@@ -32,6 +31,7 @@ public class MovieService extends Service {
         updateMovieClassification(movie);
         updateMovieEndOfShowingDate(movie);
         addMovieToDB(movie);
+        refresh();
     }
 
     public static void editMovie() {
@@ -58,6 +58,7 @@ public class MovieService extends Service {
             case 6 -> updateMovieEndOfShowingDate(movie);
             default -> System.out.println("Invalid choice!");
         }
+        refresh();
     }
 
     public static void removeMovie() {
@@ -66,8 +67,8 @@ public class MovieService extends Service {
         Movie movie = getMovieByName(title);
         if (movie == null)
             throw new IllegalArgumentException("Cannot find movie!");
+        movie.setShowingStatus(ShowingStatus.ENDOFSHOWING);
         showingMovieList.remove(movie);
-        movieList.remove(movie);
     }
     public static void updateMovieDirector(Movie movie) {
         System.out.println("Enter director of the movie: ");
@@ -206,7 +207,7 @@ public class MovieService extends Service {
         return showingMovieList;
     }
     private static void refresh() {
-        date.setTime(System.currentTimeMillis());
+        Date date = new Date(System.currentTimeMillis());
         for (Movie movie : showingMovieList) {
             if (movie.getDateEndOfShowing().compareTo(date) > 0) {
                 movie.setShowingStatus(ShowingStatus.ENDOFSHOWING);
