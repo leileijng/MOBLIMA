@@ -31,7 +31,6 @@ public class MovieService extends Service {
         updateMovieClassification(movie);
         updateMovieEndOfShowingDate(movie);
         addMovieToDB(movie);
-        refresh();
     }
 
     public static void editMovie() {
@@ -58,7 +57,6 @@ public class MovieService extends Service {
             case 6 -> updateMovieEndOfShowingDate(movie);
             default -> System.out.println("Invalid choice!");
         }
-        refresh();
     }
 
     public static void removeMovie() {

@@ -64,8 +64,12 @@ public class Session {
             for (int j = 0; j < this.cinema.getLayout().getCol(); j ++) {
                 if (this.cinema.getLayout().getSeats()[i][j] == 0) System.out.print("   "); 
                 else {
-                    if (this.tickets.get(cnt).isBooked()) System.out.print("[v]");//Array reqiured but Vector<Ticket> found
-                    else System.out.print("[ ]");
+                    if (this.tickets.get(cnt).isBooked()) System.out.print("[✔]");//Array reqiured but Vector<Ticket> found
+                    else {
+                        if(this.tickets.get(cnt).getSeatType() == 2)
+                            System.out.print("[♛]");
+                        else System.out.print("[ ]");
+                    }
                     cnt ++;
                 }
             }

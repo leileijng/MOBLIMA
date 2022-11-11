@@ -3,7 +3,6 @@ package Services;
 import interfaces.IManageMovie;
 import interfaces.IManageSession;
 import interfaces.ISystemConfiguration;
-import model.PriceTable;
 
 
 public class AdminService extends Service implements IManageMovie, IManageSession, ISystemConfiguration {
@@ -54,6 +53,7 @@ public class AdminService extends Service implements IManageMovie, IManageSessio
 
     @Override
     public void updatePriceTable() {
+        Service.priceTable.viewPriceTable();
         Service.priceTable.updatePriceTable();
     }
 }

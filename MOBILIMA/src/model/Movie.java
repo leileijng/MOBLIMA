@@ -55,13 +55,20 @@ public class Movie {
      */
     private double totalRevenue;
 
-    /**
-     * The end showing date
-     */
     private Date dateEndOfShowing;
+
+    /**
+     * default constructor, initially some dummy values
+     */
     public Movie() {
         this(-1, "");
     }
+
+    /**
+     * Constructor of the movie, setting movieID and its title
+     * @param id id of the movie to be created
+     * @param title title of the movie to be created
+     */
     public Movie(int id, String title) {
         movieID = id;
         movieTitle = title;
@@ -304,9 +311,9 @@ public class Movie {
         info.append("Recent Reviews: \n");
         for (int i = 0; i < 2; ++i) {
             Review review = reviewList.get(reviewList.size()-i-1);
-            info.append("  Review record " + (i+1) + "\n");
-            info.append("  Rating:" + review.getRating()).append("\n");
-            info.append("  Review:" + review.getComments()).append("\n");
+            info.append("== Review record ==" + (i+1) + "\n");
+            info.append("Rating:" + review.getRating()).append("\n");
+            info.append("Review:" + review.getComments()).append("\n");
         }
         System.out.println(info.toString());
     }
@@ -372,11 +379,4 @@ public class Movie {
         calendar.set(year, month, day);
         dateEndOfShowing = calendar.getTime();
     }
-
-    public boolean checkShowingStatus() {
-        //TODO check showing status for adding session
-
-        return true;
-    }
-
 }

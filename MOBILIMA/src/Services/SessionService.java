@@ -43,7 +43,7 @@ public class SessionService {
         String sessionIndex = "sessionIdx#" + countSession;
 
         Movie movie = MovieService.getMovieByName(movieTitle);
-        if(movie.checkShowingStatus() == false){
+        if(movie.getShowingStatus() == ShowingStatus.ENDOFSHOWING){
             System.out.println("Failure! The movie is end of showing.");
             return ;
         }
