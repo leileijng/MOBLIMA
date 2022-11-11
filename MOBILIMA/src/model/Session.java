@@ -39,6 +39,8 @@ public class Session {
         System.out.println("Movie Name       : " + this.movie.getMovieTitle());
         System.out.println("Cinplex Name     : " + this.cinema.getCineplex().getCinplexName());
         System.out.println("Cinema Code      : " + this.cinema.getCinemaCode());
+        System.out.println("Cinema Type      : " + this.cinema.getClassOfCinema().toString());
+        System.out.println("Day of Week      : " + this.startTime.toLocalDateTime().getDayOfWeek());
         System.out.println("Movie Start Time : " + this.startTime);
         System.out.println("Movie End Time   : " + this.endTime);
     }

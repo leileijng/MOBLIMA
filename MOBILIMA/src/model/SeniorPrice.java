@@ -1,8 +1,11 @@
 package model;
 
+import Services.Price;
+import Services.Service;
+
 import java.util.Date;
 
-public class SeniorPrice extends Price{
+public class SeniorPrice extends Price {
     public SeniorPrice(String movieType, String cinemaClass, int seatType, Date date) {
         super(movieType, cinemaClass, seatType, date);
     }
@@ -10,27 +13,27 @@ public class SeniorPrice extends Price{
     @Override
     public double calculatePrice() {
         double price = 0;
-        switch (priceTable.getSpecialRules("Senior")){
+        switch (Service.priceTable.getSpecialRules("Senior")){
             case OVERRIDE:
-                price = priceTable.getPriceByType("Senior") *
-                    (this.isHoliday()?1*priceTable.getHolidayRate():1);;
+                price = Service.priceTable.getPriceByType("Senior") *
+                    (this.isHoliday()?1*Service.priceTable.getHolidayRate():1);;
                 break;
             case DISCOUNT:
-                price = priceTable.getPriceByType("basic")
-                        * priceTable.getDayRate(this.getWeekDay())
-                        * priceTable.getCinemaClass(this.getCinemaClass())
-                        * priceTable.getMovieTypeRate(this.getMovieType())
-                        * priceTable.getSeatType(this.getSeatType())
-                        * (this.isHoliday()?1*priceTable.getHolidayRate():1)
+                price = Service.priceTable.getPriceByType("basic")
+                        * Service.priceTable.getDayRate(this.getWeekDay())
+                        * Service.priceTable.getCinemaClass(this.getCinemaClass())
+                        * Service.priceTable.getMovieTypeRate(this.getMovieType())
+                        * Service.priceTable.getSeatType(this.getSeatType())
+                        * (this.isHoliday()?1*Service.priceTable.getHolidayRate():1)
                         * 0.8;
                 break;
             case NORMAL:
-                price = priceTable.getPriceByType("basic")
-                        * priceTable.getDayRate(this.getWeekDay())
-                        * priceTable.getCinemaClass(this.getCinemaClass())*
-                        (this.isHoliday()?1*priceTable.getHolidayRate():1)
-                        * priceTable.getMovieTypeRate(this.getMovieType())
-                        * priceTable.getSeatType(this.getSeatType());
+                price = Service.priceTable.getPriceByType("basic")
+                        * Service.priceTable.getDayRate(this.getWeekDay())
+                        * Service.priceTable.getCinemaClass(this.getCinemaClass())*
+                        (this.isHoliday()?1*Service.priceTable.getHolidayRate():1)
+                        * Service.priceTable.getMovieTypeRate(this.getMovieType())
+                        * Service.priceTable.getSeatType(this.getSeatType());
                 break;
         }
         return (double) Math.round(price * 100) / 100;

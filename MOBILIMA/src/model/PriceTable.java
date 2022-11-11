@@ -1,6 +1,7 @@
 package model;
 
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
@@ -35,11 +36,17 @@ public class PriceTable {
         weekDay.put(DayOfWeek.FRIDAY, 1.1);
         weekDay.put(DayOfWeek.SATURDAY, 1.2);
         weekDay.put(DayOfWeek.SUNDAY, 1.2);
-        holidayRate = 1.2;
+        holidayRate = 1.5;
         seatType.put(1, 1.0);
         seatType.put(2, 1.2);
         specialRules.put("Senior",PRICE_RULE.OVERRIDE);
         specialRules.put("Student",PRICE_RULE.OVERRIDE);
+        try {
+            holiday.add(new SimpleDateFormat("dd/MM/yyyy").parse("31/10/2022"));
+            holiday.add(new SimpleDateFormat("dd/MM/yyyy").parse("24/11/2022"));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public double getHolidayRate() {
@@ -154,8 +161,15 @@ public class PriceTable {
         return specialRules.get(group);
     }
 
+    public void displayHoliday(){
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        for(Date date:this.holiday){
+            System.out.println(dateFormat.format(date));
+        }
+    }
     public void updateHolidayDates() throws ParseException {
-        System.out.println(this.holiday);
+        System.out.println("==== Holiday List ====");
+        displayHoliday();
         System.out.println("What you wanna do about the holiday set?\n1.add a new date\t2.remove a existing date");
         Scanner scan = new Scanner(System.in);
         int op = scan.nextInt();
@@ -166,10 +180,18 @@ public class PriceTable {
         } else {
             this.holiday.remove(date);
         }
+        System.out.println("==== Updated Holiday List ====");
+        displayHoliday();
     }
 
     public boolean isHoliday(Date date){
-        return this.holiday.contains(date);
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        for(Date d : this.holiday){
+            if(df.format(d).equals(df.format(date))){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void updatePriceTable() {

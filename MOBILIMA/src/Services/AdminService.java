@@ -1,13 +1,12 @@
 package Services;
 
-import interfaces.ManageMovie;
-import interfaces.ManageSession;
-import interfaces.SystemConfiguration;
-import model.Price;
+import interfaces.IManageMovie;
+import interfaces.IManageSession;
+import interfaces.ISystemConfiguration;
 import model.PriceTable;
 
 
-public class AdminService extends Service implements ManageMovie, ManageSession, SystemConfiguration {
+public class AdminService extends Service implements IManageMovie, IManageSession, ISystemConfiguration {
 
     @Override
     public void addNewMovie() {
@@ -46,9 +45,8 @@ public class AdminService extends Service implements ManageMovie, ManageSession,
 
     @Override
     public  void updatePublicHoliday() {
-        PriceTable priceTable = Price.getPriceTable();
         try {
-            priceTable.updateHolidayDates();
+            Service.priceTable.updateHolidayDates();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -56,7 +54,6 @@ public class AdminService extends Service implements ManageMovie, ManageSession,
 
     @Override
     public void updatePriceTable() {
-        PriceTable priceTable = Price.getPriceTable();
-        priceTable.updatePriceTable();
+        Service.priceTable.updatePriceTable();
     }
 }

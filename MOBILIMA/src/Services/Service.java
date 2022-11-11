@@ -16,8 +16,9 @@ public abstract class Service {
     protected static List<Review> reviews = new ArrayList<>();
     protected static List<Payment> payments = new ArrayList<>();
 
+    public static PriceTable priceTable;
 
-    public static void initialiseFromFile(){
+    public static void initialiseFromFile() {
         movieGoerList = DataImport.importMoviegoers();
         layouts = DataImport.importLayouts();
         cineplexes = DataImport.loadCinplexFromFile();
@@ -26,6 +27,7 @@ public abstract class Service {
         sessions = DataImport.importSessions();
         reviews = DataImport.importReviews();
         payments = DataImport.importPayment();
+        priceTable = new PriceTable();
     }
 
     public static void viewAllSessions(){

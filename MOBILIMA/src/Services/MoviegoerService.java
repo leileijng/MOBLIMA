@@ -144,7 +144,7 @@ public class MoviegoerService extends Service{
          SessionService.showSessionsByMovie(movie);
 
         // let user select session
-        System.out.println("Enter session ID: ");
+        //System.out.println("Enter session ID: ");
         Session session = SessionService.getSessionByIndex("Please enter the session index to book:");
 
         // shows available seats and let user select seat
