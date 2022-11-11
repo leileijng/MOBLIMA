@@ -53,6 +53,7 @@ public class MovieGoerCtr {
     public static int printMainPanel(MovieGoer movieGoer) {
         int choice = 0;
         do {
+            System.out.println("\n=== Main Panel ===");
             try {
                 System.out.println(" 1: View/Search Movies");
                 System.out.println(" 2: View My Reviews");
@@ -111,6 +112,7 @@ public class MovieGoerCtr {
     public static int viewMoviePanel(MovieGoer movieGoer) {
         int choice = 0;
         do {
+            System.out.println("\n=== Movie Panel ===");
             try {
                 System.out.println("1: View All Current Movies");
                 System.out.println("2: View Top 5 Movie by Revenue");
@@ -148,6 +150,7 @@ public class MovieGoerCtr {
     public static int bookingPanel(MovieGoer movieGoer) {
         int choice;
         do {
+            System.out.println("\n=== Booking Panel === ");
             System.out.println(" 1: Book movies");
             System.out.println(" 0: Return to last menu");
             System.out.println("-1: Log out");
@@ -195,6 +198,7 @@ public class MovieGoerCtr {
             return 1; // when there is no history
         int choice;
         do {
+            System.out.println("\n=== Orders ===");
             System.out.println(" 1: Write review for the movie");
             System.out.println(" 0: Going back");
             System.out.println("-1: Logout");
@@ -238,6 +242,7 @@ public class MovieGoerCtr {
      * @return status, 1 for success
      */
     public static int viewReviewPanel(MovieGoer movieGoer) {
+        System.out.println("\n=== Reviews ===");
         moviegoerService.listAllReviewsByMovieGoer(movieGoer);
         return 1;
     }

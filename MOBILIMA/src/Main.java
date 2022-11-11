@@ -8,16 +8,24 @@ public class Main {
     public static MovieGoer movieGoer;
     public static AdminStaff adminStaff;
 
+    private static void clear() {
+        System.out.print("\033[H\033[2J");
+    }
+
     public static void main(String[] args) {
         Service.initialiseFromFile();
         systemInit();
+        System.out.println("Thank you for using MOBLIMA!");
     }
 
     public static void systemInit() {
-        System.out.println("**************************\n*   Welcome to Mobilima  * \n*     Golden Village     *\n**************************\n");
         Scanner scan = new Scanner(System.in);
         int sel;
         do {
+            clear();
+            System.out.println("**************************\n" +
+                    "*   Welcome to MOBLIMA   * \n" +
+                    "*     Golden Village     *\n**************************\n");
             System.out.println("Please select mode:\n " +
                     "1. User Mode\t 2.Admin Mode\t-1. Quit");
             try {
