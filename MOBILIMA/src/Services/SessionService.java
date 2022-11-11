@@ -84,7 +84,7 @@ public class SessionService {
      * @return
      */
     public static Session getSessionByIndex(String msg){
-        // showSessions();
+        // showSession();
         Session session = null;
         do{
             System.out.println(msg);
@@ -137,6 +137,9 @@ public class SessionService {
         int i = 0;
         for (Session session : Service.sessions) {
             if (session.getMovie().getMovieTitle().equals(movie.getMovieTitle())) {
+                Date date = new Date(session.getStartTime().getTime());
+                if (date.compareTo(session.getMovie().getDateEndOfShowing()) >= 0)
+                    continue;
                 System.out.printf("=== Session %d ===\n", ++i);
                 session.viewDetails();
             }
