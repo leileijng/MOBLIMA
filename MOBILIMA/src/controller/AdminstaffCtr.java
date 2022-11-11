@@ -21,7 +21,7 @@ public class AdminstaffCtr {
             System.out.println("Please enter your password: ");
             password = scan.nextLine();
             if (username.equals(adminStaff.getUserName()) && password.equals(adminStaff.getAccessCode()) == true) break;
-        }
+        } while(true);
 
         return new AdminStaff(username, password);
     }

@@ -2,6 +2,7 @@ package Services;
 
 
 import model.Cinema;
+import model.ClassOfCinema;
 
 import java.text.DateFormat;
 import java.text.ParseException;

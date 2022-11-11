@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Admin Staff
+ */
 public class AdminStaff {
     /**
      * The accessCode of AdminStaff

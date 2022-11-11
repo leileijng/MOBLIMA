@@ -75,22 +75,6 @@ public class Movie {
         reviewList = new ArrayList<>();
     }
 
-    public MovieType getType() {
-        return type;
-    }
-
-    public List<Review> getReviewList() {
-        return reviewList;
-    }
-
-    public void setType(MovieType type) {
-        this.type = type;
-    }
-
-    public void setReviewList(List<Review> reviewList) {
-        this.reviewList = reviewList;
-    }
-
     public void setOverallRating(double overallRating) {
         this.overallRating = overallRating;
     }
@@ -211,16 +195,12 @@ public class Movie {
         return director;
     }
 
+    /**
+     * get Date end of showing for movie
+     * @return
+     */
     public Date getDateEndOfShowing() {
         return dateEndOfShowing;
-    }
-
-    public int getMovieID() {
-        return movieID;
-    }
-
-    public void setMovieID(int id) {
-        this.movieID = id;
     }
     /**
      * Gets the casts of the movie.
@@ -230,6 +210,10 @@ public class Movie {
         return casts;
     }
 
+    /**
+     * get the classification
+     * @return Classification
+     */
     public Classification getClassification() {
         return classification;
     }
@@ -286,7 +270,10 @@ public class Movie {
         reviewList.add(review);
     }
 
-
+    /**
+     * set the date of end of showing
+     * @param date
+     */
     public void setDateEndOfShowing(Date date) {
         this.dateEndOfShowing = date;
     }
@@ -325,55 +312,12 @@ public class Movie {
         this.totalRevenue += revenue;
     }
 
-    public void printRecentReviews() {
-        for (int i = 0; i < Math.min(5, reviewList.size()); ++i) {
-            Review review = reviewList.get(i);
-            System.out.printf("Rating: %.1f\n", review.getRating());
-            System.out.printf("Comments: %s\n", review.getComments());
-        }
-    }
-
-    public static void main(String[] args) {
-        // test constructors, setters, getters
-        Movie jvpr = new Movie("JVPR");
-        jvpr.setSynopsis("A movie about JVPR conference.(ง︡'-'︠)ง");
-        jvpr.setDirector("Someone");
-        jvpr.setCasts(new String[] {"some one", "some two"});
-        System.out.println(jvpr.getDirector());
-        System.out.println(jvpr.getMovieTitle());
-        System.out.println(jvpr.getSynopsis());
-        System.out.println(Arrays.toString(jvpr.getCasts()));
-        jvpr.printInfo();
-
-        // test addReview()
-        Review r1 = new Review
-                ("123", jvpr, 5, "Best Movie Ever!");
-        jvpr.addReview(r1);
-        Review r2 = new Review
-                ("456", jvpr, 4, "Good movie!");
-        jvpr.addReview(r2);
-        Review r3 = new Review
-                ("789", jvpr, 4, "Average movie...");
-        jvpr.addReview(r3);
-        System.out.println(jvpr.getOverallRating());
-         try {
-            Movie ntu = new Movie("NTU");
-            Review r4 = new Review
-                    ("567", ntu, 5, "Best Movie Ever!");
-            jvpr.addReview(r4);
-         } catch (IllegalArgumentException e) {
-             System.out.println("Titles not match!");
-         }
-         jvpr.setMovieType("3D");
-        System.out.println(jvpr.getMovieType().toString());
-
-         // test addRevenue()
-         System.out.println(jvpr.getTotalRevenue());
-         jvpr.addRevenue(500);
-         jvpr.addRevenue(3.14);
-         System.out.println(jvpr.getTotalRevenue());
-    }
-
+    /**
+     * Set date of end of showing for the movie
+     * @param year
+     * @param month
+     * @param day
+     */
     public void setDateEndOfShowing(int year, int month, int day) {
         Calendar calendar = new GregorianCalendar();
         calendar.set(year, month, day);
