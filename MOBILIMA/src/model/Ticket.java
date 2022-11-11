@@ -1,75 +1,87 @@
 package model;
-
+/**
+ * Ticket contained by a session
+ */
 public class Ticket {
+    /**
+     * session of ticket
+     */
     private Session session;
+    /**
+     * seat type of a ticket
+     */
     private int seatType;
+    /**
+     * seat index of a ticket
+     */
     private String seatIndex;
+    /**
+     * price of a ticket
+     */
     private double price;
+    /**
+     * booking status of a ticket
+     */
     private Boolean booked;
-    private String cinemaCode;
 
-
-    public Ticket(String seatIndex, String cinemaCode, int seatType) {
+    /**
+     * constructor of ticket
+     * @param seatIndex
+     * @param cinemaCode
+     * @param seatType
+     */
+    public Ticket(String seatIndex, int seatType) {
         this.seatIndex = seatIndex;
         this.booked = false;
-        this.cinemaCode = cinemaCode;
         this.seatType = seatType;
     }
 
+    /**
+     *
+     * @return booking status
+     */
     public Boolean isBooked() {
         return this.booked;
     }
-    
+
+    /**
+     * set price for a ticket
+     * @param price
+     */
     public void assign(double price) {
         this.booked = true;
         this.price = price;
     }
 
+    /**
+     *
+     * @return seat index
+     */
     public String getSeatIndex() {
         return seatIndex;
     }
 
-    public void setSeatIndex(String seatIndex) {
-        this.seatIndex = seatIndex;
-    }
-
-    public Boolean getBooked() {
-        return booked;
-    }
-
-    public void setBooked(Boolean booked) {
-        this.booked = booked;
-    }
-
-    public Session getSession() {
-        return session;
-    }
-
-    public void setSession(Session session) {
-        this.session = session;
-    }
-
+    /**
+     *
+     * @return seat type
+     */
     public int getSeatType() {
         return seatType;
     }
 
-    public void setSeatType(int seatType) {
-        this.seatType = seatType;
-    }
-
+    /**
+     *
+     * @return price of ticket
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     * set price for a ticket
+     * @param price
+     */
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public String getCinemaCode() {
-        return cinemaCode;
-    }
-
-    public void setCinemaCode(String cinemaCode) {
-        this.cinemaCode = cinemaCode;
     }
 }

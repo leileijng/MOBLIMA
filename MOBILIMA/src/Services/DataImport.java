@@ -24,7 +24,7 @@ public class DataImport {
             while ((line = br.readLine()) != null) {
                 Cineplex cineplex = new Cineplex();
                 List<String> row_str = Arrays.asList(line.split(","));
-                cineplex.setCinplexID(row_str.get(0).replaceAll("\\p{C}", ""));
+                cineplex.setCineplexID(row_str.get(0).replaceAll("\\p{C}", ""));
                 cineplex.setCinplexName(row_str.get(1).replaceAll("\\p{C}", ""));
                 cineplex.setLocation(row_str.get(2).replaceAll("\\p{C}", ""));
                 cineplexes.add(cineplex);
@@ -47,14 +47,14 @@ public class DataImport {
                 cinema.setClassOfCinema(ClassOfCinema.valueOf(row_str.get(2).replaceAll("\\p{C}", "").toUpperCase()));
                 cinema.setLayout(getLayoutById(row_str.get(3).replaceAll("\\p{C}", "")));
 
-
+                /*
                 for(Cineplex c : Service.cineplexes){
                     if(c.getCinplexID().equals(row_str.get(0).replaceAll("\\p{C}", ""))){
                         c.addCinema(cinema);
                         cinema.setCineplex(c);
                     }
                 }
-                cinemas.add(cinema);
+                cinemas.add(cinema);*/
             }
         } catch (IOException e) {
             System.err.println("Cannot get the layout file, please check again!");

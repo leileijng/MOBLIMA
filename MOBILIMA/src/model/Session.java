@@ -1,20 +1,37 @@
 package model;
 import java.sql.Timestamp;
 import java.util.*;
-
+/**
+ * Represent a movie session
+ */
 public class Session {
+    /**
+     * session index of session
+     */
     private String sessionIndex;
+    /**
+     * movie the session points to
+     */
     private Movie movie;
+    /**
+     * cinema the session screens in
+     */
     private Cinema cinema;
+    /**
+     * start time of session
+     */
     private Timestamp startTime;
+    /**
+     * end time of session
+     */
     private Timestamp endTime;
+    /**
+     * tickets contained in this session
+     */
     private Vector<Ticket> tickets = new Vector<>();
 
-    public Session() {
-    }
-
     /**
-     *
+     * constructor of session, which auto generates tickets
      * @param sessionIndex
      * @param movie
      * @param cinema
@@ -31,7 +48,7 @@ public class Session {
             char rowIndex = (char)('A' + i);
             for (int j = 0; j < cinema.getLayout().getCol(); j ++) {
                 if(cinema.getLayout().getSeats()[i][j] == 1 || cinema.getLayout().getSeats()[i][j] == 2){
-                    tickets.add(new Ticket(Character.toString(rowIndex) + "" + j, cinema.getCinemaCode(), cinema.getLayout().getSeats()[i][j]));
+                    tickets.add(new Ticket(Character.toString(rowIndex) + "" + j, cinema.getLayout().getSeats()[i][j]));
                 }
             }
         }

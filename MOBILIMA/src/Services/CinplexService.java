@@ -13,7 +13,7 @@ public class CinplexService {
 
     public static Cineplex getCinplexById(String cinplexId) {
         for(Cineplex c : Service.cineplexes){
-            if(c.getCinplexID().equals(cinplexId))
+            if(c.getCineplexID().equals(cinplexId))
                 return c;
         }
         return null;

@@ -1,48 +1,57 @@
 package model;
 import java.util.*;
 
+/**
+ * Cineplex Class
+ */
 public class Cineplex {
     /**
-     * cineplex
+     * cineplex ID
      */
     private String cineplexID;
+    /**
+     * cineplex name
+     */
     private String cineplexName;
+    /**
+     * location
+     */
     private String location;
+    /**
+     * List of Cinemas in Cineplex
+     */
     private ArrayList<Cinema> cinemas = new ArrayList<Cinema>();;
 
-    public Cineplex(String c_id, String cinplexName, String location) {
-        cineplexID = c_id;
-        this.cineplexName = cinplexName;
-        this.location = location;
-    }
-
-    public Cineplex() {
-    }
-
+    /**
+     *
+     * @return cineplex name
+     */
     public String getCinplexName() {
         return this.cineplexName;
     }
 
+    /**
+     * set cineplex name
+     * @param cinplexName
+     */
     public void setCinplexName(String cinplexName) {
         this.cineplexName = cinplexName;
     }
 
+    /**
+     * set location
+     * @param location
+     */
     public void setLocation(String location) {
         this.location = location;
     }
 
-    public String getLocation() {
-        return this.location;
-    }
-
-    public void viewCinemas() {
-        System.out.println("count of the cinplex " + this.cineplexName + " : " + this.cinemas.size());
-        for (int i = 0; i < cinemas.size(); i ++) {
-            this.cinemas.get(i).viewDetails();
-        }
-    }
-
-    public Cinema getCinema(String cinemaCode) {
+    /**
+     * return cinema by Cinema class
+     * @param cinemaCode
+     * @return
+     */
+    public Cinema getCinemas(String cinemaCode) {
         for (int i =0 ; i < cinemas.size(); i ++) {
             if(this.cinemas.get(i).getCinemaCode().equals(cinemaCode)){
                 return this.cinemas.get(i);
@@ -51,15 +60,18 @@ public class Cineplex {
         return null;
     }
 
-    public void addCinema(Cinema cinema){
-        this.cinemas.add(cinema);
+    /**
+     * set cineplex id
+     * @param cineplexID
+     */
+    public void setCineplexID(String cineplexID){
+        this.cineplexID = cineplexID;
     }
-
-    public String getCinplexID() {
+    
+    /**
+     * @return cineplex id
+     */
+    public String getCineplexID() {
         return cineplexID;
-    }
-
-    public void setCinplexID(String c_id) {
-        cineplexID = c_id;
     }
 }

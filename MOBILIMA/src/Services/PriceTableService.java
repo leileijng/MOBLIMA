@@ -1,7 +1,6 @@
 package Services;
 
 
-import model.Cinema;
 import model.ClassOfCinema;
 
 import java.text.DateFormat;
@@ -10,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.util.*;
 
-public class PriceTable {
+public class PriceTableService {
     private double holidayRate;
     private final HashSet<Date> holiday = new HashSet<>();
     private final HashMap<String,Double> prices = new HashMap<>();
@@ -21,7 +20,7 @@ public class PriceTable {
     private final HashMap<String,PRICE_RULE> specialRules = new HashMap<>();
     private final HashMap<Integer,Double> seatType = new HashMap<>();
 
-    public PriceTable(){
+    public PriceTableService(){
         prices.put("Basic", 30.0);
         prices.put("Senior", 20.0);
         prices.put("Student", 25.0);

@@ -4,6 +4,9 @@ import Services.Service;
 
 import java.util.Date;
 
+/**
+ * Adult Price Class
+ */
 public class AdultPrice extends Price {
     /**
      * constructor of AdultPrice

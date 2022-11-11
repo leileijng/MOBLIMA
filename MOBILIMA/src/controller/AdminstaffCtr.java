@@ -228,7 +228,7 @@ public class AdminstaffCtr {
                             if (op2 == 1) //adminService.updatePriceTable();
                                 System.out.println("todo");
                             else if (op2 == 2) adminService.updatePublicHoliday();
-                            else if (op2 == 3) adminService.configSystem();
+                            else if (op2 == 3) adminService.settingFilter();
                             else if (op2 == 4) {
                                 System.out.println("Back to Admin Console.");
                                 break;

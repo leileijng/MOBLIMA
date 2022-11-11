@@ -213,28 +213,4 @@ public class MovieService extends Service {
             }
         }
     }
-    public static void main(String[] args) {
-        Movie[] movies = new Movie[6];
-        for (int i = 0; i < 6; ++i) {
-            movies[i] = new Movie("jvpr"+ i);
-            movies[i].addReview(new Review("123", movies[i], i%5+1, "comment "+i));
-            movies[i].addReview(new Review("456", movies[i], i%5+1, "comment "+i));
-
-            movies[i].addRevenue(100 * i);
-            movies[i].setDateEndOfShowing(2022, 10, 10);
-            MovieService.addMovieToDB(movies[i]);
-        }
-        MovieService.printTop5MovieByRatings();
-        MovieService.printTop5MovieByRevenue();
-        MovieService.printAllCurrentMovies();
-        MovieService.editMovie(); // set movie jvpr[0] to end of showing
-        MovieService.printAllCurrentMovies();
-        Movie jvpr = new Movie("jvpr");
-        jvpr.setShowingStatus(ShowingStatus.NOWSHOWING);
-        MovieService.addMovieToDB(jvpr);
-        MovieService.printAllCurrentMovies();
-        MovieService.editMovie(); // edit info for movie jvpr
-        jvpr.printInfo();
-    }
-
 }

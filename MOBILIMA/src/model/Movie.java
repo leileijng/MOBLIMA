@@ -8,10 +8,6 @@ import java.util.*;
  */
 public class Movie {
     /**
-     * The id of movie
-     */
-    private int movieID;
-    /**
      * The title of the movie.
      */
     private String movieTitle;
@@ -58,31 +54,31 @@ public class Movie {
     private Date dateEndOfShowing;
 
     /**
-     * default constructor, initially some dummy values
+     * default movie constructor
      */
     public Movie() {
-        this(-1, "");
     }
 
     /**
-     * Constructor of the movie, setting movieID and its title
-     * @param id id of the movie to be created
-     * @param title title of the movie to be created
+     * set overall rating
+     * @param overallRating
      */
-    public Movie(int id, String title) {
-        movieID = id;
-        movieTitle = title;
-        reviewList = new ArrayList<>();
-    }
-
     public void setOverallRating(double overallRating) {
         this.overallRating = overallRating;
     }
 
+    /**
+     * set total sales revenue
+     * @param totalRevenue
+     */
     public void setTotalRevenue(double totalRevenue) {
         this.totalRevenue = totalRevenue;
     }
 
+    /**
+     * set movie type from user input
+     * @param movieType
+     */
     public void setMovieType(String movieType) {
         switch (movieType) {
             case "2D" -> setMovieType(MovieType.TwoD);
@@ -130,24 +126,33 @@ public class Movie {
         this.totalRevenue = 0;
     }
 
+    /**
+     *
+     * @return MovieType
+     */
     public MovieType getMovieType() {
         return type;
     }
 
+    /**
+     * set movie type
+     * @param type
+     */
     public void setMovieType(MovieType type) {
         this.type = type;
     }
 
+    /**
+     * set movie title
+     * @param movieTitle
+     */
     public void setMovieTitle(String movieTitle) {
         this.movieTitle = movieTitle;
     }
-
-
     /**
      * Gets the title of the movie.
      * @return title of the movie.
      */
-
     public String getMovieTitle() {
         return movieTitle;
     }
@@ -218,6 +223,10 @@ public class Movie {
         return classification;
     }
 
+    /**
+     * set classification
+     * @param classification
+     */
     public void setClassification(Classification classification) {
         this.classification = classification;
     }

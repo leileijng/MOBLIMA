@@ -50,7 +50,7 @@ public class SessionService {
 
         Session session = new Session(sessionIndex,
                 movie,
-                CinplexService.getCinplexById("ciineA").getCinema(cinemaCode),
+                CinplexService.getCinplexById("ciineA").getCinemas(cinemaCode),
                 convertStr2Time(startTime),
                 convertStr2Time(endTime)
         );

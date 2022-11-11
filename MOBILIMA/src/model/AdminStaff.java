@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Admin Staff
+ * Admin Staff Class
  */
 public class AdminStaff {
     /**

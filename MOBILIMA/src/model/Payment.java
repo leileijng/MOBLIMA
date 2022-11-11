@@ -1,12 +1,32 @@
 package model;
-
+/**
+ * Represents a payment transaction made by moviegoer
+ */
 public class Payment {
-    private String TID;
+    /**
+     * TID of Payment in format of XXXYYYYMMDDhhmm
+     */
+    private final String TID;
+    /**
+     * Session of the payment corresponds to
+     */
     private Session session;
+    /**
+     * Moviegoer of the payment belongs to
+     */
     private MovieGoer movieGoer;
-
+    /**
+     * amount paid in this payment
+     */
     private double amount;
 
+    /**
+     * constructor of payment
+     * @param TID
+     * @param session
+     * @param movieGoer
+     * @param amount
+     */
     public Payment(String TID, Session session, MovieGoer movieGoer, double amount) {
         this.TID = TID;
         this.session = session;
@@ -14,38 +34,21 @@ public class Payment {
         this.amount = amount;
     }
 
+    /**
+     *
+     * @return TID
+     */
     public String getTID() {
         return TID;
-    }
-
-    public void setTID(String TID) {
-        this.TID = TID;
     }
 
     public Session getSession() {
         return session;
     }
 
-    public void setSession(Session session) {
-        this.session = session;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
     public MovieGoer getMovieGoer() {
         return movieGoer;
     }
-
-    public void setMovieGoer(MovieGoer movieGoer) {
-        this.movieGoer = movieGoer;
-    }
-
     public double getPrice() {
         return amount;
     }

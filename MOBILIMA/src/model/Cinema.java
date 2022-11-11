@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Cinema Class
+ */
 public class Cinema {
     /**
      * The cineplex the cinema belongs to

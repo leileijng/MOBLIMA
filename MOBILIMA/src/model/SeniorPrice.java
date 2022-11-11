@@ -3,12 +3,25 @@ package model;
 import Services.Service;
 
 import java.util.Date;
-
+/**
+ * Represents senior price for a ticket
+ */
 public class SeniorPrice extends Price {
+    /**
+     * constructor of senior price
+     * @param movieType
+     * @param cinemaClass
+     * @param seatType
+     * @param date
+     */
     public SeniorPrice(String movieType, String cinemaClass, int seatType, Date date) {
         super(movieType, cinemaClass, seatType, date);
     }
 
+    /**
+     * overriding class of calculate price
+     * @return
+     */
     @Override
     public double calculatePrice() {
         double price = 0;

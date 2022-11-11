@@ -38,7 +38,7 @@ public class AdminService extends Service implements IManageMovie, IManageSessio
     }
 
     @Override
-    public  void configSystem() {
+    public  void settingFilter() {
         MoviegoerService.updateSortingStatus();
     }
 
