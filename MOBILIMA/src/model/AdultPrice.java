@@ -8,6 +8,9 @@ import java.util.Date;
  * Adult Price Class
  */
 public class AdultPrice extends Price {
+    public AdultPrice(Ticket ticket, Session session) {
+        super(ticket, session);
+    }
     /**
      * constructor of AdultPrice
      * @param movieType
@@ -15,9 +18,6 @@ public class AdultPrice extends Price {
      * @param seatType
      * @param date
      */
-    public AdultPrice(String movieType, String cinemaClass, int seatType, Date date) {
-        super(movieType, cinemaClass, seatType, date);
-    }
 
     /**
      * calculate Price and return price with 2 decimal place

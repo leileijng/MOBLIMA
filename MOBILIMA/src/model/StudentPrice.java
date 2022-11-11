@@ -1,27 +1,19 @@
 package model;
 import Services.Service;
+import interfaces.ICalculatePrice;
 
 import java.util.Date;
 /**
  * Student price of a ticket
  */
-public class StudentPrice extends Price {
-    /**
-     * Constructor of Student Price
-     * @param movieType
-     * @param cinemaClass
-     * @param seatType
-     * @param date
-     */
-    public StudentPrice(String movieType, String cinemaClass, int seatType, Date date) {
-        super(movieType, cinemaClass, seatType, date);
+public class StudentPrice extends Price{
+    public StudentPrice(Ticket ticket, Session session) {
+        super(ticket, session);
     }
-
     /**
      *
      * @return calculate price for student
      */
-    @Override
     public double calculatePrice() {
         double price = 0;
         switch (Service.priceTable.getSpecialRules("Student")){

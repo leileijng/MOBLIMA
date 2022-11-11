@@ -186,13 +186,17 @@ public class MoviegoerService extends Service{
             }
         }while(ticket == null);
 
-
-
         // calculate prices for adult, senior, and student
         // and let users choose which ticket to buy
-        double adultPrice = calculateAdultPrice(session, seatID);
-        double seniorPrice = calculateSeniorPrice(session, seatID);
-        double studentPrice = calculateStudentPrice(session, seatID);
+        Price price_obj = new AdultPrice(session.getTicketBySeatID(seatID),session);
+        double adultPrice = price_obj.calculatePrice();
+
+        price_obj = new SeniorPrice(session.getTicketBySeatID(seatID),session);
+        double seniorPrice = price_obj.calculatePrice();
+
+        price_obj = new StudentPrice(session.getTicketBySeatID(seatID),session);
+        double studentPrice = price_obj.calculatePrice();
+
         System.out.println("Select type of price: ");
         System.out.printf("1: Adult Price %.2f\n", adultPrice);
         System.out.printf("2: Senior Price %.2f\n", seniorPrice);
@@ -229,52 +233,6 @@ public class MoviegoerService extends Service{
         System.out.println("Booking has been made!");
         return 1;
     }
-
-    /**
-     * Helper function to calculate adult price for a particular session and seat,
-     * based on the price table.
-     * @param session session the booking is to book
-     * @param seatID seat the user is to book
-     * @return calculated price
-     */
-    private static double calculateAdultPrice(Session session, String seatID) {
-        String movieType = session.getMovie().getMovieType().toString();
-        String cinemaClass = session.getCinema().getClassOfCinema().toString();
-        int seatType = session.getTicketBySeatID(seatID).getSeatType();
-        return new AdultPrice(movieType, cinemaClass, seatType,
-                new Date(session.getStartTime().getTime())).calculatePrice();
-    }
-
-    /**
-     * Helper function to calculate senior price for a particular session and seat,
-     * based on the price table.
-     * @param session session the booking is to book
-     * @param seatID seat the user is to book
-     * @return calculated price
-     */
-    private double calculateSeniorPrice(Session session, String seatID) {
-        String movieType = session.getMovie().getMovieType().toString();
-        String cinemaClass = session.getCinema().getClassOfCinema().toString();
-        int seatType = session.getTicketBySeatID(seatID).getSeatType();
-        return new SeniorPrice(movieType, cinemaClass, seatType,
-                new Date(session.getStartTime().getTime())).calculatePrice();
-    }
-
-    /**
-     * Helper function to calculate student price for a particular session and seat,
-     * based on the price table.
-     * @param session session the booking is to book
-     * @param seatID seat the user is to book
-     * @return calculated price
-     */
-    private double calculateStudentPrice(Session session, String seatID) {
-        String movieType = session.getMovie().getMovieType().toString();
-        String cinemaClass = session.getCinema().getClassOfCinema().toString();
-        int seatType = session.getTicketBySeatID(seatID).getSeatType();
-        return new StudentPrice(movieType, cinemaClass, seatType,
-                new Date(session.getStartTime().getTime())).calculatePrice();
-    }
-
     /**
      * Helper function to generate transaction ID based on session and time
      * in the format XXXYYYYMMDDhhmm where Y : year, M : month, D : day,
@@ -307,8 +265,6 @@ public class MoviegoerService extends Service{
             System.out.println("Comments:\t"+review.getComments());
         }
     }
-
-
 
     /**
      * Helper function to capture personal information of the user after booking

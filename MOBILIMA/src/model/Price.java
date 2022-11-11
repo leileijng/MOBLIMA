@@ -1,56 +1,30 @@
 package model;
 
 import Services.Service;
+import interfaces.ICalculatePrice;
 
 import java.time.DayOfWeek;
 import java.util.Date;
 /**
  * Represents a ticket price
  */
-public abstract class Price {
+public abstract class Price implements ICalculatePrice{
     /**
      * movie type
      */
-    private String movieType;
-    /**
-     * cinema class
-     */
-    private String cinemaClass;
-    /**
-     * date of the session
-     */
-    private Date date;
-    /**
-     * seat type
-     */
-    private int seatType;
-
-    /**
-     * constructor of Price
-     * @param movieType
-     * @param cinemaClass
-     * @param seatType
-     * @param date
-     */
-    public Price(String movieType, String cinemaClass, int seatType, Date date) {
-        this.movieType = movieType;
-        this.cinemaClass = cinemaClass;
-        this.seatType = seatType;
-        this.date = date;
+    private Ticket ticket;
+    private Session session;
+    private boolean isHoliday;
+    public Price (Ticket ticket, Session session){
+        this.ticket = ticket;
+        this.session = session;
     }
-
-    /**
-     * abstract method for calculating price
-     * @return
-     */
-    public abstract double calculatePrice();
-
     /**
      *
      * @return movietype
      */
     public String getMovieType() {
-        return movieType;
+        return session.getMovie().getMovieType().toString();
     }
 
     /**
@@ -58,7 +32,7 @@ public abstract class Price {
      * @return cinema class
      */
     public String getCinemaClass() {
-        return cinemaClass;
+        return session.getCinema().getClassOfCinema().toString();
     }
 
     /**
@@ -66,15 +40,7 @@ public abstract class Price {
      * @return day of week
      */
     public DayOfWeek getWeekDay() {
-        return new java.sql.Date(date.getTime()).toLocalDate().getDayOfWeek();
-    }
-
-    /**
-     *
-     * @return date
-     */
-    public Date getDate() {
-        return date;
+        return new java.sql.Date(session.getStartTime().getTime()).toLocalDate().getDayOfWeek();
     }
 
     /**
@@ -82,7 +48,8 @@ public abstract class Price {
      * @return is holiday
      */
     public boolean isHoliday() {
-        return Service.priceTable.isHoliday(date);
+        return Service.priceTable.isHoliday(
+                java.sql.Date.valueOf(new java.sql.Date(session.getStartTime().getTime()).toLocalDate()));
     }
 
     /**
@@ -90,6 +57,6 @@ public abstract class Price {
      * @return seat type
      */
     public int getSeatType() {
-        return seatType;
+        return this.ticket.getSeatType();
     }
 }

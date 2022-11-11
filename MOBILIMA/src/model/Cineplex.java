@@ -75,4 +75,7 @@ public class Cineplex {
         return cineplexID;
     }
 
+    public void addCinema(Cinema cinema) {
+        this.cinemas.add(cinema);
+    }
 }

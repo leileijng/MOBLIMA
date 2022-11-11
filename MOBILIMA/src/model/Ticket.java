@@ -29,7 +29,7 @@ public class Ticket {
      * @param seatIndex
      * @param seatType
      */
-    public Ticket(String seatIndex, int seatType) {
+    public Ticket(Session session, String seatIndex, int seatType) {
         this.seatIndex = seatIndex;
         this.booked = false;
         this.seatType = seatType;
@@ -82,5 +82,13 @@ public class Ticket {
      */
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    /**
+     *
+     * @return Session this ticket belongs to
+     */
+    public Session getSession() {
+        return session;
     }
 }

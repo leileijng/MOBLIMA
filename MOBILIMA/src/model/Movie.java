@@ -57,6 +57,7 @@ public class Movie {
      * default movie constructor
      */
     public Movie() {
+        reviewList = new LinkedList<>();
     }
 
     /**
@@ -124,6 +125,7 @@ public class Movie {
         this.casts = casts;
         this.overallRating = 0;
         this.totalRevenue = 0;
+        reviewList = new LinkedList<>();
     }
 
     /**

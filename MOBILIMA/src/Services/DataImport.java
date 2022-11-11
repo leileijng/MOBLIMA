@@ -59,14 +59,14 @@ public class DataImport {
                 cinema.setClassOfCinema(ClassOfCinema.valueOf(row_str.get(2).replaceAll("\\p{C}", "").toUpperCase()));
                 cinema.setLayout(getLayoutById(row_str.get(3).replaceAll("\\p{C}", "")));
 
-                /*
+
                 for(Cineplex c : Service.cineplexes){
                     if(c.getCineplexID().equals(row_str.get(0).replaceAll("\\p{C}", ""))){
                         c.addCinema(cinema);
                         cinema.setCineplex(c);
                     }
                 }
-                cinemas.add(cinema);*/
+                cinemas.add(cinema);
             }
         } catch (IOException e) {
             System.err.println("Cannot get the layout file, please check again!");

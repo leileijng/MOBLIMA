@@ -48,7 +48,7 @@ public class Session {
             char rowIndex = (char)('A' + i);
             for (int j = 0; j < cinema.getLayout().getCol(); j ++) {
                 if(cinema.getLayout().getSeats()[i][j] == 1 || cinema.getLayout().getSeats()[i][j] == 2){
-                    tickets.add(new Ticket(Character.toString(rowIndex) + "" + j, cinema.getLayout().getSeats()[i][j]));
+                    tickets.add(new Ticket(this,Character.toString(rowIndex) + "" + j, cinema.getLayout().getSeats()[i][j]));
                 }
             }
         }
