@@ -54,6 +54,7 @@ public class AdminService extends Service implements IManageMovie, IManageSessio
 
     @Override
     public void updatePriceTable() {
+        Service.priceTable.viewPriceTable();
         Service.priceTable.updatePriceTable();
     }
 }

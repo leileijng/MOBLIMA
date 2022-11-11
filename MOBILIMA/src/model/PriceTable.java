@@ -70,19 +70,42 @@ public class PriceTable {
 
     public double getSeatType(int type) { return seatType.get(type); }
 
-    /*
     public void viewPriceTable() {
         System.out.println("=========================================================");
+        for(String key : prices.keySet()){
+            System.out.println("Base Price for " + key);
+            System.out.println(prices.get(key));
+        }
+        System.out.println("=========================================================");
         System.out.println(">> Movie Type   :");
-        System.out.println(this.movieType);
+        for(String key : movieType.keySet()){
+            System.out.println("Current parameter for " + key);
+            System.out.println(movieType.get(key));
+        }
+        System.out.println("=========================================================");
         System.out.println(">> Cinema Class :");
-        System.out.println(this.cinemaClass);
+        for(String key : cinemaClass.keySet()){
+            System.out.println("Current parameter for " + key);
+            System.out.println(cinemaClass.get(key));
+        }
+        System.out.println("=========================================================");
         System.out.println(">> Week Day     :");
-        System.out.println(this.weekDay);
+        for(String key : weekDay.keySet()){
+            System.out.println("Current parameter for " + key);
+            System.out.println(weekDay.get(key));
+        }
+        System.out.println("=========================================================");
+        System.out.println(">> Seat Type    :");
+        for(String key : seatType.keySet()){
+            System.out.println("Current parameter for " + key);
+            System.out.println(seatType.get(key));
+        }
+        System.out.println("=========================================================");
         System.out.println(">> Holiday      :");
-        //System.out.println(this.holiday);
+        this.displayHoliday();
+        System.out.println("Current Holiday Rate : ");
+        System.out.println(this.holidayRate);
     }
-    */
 
     public void updatePrices(){
         Scanner scan = new Scanner(System.in);
