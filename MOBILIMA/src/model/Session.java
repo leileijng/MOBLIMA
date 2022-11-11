@@ -47,6 +47,7 @@ public class Session {
 
     public void viewTickets() {
         int cnt = 0;
+        System.out.println("============= Screen ==============");
         System.out.print(" ");
         for (int i = 0; i < this.cinema.getLayout().getCol(); i ++) System.out.print(" " + i + " ");
         System.out.print("\n");
