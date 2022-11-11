@@ -7,6 +7,9 @@ import java.util.*;
  * A movie can be changed its showing status, update revenue, and add reviews.
  */
 public class Movie {
+    /**
+     * The id of movie
+     */
     private int movieID;
     /**
      * The title of the movie.
@@ -16,11 +19,14 @@ public class Movie {
      * The showing status of the movie.
      */
     private ShowingStatus showingStatus;
-
+    /**
+     * The classification of the movie
+     */
     private Classification classification;
-
+    /**
+     * The type of the type
+     */
     private MovieType type;
-
 
     /**
      * An abstract of the movie.
@@ -49,6 +55,9 @@ public class Movie {
      */
     private double totalRevenue;
 
+    /**
+     * The end showing date
+     */
     private Date dateEndOfShowing;
     public Movie() {
         this(-1, "");

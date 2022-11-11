@@ -26,9 +26,9 @@ public class PriceTable {
         movieType.put("Blockbuster", 1.2);
         movieType.put("2D", 1.0);
         movieType.put("IMAX", 1.3);
-        cinemaClass.put(Cinema.ClassOfCinema.GOLD.toString(), 1.2);
-        cinemaClass.put(Cinema.ClassOfCinema.MAX.toString(), 1.1);
-        cinemaClass.put(Cinema.ClassOfCinema.NORMAL.toString(), 1.0);
+        cinemaClass.put(ClassOfCinema.GOLD.toString(), 1.2);
+        cinemaClass.put(ClassOfCinema.MAX.toString(), 1.1);
+        cinemaClass.put(ClassOfCinema.NORMAL.toString(), 1.0);
         weekDay.put(DayOfWeek.MONDAY, 0.8);
         weekDay.put(DayOfWeek.TUESDAY, 0.8);
         weekDay.put(DayOfWeek.WEDNESDAY, 0.8);

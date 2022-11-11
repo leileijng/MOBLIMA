@@ -5,7 +5,6 @@ public class User {
     private String phone;
     private String email;
     private int age;
-
     public User(String userName){
         this.username = userName;
         this.phone = "98987676";

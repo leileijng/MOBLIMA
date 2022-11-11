@@ -2,12 +2,15 @@ package controller;
 
 import Services.AdminService;
 import Services.MovieService;
+import com.sun.tools.javac.Main;
 import model.AdminStaff;
 
 import java.util.Scanner;
 
 public class AdminstaffCtr {
     public static AdminService adminService = new AdminService();
+
+    public static AdminStaff adminStaff = new AdminStaff("admin", "123456");
     public static AdminStaff AdminstaffLogin() {
         Scanner scan = new Scanner(System.in);
         String username;
@@ -17,7 +20,7 @@ public class AdminstaffCtr {
             username = scan.nextLine();
             System.out.println("Please enter your password: ");
             password = scan.nextLine();
-            if (password.equals("123456") == true) break;
+            if (username.equals(adminStaff.getUserName()) && password.equals(adminStaff.getAccessCode()) == true) break;
         }
 
         AdminStaff adminStaff = new AdminStaff(username, password);

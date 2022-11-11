@@ -5,6 +5,7 @@ import model.*;
 import java.util.Scanner;
 
 public class Main {
+
     public static MovieGoer movieGoer;
     public static AdminStaff adminStaff;
 

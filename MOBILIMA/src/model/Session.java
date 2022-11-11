@@ -13,6 +13,14 @@ public class Session {
     public Session() {
     }
 
+    /**
+     *
+     * @param sessionIndex
+     * @param movie
+     * @param cinema
+     * @param startTime
+     * @param endTime
+     */
     public Session(String sessionIndex, Movie movie, Cinema cinema, Timestamp startTime, Timestamp endTime) {
         this.sessionIndex = sessionIndex;
         this.movie = movie;

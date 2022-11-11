@@ -2,14 +2,17 @@ package model;
 import java.util.*;
 
 public class Cineplex {
-    private String cinplexID;
-    private String cinplexName;
+    /**
+     * cineplex
+     */
+    private String cineplexID;
+    private String cineplexName;
     private String location;
     private ArrayList<Cinema> cinemas = new ArrayList<Cinema>();;
 
     public Cineplex(String c_id, String cinplexName, String location) {
-        cinplexID = c_id;
-        this.cinplexName = cinplexName;
+        cineplexID = c_id;
+        this.cineplexName = cinplexName;
         this.location = location;
     }
 
@@ -17,11 +20,11 @@ public class Cineplex {
     }
 
     public String getCinplexName() {
-        return this.cinplexName;
+        return this.cineplexName;
     }
 
     public void setCinplexName(String cinplexName) {
-        this.cinplexName = cinplexName;
+        this.cineplexName = cinplexName;
     }
 
     public void setLocation(String location) {
@@ -33,7 +36,7 @@ public class Cineplex {
     }
 
     public void viewCinemas() {
-        System.out.println("count of the cinplex " + this.cinplexName + " : " + this.cinemas.size());
+        System.out.println("count of the cinplex " + this.cineplexName + " : " + this.cinemas.size());
         for (int i = 0; i < cinemas.size(); i ++) {
             this.cinemas.get(i).viewDetails();
         }
@@ -53,10 +56,10 @@ public class Cineplex {
     }
 
     public String getCinplexID() {
-        return cinplexID;
+        return cineplexID;
     }
 
     public void setCinplexID(String c_id) {
-        cinplexID = c_id;
+        cineplexID = c_id;
     }
 }
