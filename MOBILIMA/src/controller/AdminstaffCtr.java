@@ -3,7 +3,6 @@ package controller;
 import Services.AdminService;
 import Services.MovieService;
 import model.AdminStaff;
-import model.Movie;
 
 import java.util.Scanner;
 

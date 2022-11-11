@@ -1,6 +1,4 @@
 package model;
-import java.io.*;
-import java.util.*;
 
 public class AdminStaff {
     private String accessCode;

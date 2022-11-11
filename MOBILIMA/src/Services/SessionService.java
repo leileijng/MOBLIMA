@@ -16,8 +16,7 @@ public class SessionService {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             Date parsedDate = dateFormat.parse(time);
-            java.sql.Timestamp timeStampDate = new Timestamp(parsedDate.getTime());
-            return timeStampDate;
+            return new Timestamp(parsedDate.getTime());
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }

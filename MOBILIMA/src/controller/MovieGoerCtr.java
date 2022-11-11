@@ -4,7 +4,6 @@ import Services.MovieService;
 import Services.MoviegoerService;
 import model.Movie;
 import model.MovieGoer;
-import model.Review;
 import java.util.List;
 import java.util.Scanner;
 
@@ -210,7 +209,6 @@ public class MovieGoerCtr {
             } else if (choice == -1 || choice == 0){
                 return choice;
             } else {
-                List<Review> reviews = movieGoer.getReviews();
                 int orderID;
                 do {
                     System.out.println("Enter the index of the order you want " +

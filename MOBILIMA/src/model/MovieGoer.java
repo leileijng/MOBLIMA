@@ -1,7 +1,5 @@
 package model;
-// import controller.MoviegoerCtr;
 
-import java.io.*;
 import java.util.*;
 
 public class MovieGoer extends User {

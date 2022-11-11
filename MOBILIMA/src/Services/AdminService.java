@@ -1,13 +1,11 @@
 package Services;
 
-import controller.MovieGoerCtr;
 import interfaces.ManageMovie;
 import interfaces.ManageSession;
 import interfaces.SystemConfiguration;
 import model.Price;
 import model.PriceTable;
 
-import java.util.Scanner;
 
 public class AdminService extends Service implements ManageMovie, ManageSession, SystemConfiguration {
 

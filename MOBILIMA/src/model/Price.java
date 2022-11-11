@@ -1,12 +1,8 @@
 package model;
 
 import java.time.DayOfWeek;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.Set;
 
 public abstract class Price {
     protected static PriceTable priceTable = new PriceTable();
