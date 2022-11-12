@@ -307,7 +307,7 @@ public class Movie {
         info.append("Rating: \t").append(getOverallRating()).append("\n");
         // info.append("Revenue: \t").append(getTotalRevenue()).append("\n");
         info.append("Recent Reviews: \n");
-        for (int i = 0; i < 2; ++i) {
+        for (int i = 0; i < Math.min(2, reviewList.size()); ++i) {
             Review review = reviewList.get(reviewList.size()-i-1);
             info.append("== Review record ==" + (i+1) + "\n");
             info.append("Rating:" + review.getRating()).append("\n");

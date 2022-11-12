@@ -110,14 +110,29 @@ public class MovieService extends Service {
      * @param movie
      */
     public static void updateMovieCasts(Movie movie) {
-        System.out.println("Enter number of the casts: (>= 2)");
-        int sz = Integer.parseInt(scanner.nextLine());
-        String[] casts = new String[sz];
-        for (int i = 0; i < sz; ++i) {
-            System.out.printf("Enter cast no.%d: ", i+1);
-            casts[i] = scanner.nextLine();
-        }
-        movie.setCasts(casts);
+        do {
+            System.out.println("Enter number of the casts: (>= 2)");
+            System.out.println("(Enter -1 to quit)");
+            int sz;
+            try {
+                sz = Integer.parseInt(scanner.nextLine());
+            } catch (Exception e) {
+                System.err.println("Input is not an integer!");
+                continue;
+            } if (sz == -1) {
+                break;
+            } else if (sz < 2) {
+                System.err.println("Input size should >= 2!");
+            } else {
+                String[] casts = new String[sz];
+                for (int i = 0; i < sz; ++i) {
+                    System.out.printf("Enter cast no.%d: ", i + 1);
+                    casts[i] = scanner.nextLine();
+                }
+                movie.setCasts(casts);
+                break;
+            }
+        } while (true);
     }
 
     /**
