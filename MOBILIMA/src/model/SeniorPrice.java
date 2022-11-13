@@ -24,7 +24,7 @@ public class SeniorPrice extends Price {
                     (this.isHoliday()?1*Service.priceTable.getHolidayRate():1);
                 break;
             case DISCOUNT:
-                price = Service.priceTable.getPriceByType("basic")
+                price = Service.priceTable.getPriceByType("Basic")
                         * Service.priceTable.getDayRate(this.getWeekDay())
                         * Service.priceTable.getCinemaClass(this.getCinemaClass())
                         * Service.priceTable.getMovieTypeRate(this.getMovieType())
@@ -33,7 +33,7 @@ public class SeniorPrice extends Price {
                         * 0.8;
                 break;
             case NORMAL:
-                price = Service.priceTable.getPriceByType("basic")
+                price = Service.priceTable.getPriceByType("Basic")
                         * Service.priceTable.getDayRate(this.getWeekDay())
                         * Service.priceTable.getCinemaClass(this.getCinemaClass())*
                         (this.isHoliday()?1*Service.priceTable.getHolidayRate():1)
