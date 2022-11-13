@@ -11,8 +11,8 @@ public class AdminStaff extends User {
 
     /**
      * constructor of admin staff
-     * @param username
-     * @param accessCode
+     * @param username default: admin
+     * @param accessCode default password provided in the phase of development
      */
     public AdminStaff(String username, String accessCode) {
         super(username);
@@ -29,7 +29,7 @@ public class AdminStaff extends User {
 
     /**
      * get the userName
-     * @return
+     * @return userName
      */
     public String getUserName() {
         return super.getUsername();

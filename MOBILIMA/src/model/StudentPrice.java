@@ -7,6 +7,11 @@ import java.util.Date;
  * Student price of a ticket
  */
 public class StudentPrice extends Price{
+    /**
+     * constructor of StudentPrice
+     * @param ticket ticket the price corresponds to
+     * @param session session the price corresponds to
+     */
     public StudentPrice(Ticket ticket, Session session) {
         super(ticket, session);
     }

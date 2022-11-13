@@ -7,6 +7,11 @@ import java.util.Date;
  * Represents senior price for a ticket
  */
 public class SeniorPrice extends Price {
+    /**
+     * constructor of SeniorPrice
+     * @param ticket ticket the price corresponds to
+     * @param session session the price corresponds to
+     */
     public SeniorPrice(Ticket ticket, Session session) {
         super(ticket, session);
     }

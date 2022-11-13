@@ -8,16 +8,14 @@ import java.util.Date;
  * Adult Price Class
  */
 public class AdultPrice extends Price {
+    /**
+     * constructor of AdultPrice
+     * @param ticket ticket the price corresponds to
+     * @param session session the price corresponds to
+     */
     public AdultPrice(Ticket ticket, Session session) {
         super(ticket, session);
     }
-    /**
-     * constructor of AdultPrice
-     * @param movieType
-     * @param cinemaClass
-     * @param seatType
-     * @param date
-     */
 
     /**
      * calculate Price and return price with 2 decimal place

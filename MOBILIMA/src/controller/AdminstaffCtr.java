@@ -6,7 +6,9 @@ import com.sun.tools.javac.Main;
 import model.AdminStaff;
 
 import java.util.Scanner;
-
+/**
+ * Controller for Admin staff, providing interaction with the admin user
+ */
 public class AdminstaffCtr {
     /**
      * static admin service
