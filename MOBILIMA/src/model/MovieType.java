@@ -1,5 +1,7 @@
 package model;
-
+/**
+ * enumeration of 5 movie type
+ */
 public enum MovieType {
     TwoD {
         @Override

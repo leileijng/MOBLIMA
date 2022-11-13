@@ -1,4 +1,4 @@
-package Services;
+package service;
 
 import interfaces.IManageMovie;
 import interfaces.IManageSession;

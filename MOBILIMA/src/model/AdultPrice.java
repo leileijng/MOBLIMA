@@ -1,8 +1,6 @@
 package model;
 
-import Services.Service;
-
-import java.util.Date;
+import service.Service;
 
 /**
  * Adult Price Class

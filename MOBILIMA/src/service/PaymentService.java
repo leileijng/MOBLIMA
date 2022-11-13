@@ -1,12 +1,19 @@
-package Services;
+package service;
 
 import model.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
-
+/**
+ * Payment Service
+ * provide business logic to support a transaction made by moviegoer
+ */
 public class PaymentService {
+    /**
+     * Scanner
+     * Support user input from console terminal
+     */
     private static final Scanner scanner = new Scanner(System.in);
     /**
      * Make booking for movieGoer for movie

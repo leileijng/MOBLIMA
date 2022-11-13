@@ -1,4 +1,4 @@
-package Services;
+package service;
 
 import model.*;
 
@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import static Services.MovieService.addMovieToDB;
+import static service.MovieService.addMovieToDB;
 
 /**
  * Import the Data

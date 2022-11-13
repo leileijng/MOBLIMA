@@ -1,10 +1,10 @@
 package model;
 
-import Services.Service;
+import service.Service;
 import interfaces.ICalculatePrice;
 
 import java.time.DayOfWeek;
-import java.util.Date;
+
 /**
  * Represents a ticket price
  */

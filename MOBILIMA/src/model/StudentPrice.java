@@ -1,8 +1,6 @@
 package model;
-import Services.Service;
-import interfaces.ICalculatePrice;
+import service.Service;
 
-import java.util.Date;
 /**
  * Student price of a ticket
  */

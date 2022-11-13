@@ -1,8 +1,8 @@
 package controller;
 
-import Services.MovieService;
-import Services.MoviegoerService;
-import Services.Service;
+import service.MovieService;
+import service.MoviegoerService;
+import service.Service;
 import model.Movie;
 import model.MovieGoer;
 

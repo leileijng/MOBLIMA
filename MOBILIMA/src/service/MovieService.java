@@ -1,8 +1,7 @@
-package Services;
+package service;
 
 import model.Classification;
 import model.Movie;
-import model.Review;
 import model.ShowingStatus;
 
 import java.util.*;

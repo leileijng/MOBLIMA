@@ -1,6 +1,8 @@
 package model;
 import java.util.*;
-
+/**
+ * Represents a layout that a cinema hall has
+ */
 public class Layout {
     /**
      * layout if of Layout

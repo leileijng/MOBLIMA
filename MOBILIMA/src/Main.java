@@ -1,5 +1,4 @@
-import Services.MoviegoerService;
-import Services.Service;
+import service.Service;
 import controller.*;
 import model.*;
 import java.util.Scanner;

@@ -1,8 +1,7 @@
 package model;
 
-import Services.Service;
+import service.Service;
 
-import java.util.Date;
 /**
  * Represents senior price for a ticket
  */

@@ -1,8 +1,7 @@
 package controller;
 
-import Services.AdminService;
-import Services.MovieService;
-import com.sun.tools.javac.Main;
+import service.AdminService;
+import service.MovieService;
 import model.AdminStaff;
 
 import java.util.Scanner;
