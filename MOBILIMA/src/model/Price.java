@@ -15,12 +15,18 @@ public abstract class Price implements ICalculatePrice{
     private Ticket ticket;
     private Session session;
     private boolean isHoliday;
+
+    /**
+     * Constructor
+     * @param ticket ticket
+     * @param session session
+     */
     public Price (Ticket ticket, Session session){
         this.ticket = ticket;
         this.session = session;
     }
     /**
-     *
+     * gets the movie type
      * @return movietype
      */
     public String getMovieType() {

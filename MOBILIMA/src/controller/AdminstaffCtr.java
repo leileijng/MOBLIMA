@@ -21,6 +21,7 @@ public class AdminstaffCtr {
 
     /**
      * admin staff login
+     * @return An AdminStaff object
      */
     public static AdminStaff AdminstaffLogin() {
         Scanner scan = new Scanner(System.in);
@@ -39,7 +40,7 @@ public class AdminstaffCtr {
 
     /**
      * admin staff main panel
-     * @param adminStaff
+     * @param adminStaff user of the panel
      */
     public static void printMainPanel(AdminStaff adminStaff){
         Scanner scan = new Scanner(System.in);

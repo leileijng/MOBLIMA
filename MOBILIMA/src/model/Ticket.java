@@ -26,8 +26,9 @@ public class Ticket {
 
     /**
      * constructor of ticket
-     * @param seatIndex
-     * @param seatType
+     * @param seatIndex index of the seat
+     * @param seatType type of the seat
+     * @param session session of the ticket
      */
     public Ticket(Session session, String seatIndex, int seatType) {
         this.seatIndex = seatIndex;
@@ -45,7 +46,7 @@ public class Ticket {
 
     /**
      * set price for a ticket
-     * @param price
+     * @param price price of the ticket
      */
     public void assign(double price) {
         this.booked = true;
@@ -78,7 +79,7 @@ public class Ticket {
 
     /**
      * set price for a ticket
-     * @param price
+     * @param price price of the ticket
      */
     public void setPrice(double price) {
         this.price = price;

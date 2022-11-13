@@ -76,8 +76,8 @@ public class DataImport {
 
     /**
      * import the single layout
-     * @param filepath
-     * @param index
+     * @param filepath path of the file
+     * @param index index
      * @return the layout
      */
     public static Layout importSingleLayout(String filepath, int index){

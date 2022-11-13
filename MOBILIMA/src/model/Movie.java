@@ -62,7 +62,7 @@ public class Movie {
 
     /**
      * set overall rating
-     * @param overallRating
+     * @param overallRating average rating of the movie
      */
     public void setOverallRating(double overallRating) {
         this.overallRating = overallRating;
@@ -70,7 +70,7 @@ public class Movie {
 
     /**
      * set total sales revenue
-     * @param totalRevenue
+     * @param totalRevenue total revenue of the movie
      */
     public void setTotalRevenue(double totalRevenue) {
         this.totalRevenue = totalRevenue;
@@ -78,7 +78,7 @@ public class Movie {
 
     /**
      * set movie type from user input
-     * @param movieType
+     * @param movieType type of the movie
      */
     public void setMovieType(String movieType) {
         switch (movieType) {
@@ -138,7 +138,7 @@ public class Movie {
 
     /**
      * set movie type
-     * @param type
+     * @param type type of the movie
      */
     public void setMovieType(MovieType type) {
         this.type = type;
@@ -146,7 +146,7 @@ public class Movie {
 
     /**
      * set movie title
-     * @param movieTitle
+     * @param movieTitle title of the movie
      */
     public void setMovieTitle(String movieTitle) {
         this.movieTitle = movieTitle;
@@ -204,7 +204,7 @@ public class Movie {
 
     /**
      * get Date end of showing for movie
-     * @return
+     * @return date of end of showing
      */
     public Date getDateEndOfShowing() {
         return dateEndOfShowing;
@@ -227,7 +227,7 @@ public class Movie {
 
     /**
      * set classification
-     * @param classification
+     * @param classification classification of the movie
      */
     public void setClassification(Classification classification) {
         this.classification = classification;
@@ -283,7 +283,7 @@ public class Movie {
 
     /**
      * set the date of end of showing
-     * @param date
+     * @param date date end of showing
      */
     public void setDateEndOfShowing(Date date) {
         this.dateEndOfShowing = date;
@@ -325,9 +325,9 @@ public class Movie {
 
     /**
      * Set date of end of showing for the movie
-     * @param year
-     * @param month
-     * @param day
+     * @param year the year end of showing
+     * @param month the month end of showing
+     * @param day the day end of showing
      */
     public void setDateEndOfShowing(int year, int month, int day) {
         Calendar calendar = new GregorianCalendar();

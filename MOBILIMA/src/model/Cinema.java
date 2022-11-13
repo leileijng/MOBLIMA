@@ -38,7 +38,7 @@ public class Cinema {
 
     /**
      * set a cineplex for cinema
-     * @param cineplex
+     * @param cineplex cineplex the cinema is in
      */
     public void setCineplex(Cineplex cineplex) {
         this.cineplex = cineplex;
@@ -46,7 +46,7 @@ public class Cinema {
 
     /**
      * set cinemaClass for cinema
-     * @param classOfCinema
+     * @param classOfCinema class of the cinema
      */
     public void setClassOfCinema(ClassOfCinema classOfCinema) {
         this.classOfCinema = classOfCinema;
@@ -54,7 +54,7 @@ public class Cinema {
 
     /**
      * set cinemaCode for cinema
-     * @param cinemaCode
+     * @param cinemaCode code of the cinema
      */
     public void setCinemaCode(String cinemaCode) {
         this.cinemaCode = cinemaCode;
@@ -88,7 +88,7 @@ public class Cinema {
 
     /**
      * set layout for a cinema
-     * @param layout
+     * @param layout layout of the cinema
      */
     public void setLayout(Layout layout) {
         this.layout = layout;
@@ -96,7 +96,7 @@ public class Cinema {
 
     /**
      * return the layout of cinema
-     * @return
+     * @return the layout of the cinema
      */
     public Layout getLayout() {
         return layout;

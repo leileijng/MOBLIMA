@@ -9,7 +9,7 @@ public class CineplexService {
 
     /**
      * get the cineplex by name
-     * @param cineplexName
+     * @param cineplexName name of the cineplex
      * @return the cineplex in required name
      */
     public static Cineplex getCineplexByName(String cineplexName) {
@@ -22,7 +22,7 @@ public class CineplexService {
 
     /**
      * get the cineplex by ID
-     * @param cineplexId
+     * @param cineplexId id of the cineplex
      * @return the required cineplex
      */
     public static Cineplex getCineplexById(String cineplexId) {

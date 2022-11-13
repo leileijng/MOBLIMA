@@ -22,10 +22,10 @@ public class Payment {
 
     /**
      * constructor of payment
-     * @param TID
-     * @param session
-     * @param movieGoer
-     * @param amount
+     * @param TID Transaction ID
+     * @param session session
+     * @param movieGoer movie-goer
+     * @param amount price amount
      */
     public Payment(String TID, Session session, MovieGoer movieGoer, double amount) {
         this.TID = TID;
@@ -35,20 +35,33 @@ public class Payment {
     }
 
     /**
-     *
-     * @return TID
+     * gets the transaction ID
+     * @return TID transaction ID
      */
     public String getTID() {
         return TID;
     }
 
+    /**
+     * get the session ID
+     * @return session ID
+     */
     public Session getSession() {
         return session;
     }
 
+    /**
+     * get movie-goer
+     * @return movie-goer
+     */
     public MovieGoer getMovieGoer() {
         return movieGoer;
     }
+
+    /**
+     * Get price of the payment
+     * @return price
+     */
     public double getPrice() {
         return amount;
     }

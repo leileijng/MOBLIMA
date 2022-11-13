@@ -17,7 +17,7 @@ public class SeniorPrice extends Price {
 
     /**
      * overriding class of calculate price
-     * @return
+     * @return calculated price
      */
     @Override
     public double calculatePrice() {

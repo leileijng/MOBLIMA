@@ -23,8 +23,8 @@ public class SessionService {
 
     /**
      * convert the str to time
-     * @param time
-     * @return
+     * @param time time to convert in string
+     * @return converted time stamp
      */
     public static Timestamp convertStr2Time(String time){
         try {
@@ -39,7 +39,7 @@ public class SessionService {
 
     /**
      * add the session to data base
-     * @param session
+     * @param session session to add
      */
     public static void addSessionToDB(Session session){
         Service.sessions.add(session);
@@ -80,8 +80,8 @@ public class SessionService {
 
     /**
      * get the session by index
-     * @param msg
-     * @return
+     * @param msg msg to send to the user
+     * @return session
      */
     public static Session getSessionByIndex(String msg){
         // showSession();
@@ -131,7 +131,7 @@ public class SessionService {
 
     /**
      * show the sessions by the movie
-     * @param movie
+     * @param movie movie to find sessions
      */
     public static void showSessionsByMovie(Movie movie) {
         int i = 0;
@@ -148,8 +148,8 @@ public class SessionService {
 
     /**
      * remove the session
-     * @param sessionIndex
-     * @return
+     * @param sessionIndex index of the session
+     * @return status
      */
     public static String removeSession(String sessionIndex) {
         int num = Service.sessions.size();
@@ -164,8 +164,8 @@ public class SessionService {
 
     /**
      * get the session by session index
-     * @param sessionIndex
-     * @return
+     * @param sessionIndex index of the session
+     * @return session
      */
     public static Session getSessionBySessionIndex(String sessionIndex) {
         int num = Service.sessions.size();
@@ -179,8 +179,8 @@ public class SessionService {
 
     /**
      * add the session
-     * @param session
-     * @return
+     * @param session session to add
+     * @return status
      */
     public String addSession(Session session) {
         Service.sessions.add(session);

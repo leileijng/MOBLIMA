@@ -161,6 +161,7 @@ public class MoviegoerService extends Service{
     /**
      * Print all booking history of a movie-goer
      * @param movieGoer movie-goer to print history
+     * @return status of printing
      */
     public int printAllOrders(MovieGoer movieGoer) {
         List<Payment> payments = movieGoer.getPayments();
@@ -207,6 +208,10 @@ public class MoviegoerService extends Service{
         ReviewService.addReview(movieGoer, movie, ratings, comments);
     }
 
+    /**
+     * List all reviews wrote by a movie-goer
+     * @param movieGoer writer of the reviews
+     */
     public void listAllReviewsByMovieGoer(MovieGoer movieGoer) {
         ReviewService.listAllReviewsByMovieGoer(movieGoer);
     }

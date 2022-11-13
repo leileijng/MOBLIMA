@@ -20,7 +20,7 @@ public class MovieGoer extends User {
 
     /**
      * constructor of new moviegoer
-     * @param userName
+     * @param userName username of the user
      */
     public MovieGoer(String userName){
         super(userName);
@@ -30,7 +30,7 @@ public class MovieGoer extends User {
 
     /**
      * return list of payment the moviegoer has
-     * @return
+     * @return list of payments
      */
     public ArrayList<Payment> getPayments() {
         return payments;
@@ -38,7 +38,7 @@ public class MovieGoer extends User {
 
     /**
      * return list of review the moviegoer has
-     * @return
+     * @return list of reviews
      */
     public ArrayList<Review> getReviews() {
         return reviews;
@@ -46,7 +46,7 @@ public class MovieGoer extends User {
 
     /**
      * add payments
-     * @param payment
+     * @param payment payment made
      */
     public void addPayments(Payment payment){
         this.payments.add(payment);
@@ -54,7 +54,7 @@ public class MovieGoer extends User {
 
     /**
      * add reviews
-     * @param review
+     * @param review review written
      */
     public void addReview(Review review){
         this.reviews.add(review);

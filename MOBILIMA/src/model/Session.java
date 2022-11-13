@@ -32,11 +32,11 @@ public class Session {
 
     /**
      * constructor of session, which auto generates tickets
-     * @param sessionIndex
-     * @param movie
-     * @param cinema
-     * @param startTime
-     * @param endTime
+     * @param sessionIndex index of the session
+     * @param movie movie
+     * @param cinema cinema
+     * @param startTime start time
+     * @param endTime end time
      */
     public Session(String sessionIndex, Movie movie, Cinema cinema, Timestamp startTime, Timestamp endTime) {
         this.sessionIndex = sessionIndex;
@@ -106,8 +106,8 @@ public class Session {
 
     /**
      * occupy the seat and book the ticket
-     * @param seatIndex
-     * @param price
+     * @param seatIndex index of the seat
+     * @param price price of the ticket
      * @return the message
      */
     public String occupySeat(String seatIndex, double price) {
@@ -123,7 +123,7 @@ public class Session {
 
     /**
      * find the ticket by the seat ID
-     * @param seatIndex
+     * @param seatIndex index of the seat
      * @return the required ticket
      */
     public Ticket getTicketBySeatID(String seatIndex) {
@@ -137,7 +137,7 @@ public class Session {
 
     /**
      * get the start time
-     * @return
+     * @return start time
      */
     public Timestamp getStartTime() {
         return startTime;
@@ -145,7 +145,7 @@ public class Session {
 
     /**
      * get the session index
-     * @return
+     * @return session index
      */
     public String getSessionIndex() {
         return sessionIndex;
@@ -153,7 +153,7 @@ public class Session {
 
     /**
      * set the session index
-     * @param sessionIndex
+     * @param sessionIndex session index
      */
     public void setSessionIndex(String sessionIndex) {
         this.sessionIndex = sessionIndex;
@@ -161,7 +161,7 @@ public class Session {
 
     /**
      * set the movie
-     * @param movie
+     * @param movie movie to set
      */
     public void setMovie(Movie movie) {
         this.movie = movie;
@@ -169,7 +169,7 @@ public class Session {
 
     /**
      * set the tickets
-     * @param tickets
+     * @param tickets tickets
      */
     public void setTickets(Vector<Ticket> tickets) {
         this.tickets = tickets;
@@ -177,7 +177,7 @@ public class Session {
 
     /**
      * get the cinema
-     * @return
+     * @return cinema to get
      */
     public Cinema getCinema() {
         return cinema;
@@ -185,7 +185,7 @@ public class Session {
 
     /**
      * set the cinema
-     * @param cinema
+     * @param cinema cinema to set
      */
     public void setCinema(Cinema cinema) {
         this.cinema = cinema;
@@ -193,7 +193,7 @@ public class Session {
 
     /**
      * set the start time
-     * @param startTime
+     * @param startTime start time to set
      */
     public void setStartTime(Timestamp startTime) {
         this.startTime = startTime;
@@ -201,7 +201,7 @@ public class Session {
 
     /**
      * set the end time
-     * @param endTime
+     * @param endTime end time to set
      */
     public void setEndTime(Timestamp endTime) {
         this.endTime = endTime;
@@ -209,7 +209,7 @@ public class Session {
 
     /**
      * get the tickets
-     * @return
+     * @return tickets to get
      */
     public Vector<Ticket> getTickets() {
         return tickets;

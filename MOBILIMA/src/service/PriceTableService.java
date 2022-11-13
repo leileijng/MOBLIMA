@@ -83,7 +83,7 @@ public class PriceTableService {
 
     /**
      * get the holiday rate
-     * @return
+     * @return holiday rate
      */
     public double getHolidayRate() {
         return holidayRate;
@@ -91,8 +91,8 @@ public class PriceTableService {
 
     /**
      * get the base price by the type
-     * @param type
-     * @return
+     * @param type type ticket
+     * @return type rate
      */
     public double getPriceByType(String type){
         return prices.get(type);
@@ -100,8 +100,8 @@ public class PriceTableService {
 
     /**
      * get the rate by the movie type
-     * @param movie
-     * @return
+     * @param movie title of the movie
+     * @return rate of the type of the input movie
      */
     public double getMovieTypeRate(String movie){
         return this.movieType.get(movie);
@@ -109,8 +109,8 @@ public class PriceTableService {
 
     /**
      * get the rate by the cinema class
-     * @param cinema
-     * @return
+     * @param cinema cinema name
+     * @return cinema
      */
     public double getCinemaClass(String cinema){
         return this.cinemaClass.get(cinema);
@@ -118,8 +118,8 @@ public class PriceTableService {
 
     /**
      * get the rate by the week date
-     * @param day
-     * @return
+     * @param day day of the week
+     * @return responding rate
      */
     public double getDayRate(DayOfWeek day){
         return this.weekDay.get(day);
@@ -127,8 +127,8 @@ public class PriceTableService {
 
     /**
      * get the rate by the seat type
-     * @param type
-     * @return
+     * @param type type of the seat
+     * @return the rate of the type of the seat
      */
     public double getSeatType(int type) { return seatType.get(type); }
 
@@ -270,8 +270,8 @@ public class PriceTableService {
 
     /**
      * get the special rules
-     * @param group
-     * @return
+     * @param group group name to find Special Rule
+     * @return Special Price Rule
      */
     public SpecialPriceRule getSpecialRules(String group) {
         return specialRules.get(group);
@@ -289,7 +289,7 @@ public class PriceTableService {
 
     /**
      * update the holidays in the set
-     * @throws ParseException
+     * @throws ParseException if input has an error format
      */
     public void updateHolidayDates() throws ParseException {
         System.out.println("==== Holiday List ====");
@@ -310,8 +310,8 @@ public class PriceTableService {
 
     /**
      * check if it is the holiday
-     * @param date
-     * @return
+     * @param date date to check
+     * @return if the date is a holiday
      */
     public boolean isHoliday(Date date){
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");

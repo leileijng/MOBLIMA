@@ -163,6 +163,7 @@ public class MovieGoerCtr {
     /**
      * Booking panel for movie-goer
      * @param movieGoer user making the booking
+     * @param movie movie to book
      * @return status, 1 success, 0 go back, -1 logout
      */
     public static int bookingPanel(MovieGoer movieGoer, Movie movie) {

@@ -79,7 +79,7 @@ public abstract class Service {
 
     /**
      * view all sessions by cineplex name
-     * @param cineplexName
+     * @param cineplexName name of the cineplex
      */
     public static void viewAllSessionsByCineplexName(String cineplexName){
         int num = sessions.size();
@@ -92,7 +92,7 @@ public abstract class Service {
 
     /**
      * view all sessions by movie title
-     * @param movieTitle
+     * @param movieTitle name of the movie
      */
     public static void viewAllSessionsByMovieTitle(String movieTitle){
         int num = sessions.size();

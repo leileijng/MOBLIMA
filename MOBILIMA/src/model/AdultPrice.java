@@ -17,7 +17,7 @@ public class AdultPrice extends Price {
 
     /**
      * calculate Price and return price with 2 decimal place
-     * @return
+     * @return calculated price
      */
     @Override
     public double calculatePrice() {

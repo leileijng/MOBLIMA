@@ -86,7 +86,7 @@ public class MovieService extends Service {
 
     /**
      * update the movie director
-     * @param movie
+     * @param movie movie to update
      */
     public static void updateMovieDirector(Movie movie) {
         System.out.println("Enter director of the movie: ");
@@ -96,7 +96,7 @@ public class MovieService extends Service {
 
     /**
      * update the movie synopsis
-     * @param movie
+     * @param movie movie to update
      */
     public static void updateMovieSynopsis(Movie movie) {
         System.out.println("Enter synopsis of the movie: ");
@@ -106,7 +106,7 @@ public class MovieService extends Service {
 
     /**
      * update the movie casts
-     * @param movie
+     * @param movie movie to update
      */
     public static void updateMovieCasts(Movie movie) {
         do {
@@ -136,7 +136,7 @@ public class MovieService extends Service {
 
     /**
      * update the movie end of showing date
-     * @param movie
+     * @param movie movie to update
      */
     public static void updateMovieEndOfShowingDate(Movie movie) {
         do {
@@ -159,7 +159,7 @@ public class MovieService extends Service {
 
     /**
      * update the movie status
-     * @param movie
+     * @param movie movie to update
      */
     public static void updateMovieStatus(Movie movie) {
         System.out.println("Enter showing status for movie " +
@@ -187,7 +187,7 @@ public class MovieService extends Service {
 
     /**
      * update the movie classification
-     * @param movie
+     * @param movie movie to update
      */
     public static void updateMovieClassification(Movie movie) {
         System.out.println("Enter the classification of the movie: ");
@@ -260,7 +260,7 @@ public class MovieService extends Service {
 
     /**
      * get the movie by name
-     * @param name
+     * @param name name of the movie
      * @return the movie
      */
     public static Movie getMovieByName(String name) {

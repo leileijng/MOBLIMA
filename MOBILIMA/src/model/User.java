@@ -22,7 +22,7 @@ public class User {
 
     /**
      * constructor of a user
-     * @param userName
+     * @param userName name of the user
      */
     public User(String userName){
         this.username = userName;
@@ -30,7 +30,7 @@ public class User {
 
     /**
      * get username
-     * @return
+     * @return name of the user
      */
     public String getUsername() {
         return username;
@@ -38,7 +38,7 @@ public class User {
 
     /**
      * set username
-     * @param username
+     * @param username username to set
      */
     public void setUsername(String username) {
         this.username = username;
@@ -46,7 +46,7 @@ public class User {
 
     /**
      * set phone number for a user
-     * @param phone
+     * @param phone phone number of the user
      */
     public void setPhone(String phone) {
         this.phone = phone;
@@ -54,7 +54,7 @@ public class User {
 
     /**
      * set email for a user
-     * @param email
+     * @param email email number of the user
      */
     public void setEmail(String email) {
         this.email = email;
@@ -62,7 +62,7 @@ public class User {
 
     /**
      * set age for a user
-     * @param age
+     * @param age age of the user
      */
     public void setAge(int age) {
         this.age = age;

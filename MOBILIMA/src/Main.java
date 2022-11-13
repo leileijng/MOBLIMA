@@ -3,6 +3,9 @@ import controller.*;
 import model.*;
 import java.util.Scanner;
 
+/**
+ * Main Class of the Application
+ */
 public class Main {
 
     /**
@@ -23,7 +26,7 @@ public class Main {
 
     /**
      * main entrance
-     * @param args
+     * @param args arguments list
      */
     public static void main(String[] args) {
         Service.initialiseFromFile();

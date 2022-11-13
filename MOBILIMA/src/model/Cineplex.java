@@ -32,7 +32,7 @@ public class Cineplex {
 
     /**
      * set cineplex name
-     * @param cineplexName
+     * @param cineplexName the name of the cineplex
      */
     public void setCineplexName(String cineplexName) {
         this.cineplexName = cineplexName;
@@ -40,7 +40,7 @@ public class Cineplex {
 
     /**
      * set location
-     * @param location
+     * @param location the location of the cineplex
      */
     public void setLocation(String location) {
         this.location = location;
@@ -48,8 +48,8 @@ public class Cineplex {
 
     /**
      * return cinema by Cinema class
-     * @param cinemaCode
-     * @return
+     * @param cinemaCode code of the cinema
+     * @return a cinema object
      */
     public Cinema getCinemas(String cinemaCode) {
         for (int i =0 ; i < cinemas.size(); i ++) {
@@ -62,7 +62,7 @@ public class Cineplex {
 
     /**
      * set cineplex id
-     * @param cineplexID
+     * @param cineplexID the id of the cineplex
      */
     public void setCineplexID(String cineplexID){
         this.cineplexID = cineplexID;
@@ -75,6 +75,10 @@ public class Cineplex {
         return cineplexID;
     }
 
+    /**
+     * Add a cinema to the list
+     * @param cinema the cinema to be added
+     */
     public void addCinema(Cinema cinema) {
         this.cinemas.add(cinema);
     }

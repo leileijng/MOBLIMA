@@ -23,10 +23,10 @@ public class Layout {
 
     /**
      * constructor of Layout
-     * @param layout_id
-     * @param row
-     * @param col
-     * @param s
+     * @param layout_id id of the layout
+     * @param row row number
+     * @param col column number
+     * @param s seats
      */
     public Layout(String layout_id, int row, int col, ArrayList<Integer> s) {
         this.layout_id = layout_id;
